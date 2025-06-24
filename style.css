@@ -574,6 +574,8 @@ body:has(.btn:hover) .cursor-follower {
   animation: fadeInUp 1s ease forwards;
   animation-delay: 1.5s;
   opacity: 0;
+  transform: none;
+  text-align: center;
 }
 
 .scroll-indicator span {
