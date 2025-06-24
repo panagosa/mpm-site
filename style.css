@@ -840,6 +840,15 @@ section {
   cursor: pointer;
 }
 
+/* Reset link styles for linked case items */
+.case-item,
+.case-item:visited,
+.case-item:hover,
+.case-item:active {
+  color: inherit;
+  text-decoration: none;
+}
+
 .case-item:hover {
   transform: scale(1.05);
   border-color: rgba(0, 255, 136, 0.3);
@@ -918,6 +927,11 @@ section {
 .metric-label {
   font-size: 0.875rem;
   color: var(--color-text-secondary);
+}
+
+.case-visual img.logo-img {
+  object-fit: contain;
+  background-color: #ffffff;
 }
 
 /* ===== About Section ===== */
