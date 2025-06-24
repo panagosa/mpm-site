@@ -1337,6 +1337,16 @@ section {
   .contact-form {
     padding: 2rem;
   }
+  
+  .team-showcase {
+    grid-template-columns: 1fr;
+    justify-items: center;
+  }
+  
+  .member-image {
+    width: 160px;
+    height: 160px;
+  }
 }
 
 /* ===== Client Logos Section ===== */
