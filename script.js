@@ -238,26 +238,22 @@ const contactForm = document.querySelector('.contact-form');
 if (contactForm) {
   contactForm.addEventListener('submit', (e) => {
     e.preventDefault();
-    
-    // Add loading state
-    const submitBtn = contactForm.querySelector('.btn-submit');
-    const originalText = submitBtn.innerHTML;
-    submitBtn.innerHTML = '<span>Sending...</span><i class="fas fa-spinner fa-spin"></i>';
-    submitBtn.disabled = true;
-    
-    // Simulate form submission
-    setTimeout(() => {
-      submitBtn.innerHTML = '<span>Message Sent!</span><i class="fas fa-check"></i>';
-      submitBtn.style.background = 'var(--gradient-primary)';
-      
-      // Reset form
-      setTimeout(() => {
-        contactForm.reset();
-        submitBtn.innerHTML = originalText;
-        submitBtn.disabled = false;
-        submitBtn.style.background = '';
-      }, 3000);
-    }, 2000);
+
+    // Collect field values
+    const name = document.querySelector('#name').value.trim();
+    const email = document.querySelector('#email').value.trim();
+    const company = document.querySelector('#company').value.trim();
+    const message = document.querySelector('#message').value.trim();
+
+    // Build the email subject & body
+    const subject = `New Project Inquiry from ${name || 'Website Visitor'}`;
+    let body = `Name: ${name}\nEmail: ${email}`;
+    if (company) body += `\nCompany: ${company}`;
+    body += `\n\nMessage:\n${message}`;
+
+    // Encode and open the mailto link
+    const mailtoLink = `mailto:alex@millerpanagos.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+    window.location.href = mailtoLink;
   });
 }
 
