@@ -245,15 +245,50 @@ if (contactForm) {
     const company = document.querySelector('#company').value.trim();
     const message = document.querySelector('#message').value.trim();
 
-    // Build the email subject & body
-    const subject = `New Project Inquiry from ${name || 'Website Visitor'}`;
-    let body = `Name: ${name}\nEmail: ${email}`;
-    if (company) body += `\nCompany: ${company}`;
-    body += `\n\nMessage:\n${message}`;
+    // Prepare UI state (loading)
+    const submitBtn = contactForm.querySelector('.btn-submit');
+    const originalText = submitBtn.innerHTML;
+    submitBtn.innerHTML = '<span>Sending...</span><i class="fas fa-spinner fa-spin"></i>';
+    submitBtn.disabled = true;
 
-    // Encode and open the mailto link
-    const mailtoLink = `mailto:alex@millerpanagos.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-    window.location.href = mailtoLink;
+    // Endpoint provided by FormSubmit for AJAX submissions
+    const endpoint = 'https://formsubmit.co/ajax/alex@millerpanagos.com';
+
+    fetch(endpoint, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json'
+      },
+      body: JSON.stringify({
+        name,
+        email,
+        company,
+        message,
+        _subject: `New Project Inquiry from ${name || 'Website Visitor'}`,
+        _captcha: false
+      })
+    })
+      .then(response => {
+        if (!response.ok) throw new Error('Network response was not ok');
+        return response.json();
+      })
+      .then(() => {
+        submitBtn.innerHTML = '<span>Message Sent!</span><i class="fas fa-check"></i>';
+        submitBtn.style.background = 'var(--gradient-primary)';
+        contactForm.reset();
+      })
+      .catch(() => {
+        submitBtn.innerHTML = '<span>Error! Try Again</span><i class="fas fa-times"></i>';
+        submitBtn.style.background = '#e11d48';
+      })
+      .finally(() => {
+        setTimeout(() => {
+          submitBtn.innerHTML = originalText;
+          submitBtn.disabled = false;
+          submitBtn.style.background = '';
+        }, 3000);
+      });
   });
 }
 
