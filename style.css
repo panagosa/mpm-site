@@ -9,15 +9,15 @@
   --color-text-secondary: #a0a0a0;
   --color-text-tertiary: #666666;
   
-  /* Accent Colors */
-  --color-primary: #00ff88;
-  --color-secondary: #7c3aed;
-  --color-accent: #00d4ff;
+  /* Accent Colors (Aurora Borealis) */
+  --color-primary: #1ce783; /* neon green */
+  --color-secondary: #00aaff; /* sky blue */
+  --color-accent: #7055ff; /* soft violet */
   
   /* Gradients */
-  --gradient-primary: linear-gradient(135deg, #00ff88 0%, #00d4ff 100%);
-  --gradient-secondary: linear-gradient(135deg, #7c3aed 0%, #00d4ff 100%);
-  --gradient-text: linear-gradient(135deg, #00ff88 0%, #00d4ff 50%, #b580ff 100%);
+  --gradient-primary: linear-gradient(135deg, #1ce783 0%, #00aaff 100%);
+  --gradient-secondary: linear-gradient(135deg, #00aaff 0%, #7055ff 100%);
+  --gradient-text: linear-gradient(135deg, #1ce783 0%, #00aaff 50%, #7055ff 100%);
   
   /* Typography */
   --font-primary: 'Space Grotesk', sans-serif;
