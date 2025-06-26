@@ -9,15 +9,15 @@
   --color-text-secondary: #a0a0a0;
   --color-text-tertiary: #666666;
   
-  /* Accent Colors */
-  --color-primary: #00ff88;
-  --color-secondary: #7c3aed;
-  --color-accent: #00d4ff;
+  /* Accent Colors – matching #ffd89b → #19547b palette */
+  --color-primary: #ffd89b; /* peach */
+  --color-secondary: #19547b; /* deep blue */
+  --color-accent: #ffb06a; /* warm accent */
   
   /* Gradients */
-  --gradient-primary: linear-gradient(135deg, #00ff88 0%, #00d4ff 100%);
-  --gradient-secondary: linear-gradient(135deg, #7c3aed 0%, #00d4ff 100%);
-  --gradient-text: linear-gradient(135deg, #00ff88 0%, #00d4ff 50%, #7c3aed 100%);
+  --gradient-primary: linear-gradient(135deg, #ffd89b 0%, #19547b 100%);
+  --gradient-secondary: linear-gradient(135deg, #19547b 0%, #ffd89b 100%);
+  --gradient-text: linear-gradient(135deg, #ffd89b 0%, #ffd89b 40%, #19547b 100%);
   
   /* Typography */
   --font-primary: 'Space Grotesk', sans-serif;
