@@ -252,7 +252,7 @@ if (contactForm) {
     submitBtn.disabled = true;
 
     // Endpoint provided by FormSubmit for AJAX submissions
-    const endpoint = 'https://formsubmit.co/ajax/alex@millerpanagos.com';
+    const endpoint = 'https://formsubmit.co/ajax/info@deadpanmedia.com';
 
     fetch(endpoint, {
       method: 'POST',
