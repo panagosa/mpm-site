@@ -1,6 +1,6 @@
-# Miller Panagos Media - Modern Marketing Website
+# Deadpan Media - Modern Marketing Website
 
-A cutting-edge, visually stunning website for Miller Panagos Media that showcases digital excellence with modern design principles and advanced interactive features.
+A cutting-edge, visually stunning website for Deadpan Media that showcases digital excellence with modern design principles and advanced interactive features.
 
 ## 🚀 Features
 
@@ -110,7 +110,7 @@ Try the Konami Code: ↑ ↑ ↓ ↓ ← → ← → B A
 
 ## 📄 License
 
-This project is created for Miller Panagos Media. All rights reserved.
+This project is created for Deadpan Media. All rights reserved.
 
 ---
 
