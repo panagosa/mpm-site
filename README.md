@@ -1,66 +1,48 @@
-# Deadpan Media - Modern Marketing Website
+# Miller Panagos Media - Portfolio
 
-A cutting-edge, visually stunning website for Deadpan Media that showcases digital excellence with modern design principles and advanced interactive features.
+A clean, minimal portfolio website showcasing the work and team of Miller Panagos Media.
 
-## 🚀 Features
+## 🎯 Features
 
-### Design Elements
-- **Dark Mode Theme**: Sleek dark background with vibrant accent colors (electric green, purple, cyan)
-- **Glassmorphism Effects**: Frosted glass appearance on cards and overlays
-- **Gradient Animations**: Dynamic gradient orbs with smooth floating animations
-- **Noise Textures**: Subtle grain overlay for depth and texture
-- **Grid Patterns**: Animated background grid for visual interest
-
-### Interactive Features
-- **Custom Cursor**: Smooth-following cursor with hover effects
-- **Loading Animation**: Branded loading screen with progress indicator
-- **Parallax Scrolling**: Multi-layer depth effects on scroll
-- **Magnetic Buttons**: Buttons that subtly follow cursor movement
-- **3D Card Tilting**: Cards that tilt based on mouse position
-- **Smooth Scroll Animations**: Elements fade in as you scroll
-- **Counter Animations**: Animated number counting for metrics
+### Design
+- **Clean & Minimal**: Simple, professional design focused on content
+- **Light Theme**: Clean white background with subtle accents
+- **Modern Typography**: Inter font for excellent readability
+- **Responsive Design**: Fully optimized for all devices
 
 ### Sections
 1. **Hero Section**
-   - Full-screen design with animated gradient background
-   - Bold typography with staggered reveal animation
-   - Floating 3D elements
-   - Smooth scroll indicator
+   - Simple introduction with company name and tagline
+   - Clean typography and minimal design
 
-2. **Services Grid**
-   - Interactive service cards with hover effects
-   - Icon animations
-   - Hidden detail panels on hover
+2. **Work Section**
+   - Portfolio showcase with project cards
+   - Links to actual campaign videos
+   - Key metrics and results displayed
 
-3. **Case Studies**
-   - Horizontal scrolling gallery
-   - Project metrics with animated counters
-   - Category badges
+3. **About Section**
+   - Company description and values
+   - Team member profiles with photos
+   - Professional presentation
 
-4. **About Section**
-   - Team showcase with social links
-   - Company values grid
-   - Professional imagery
-
-5. **Contact Section**
-   - Modern form with floating labels
-   - Social media links
+4. **Contact Section**
+   - Contact form with FormSubmit integration
    - Contact information
+   - Simple, functional design
 
 ### Technical Features
-- **Responsive Design**: Fully mobile-optimized
-- **Performance Optimized**: Lazy loading and debounced scroll events
-- **Smooth Transitions**: Hardware-accelerated animations
-- **Cross-browser Compatible**: Works on all modern browsers
-- **Accessibility**: Semantic HTML and ARIA labels
+- **Fast Loading**: Minimal JavaScript and CSS
+- **SEO Friendly**: Semantic HTML structure
+- **Accessible**: Proper contrast and navigation
+- **Mobile First**: Responsive design principles
 
 ## 🛠️ Technologies Used
 
 - **HTML5**: Semantic markup
-- **CSS3**: Custom properties, Grid, Flexbox, animations
-- **JavaScript**: Vanilla JS for maximum performance
-- **Font Awesome**: Icon library
-- **Google Fonts**: Space Grotesk & Inter fonts
+- **CSS3**: Modern CSS with Grid and Flexbox
+- **JavaScript**: Vanilla JS for minimal functionality
+- **Google Fonts**: Inter font family
+- **FormSubmit**: Contact form handling
 
 ## 📦 Setup Instructions
 
@@ -74,24 +56,23 @@ A cutting-edge, visually stunning website for Deadpan Media that showcases digit
 Edit the CSS variables in `style.css`:
 ```css
 :root {
-  --color-primary: #00ff88;    /* Green accent */
-  --color-secondary: #7c3aed;  /* Purple accent */
-  --color-accent: #00d4ff;     /* Cyan accent */
+  --color-accent: #007bff;        /* Primary accent color */
+  --color-accent-hover: #0056b3;  /* Hover state */
+  --color-text: #2c3e50;         /* Main text color */
+  --color-text-secondary: #6c757d; /* Secondary text */
 }
 ```
 
 ### Content
 - Update company information in `index.html`
 - Replace placeholder images with actual project screenshots
-- Modify service offerings and case studies
+- Modify team member information and photos
+- Update contact information and form endpoint
 
-### Animations
-- Adjust animation timings in `script.js`
-- Modify transition durations in CSS
-
-## 🎮 Easter Egg
-
-Try the Konami Code: ↑ ↑ ↓ ↓ ← → ← → B A
+### Styling
+- Adjust spacing using CSS custom properties
+- Modify typography by changing font families
+- Update colors to match your brand
 
 ## 📱 Browser Support
 
@@ -101,17 +82,17 @@ Try the Konami Code: ↑ ↑ ↓ ↓ ← → ← → B A
 - Edge (latest)
 - Mobile browsers
 
-## 🚀 Performance Tips
+## 🚀 Performance
 
-1. Optimize images before uploading
-2. Use WebP format for better compression
-3. Enable browser caching on your server
-4. Consider using a CDN for assets
+- Minimal JavaScript for fast loading
+- Optimized CSS with no unnecessary animations
+- Clean HTML structure
+- No external dependencies except fonts
 
 ## 📄 License
 
-This project is created for Deadpan Media. All rights reserved.
+This project is created for Miller Panagos Media. All rights reserved.
 
 ---
 
-Built with ❤️ and cutting-edge web technologies 
+Built with simplicity and focus on content
