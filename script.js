@@ -133,7 +133,7 @@ if (navToggle && navMenu) {
   });
 }
 
-// ===== Wild Animation on Text Selection =====
+// ===== Wild Animation on Hover =====
 let wildTimeout;
 
 function triggerWildMode() {
@@ -150,22 +150,18 @@ function triggerWildMode() {
   }, 3000);
 }
 
-// Listen for text selection
-document.addEventListener('mouseup', function() {
-  const selection = window.getSelection();
-  const selectedText = selection.toString().trim();
-  
-  if (selectedText.length > 0) {
+// Listen for mouse hover over any text element
+document.addEventListener('mouseover', function(e) {
+  // Check if hovering over text content
+  if (e.target.textContent && e.target.textContent.trim().length > 0) {
     triggerWildMode();
   }
 });
 
 // Also listen for touch events on mobile
-document.addEventListener('touchend', function() {
-  const selection = window.getSelection();
-  const selectedText = selection.toString().trim();
-  
-  if (selectedText.length > 0) {
+document.addEventListener('touchstart', function(e) {
+  // Check if touching text content
+  if (e.target.textContent && e.target.textContent.trim().length > 0) {
     triggerWildMode();
   }
 });
