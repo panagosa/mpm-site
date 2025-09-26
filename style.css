@@ -311,6 +311,89 @@ section {
   letter-spacing: 0.5px;
 }
 
+/* ===== Wild Animation Effects ===== */
+body.wild-mode {
+  animation: wildBackground 0.5s ease-in-out;
+}
+
+@keyframes wildBackground {
+  0% { 
+    background: linear-gradient(45deg, #ff0000, #00ff00, #0000ff, #ffff00, #ff00ff, #00ffff);
+    background-size: 400% 400%;
+  }
+  25% { 
+    background: linear-gradient(135deg, #ff6b6b, #4ecdc4, #45b7d1, #96ceb4, #feca57, #ff9ff3);
+    background-size: 400% 400%;
+  }
+  50% { 
+    background: linear-gradient(225deg, #a8edea, #fed6e3, #d299c2, #fef9d7, #667eea, #764ba2);
+    background-size: 400% 400%;
+  }
+  75% { 
+    background: linear-gradient(315deg, #ff9a9e, #fecfef, #fecfef, #fecfef, #fecfef, #fecfef);
+    background-size: 400% 400%;
+  }
+  100% { 
+    background: linear-gradient(45deg, #ff0000, #00ff00, #0000ff, #ffff00, #ff00ff, #00ffff);
+    background-size: 400% 400%;
+  }
+}
+
+body.wild-mode * {
+  animation: wildShake 0.3s ease-in-out infinite;
+  color: #fff !important;
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+}
+
+@keyframes wildShake {
+  0%, 100% { transform: translate(0, 0) rotate(0deg); }
+  25% { transform: translate(-2px, -2px) rotate(-1deg); }
+  50% { transform: translate(2px, -2px) rotate(1deg); }
+  75% { transform: translate(-2px, 2px) rotate(-1deg); }
+}
+
+body.wild-mode .work-image img {
+  animation: wildSpin 0.5s linear infinite;
+  filter: hue-rotate(180deg) saturate(2) brightness(1.2);
+}
+
+@keyframes wildSpin {
+  0% { transform: rotate(0deg) scale(1); }
+  50% { transform: rotate(180deg) scale(1.1); }
+  100% { transform: rotate(360deg) scale(1); }
+}
+
+body.wild-mode .work-overlay {
+  background: rgba(255, 255, 255, 0.9) !important;
+  animation: wildPulse 0.4s ease-in-out infinite;
+}
+
+@keyframes wildPulse {
+  0%, 100% { transform: scale(1); opacity: 0.9; }
+  50% { transform: scale(1.1); opacity: 1; }
+}
+
+body.wild-mode .work-play-btn {
+  background: linear-gradient(45deg, #ff0000, #00ff00, #0000ff) !important;
+  animation: wildBounce 0.3s ease-in-out infinite;
+}
+
+@keyframes wildBounce {
+  0%, 100% { transform: scale(1) rotate(0deg); }
+  50% { transform: scale(1.2) rotate(180deg); }
+}
+
+body.wild-mode .work-case-study {
+  background: linear-gradient(45deg, #ff6b6b, #4ecdc4, #45b7d1) !important;
+  animation: wildWiggle 0.2s ease-in-out infinite;
+}
+
+@keyframes wildWiggle {
+  0%, 100% { transform: rotate(0deg); }
+  25% { transform: rotate(-5deg); }
+  75% { transform: rotate(5deg); }
+}
+
 /* ===== Responsive Design ===== */
 @media (max-width: 768px) {
   .nav-container {
