@@ -132,3 +132,57 @@ if (navToggle && navMenu) {
     });
   });
 }
+
+// ===== Wild Animation on Text Selection =====
+let wildTimeout;
+
+function triggerWildMode() {
+  document.body.classList.add('wild-mode');
+  
+  // Clear any existing timeout
+  if (wildTimeout) {
+    clearTimeout(wildTimeout);
+  }
+  
+  // Set timeout to remove wild mode after 3 seconds
+  wildTimeout = setTimeout(() => {
+    document.body.classList.remove('wild-mode');
+  }, 3000);
+}
+
+// Listen for text selection
+document.addEventListener('mouseup', function() {
+  const selection = window.getSelection();
+  const selectedText = selection.toString().trim();
+  
+  if (selectedText.length > 0) {
+    triggerWildMode();
+  }
+});
+
+// Also listen for touch events on mobile
+document.addEventListener('touchend', function() {
+  const selection = window.getSelection();
+  const selectedText = selection.toString().trim();
+  
+  if (selectedText.length > 0) {
+    triggerWildMode();
+  }
+});
+
+// Add some extra wild effects
+document.addEventListener('keydown', function(e) {
+  // Konami code for extra wildness
+  const konamiCode = ['ArrowUp', 'ArrowUp', 'ArrowDown', 'ArrowDown', 'ArrowLeft', 'ArrowRight', 'ArrowLeft', 'ArrowRight', 'KeyB', 'KeyA'];
+  let konamiIndex = 0;
+  
+  if (e.code === konamiCode[konamiIndex]) {
+    konamiIndex++;
+    if (konamiIndex === konamiCode.length) {
+      triggerWildMode();
+      konamiIndex = 0;
+    }
+  } else {
+    konamiIndex = 0;
+  }
+});
