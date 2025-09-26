@@ -1,6 +1,6 @@
-# Miller Panagos Media - Portfolio
+# Deadpan Media - Portfolio
 
-A clean, minimal portfolio website showcasing the work and team of Miller Panagos Media.
+A clean, minimal portfolio website showcasing the work and team of Deadpan Media.
 
 ## 🎯 Features
 
@@ -91,7 +91,7 @@ Edit the CSS variables in `style.css`:
 
 ## 📄 License
 
-This project is created for Miller Panagos Media. All rights reserved.
+This project is created for Deadpan Media. All rights reserved.
 
 ---
 
