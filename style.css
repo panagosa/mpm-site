@@ -398,10 +398,14 @@ body.wild-mode .fun-button {
 body.wild-mode .work-image {
   border: 2px solid #00ff00;
   box-shadow: 0 0 20px #00ff00, inset 0 0 20px rgba(0, 255, 0, 0.1);
+  background: linear-gradient(135deg, #0a0a0a 0%, #1a0033 25%, #330066 50%, #6600cc 75%, #9900ff 100%);
+  animation: neonPulse 2s ease-in-out infinite;
 }
 
 body.wild-mode .work-image img {
   filter: hue-rotate(120deg) saturate(2) brightness(1.3);
+  background: transparent;
+  padding: 0;
 }
 
 body.wild-mode .work-overlay {
@@ -460,6 +464,23 @@ body.wild-mode .contact-item {
 body.wild-mode .footer p {
   color: #ff00ff !important;
   text-shadow: 0 0 8px #ff00ff, 0 0 16px #ff00ff;
+}
+
+/* Remove white dividers in neon mode */
+body.wild-mode .navbar {
+  border-bottom: none;
+}
+
+body.wild-mode .about {
+  border-top: none;
+}
+
+body.wild-mode .contact {
+  border-top: none;
+}
+
+body.wild-mode .footer {
+  border-top: none;
 }
 
 /* ===== Responsive Design ===== */
