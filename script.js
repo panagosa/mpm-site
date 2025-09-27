@@ -133,21 +133,23 @@ if (navToggle && navMenu) {
   });
 }
 
-// ===== Neon Wild Mode =====
-let wildTimeout;
+// ===== Neon Wild Mode Toggle =====
+let isWildMode = false;
 
 function triggerWildMode() {
-  document.body.classList.add('wild-mode');
+  const button = document.querySelector('.fun-button');
   
-  // Clear any existing timeout
-  if (wildTimeout) {
-    clearTimeout(wildTimeout);
-  }
-  
-  // Set timeout to remove wild mode after 5 seconds
-  wildTimeout = setTimeout(() => {
+  if (!isWildMode) {
+    // Enter wild mode
+    document.body.classList.add('wild-mode');
+    button.textContent = 'Click to see our professional side';
+    isWildMode = true;
+  } else {
+    // Exit wild mode
     document.body.classList.remove('wild-mode');
-  }, 5000);
+    button.textContent = 'Click to see our fun side';
+    isWildMode = false;
+  }
 }
 
 // Add some extra wild effects
