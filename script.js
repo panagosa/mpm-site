@@ -147,7 +147,7 @@ function triggerWildMode() {
   } else {
     // Exit wild mode
     document.body.classList.remove('wild-mode');
-    button.textContent = 'Click to see our fun side';
+    button.textContent = 'DO NOT PRESS THIS BUTTON';
     isWildMode = false;
   }
 }
