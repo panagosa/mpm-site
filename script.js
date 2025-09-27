@@ -158,8 +158,9 @@ function triggerWildMode() {
 // ===== Opening Animation =====
 document.addEventListener('DOMContentLoaded', () => {
   const openingAnimation = document.querySelector('.opening-animation');
+  const navLogo = document.querySelector('.nav-logo');
   
-  // Hide opening animation after 2.5 seconds
+  // Hide opening animation after letters slide up (2.2 seconds)
   setTimeout(() => {
     if (openingAnimation) {
       openingAnimation.classList.add('fade-out');
@@ -168,7 +169,7 @@ document.addEventListener('DOMContentLoaded', () => {
         openingAnimation.remove();
       }, 800);
     }
-  }, 2500);
+  }, 2200);
 });
 
 // Add some extra wild effects
