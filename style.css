@@ -431,13 +431,21 @@ body.wild-mode .work-play-btn {
   }
 }
 
-body.wild-mode .work-content {
+body.wild-mode .work-item {
   background: linear-gradient(135deg, #0a0a0a 0%, #1a0033 25%, #330066 50%, #6600cc 75%, #9900ff 100%);
   animation: neonPulse 2s ease-in-out infinite;
+  border-radius: 12px;
+  border: 2px solid #00ff00;
+  box-shadow: 0 0 20px rgba(0, 255, 0, 0.4);
   padding: 1rem;
-  border-radius: 8px;
-  border: 1px solid #00ff00;
-  box-shadow: 0 0 15px rgba(0, 255, 0, 0.3);
+}
+
+body.wild-mode .work-content {
+  background: transparent;
+  padding: 0;
+  border-radius: 0;
+  border: none;
+  box-shadow: none;
 }
 
 body.wild-mode .work-content h3 {
