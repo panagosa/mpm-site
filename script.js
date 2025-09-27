@@ -138,16 +138,19 @@ let isWildMode = false;
 
 function triggerWildMode() {
   const button = document.querySelector('.fun-button');
+  const floatingHire = document.getElementById('floating-hire');
   
   if (!isWildMode) {
     // Enter wild mode
     document.body.classList.add('wild-mode');
     button.textContent = 'PRESS THIS BUTTON';
+    floatingHire.style.display = 'block';
     isWildMode = true;
   } else {
     // Exit wild mode
     document.body.classList.remove('wild-mode');
     button.textContent = 'DO NOT PRESS THIS BUTTON';
+    floatingHire.style.display = 'none';
     isWildMode = false;
   }
 }
