@@ -142,7 +142,7 @@ function triggerWildMode() {
   if (!isWildMode) {
     // Enter wild mode
     document.body.classList.add('wild-mode');
-    button.textContent = 'Click to see our professional side';
+    button.textContent = 'PRESS THIS BUTTON';
     isWildMode = true;
   } else {
     // Exit wild mode
