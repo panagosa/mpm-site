@@ -525,124 +525,108 @@ body.wild-mode .footer {
 
 @keyframes floatAround1 {
   0% {
-    transform: translate(-200px, -200px) rotate(0deg);
+    transform: translate(-200px, 20vh) rotate(0deg);
     opacity: 0;
   }
-  10% {
-    transform: translate(20vw, 10vh) rotate(36deg);
-    opacity: 0.8;
-  }
-  25% {
-    transform: translate(80vw, 20vh) rotate(90deg);
+  20% {
+    transform: translate(20vw, 20vh) rotate(72deg);
     opacity: 1;
   }
-  50% {
-    transform: translate(20vw, 80vh) rotate(180deg);
+  40% {
+    transform: translate(20vw, 80vh) rotate(144deg);
+    opacity: 0.8;
+  }
+  60% {
+    transform: translate(80vw, 80vh) rotate(216deg);
     opacity: 0.6;
   }
-  75% {
-    transform: translate(70vw, 60vh) rotate(270deg);
+  80% {
+    transform: translate(80vw, 20vh) rotate(288deg);
     opacity: 0.9;
   }
-  90% {
-    transform: translate(10vw, 30vh) rotate(324deg);
-    opacity: 0.7;
-  }
   100% {
-    transform: translate(-200px, -200px) rotate(360deg);
+    transform: translate(-200px, 20vh) rotate(360deg);
     opacity: 0;
   }
 }
 
 @keyframes floatAround2 {
   0% {
-    transform: translate(-300px, 100vh) rotate(0deg);
+    transform: translate(100vw, 30vh) rotate(0deg);
     opacity: 0;
   }
-  10% {
-    transform: translate(30vw, 20vh) rotate(36deg);
-    opacity: 0.8;
-  }
-  25% {
-    transform: translate(70vw, 30vh) rotate(90deg);
+  20% {
+    transform: translate(80vw, 30vh) rotate(72deg);
     opacity: 1;
   }
-  50% {
-    transform: translate(10vw, 70vh) rotate(180deg);
+  40% {
+    transform: translate(80vw, 70vh) rotate(144deg);
+    opacity: 0.8;
+  }
+  60% {
+    transform: translate(20vw, 70vh) rotate(216deg);
     opacity: 0.6;
   }
-  75% {
-    transform: translate(60vw, 50vh) rotate(270deg);
+  80% {
+    transform: translate(20vw, 30vh) rotate(288deg);
     opacity: 0.9;
   }
-  90% {
-    transform: translate(20vw, 40vh) rotate(324deg);
-    opacity: 0.7;
-  }
   100% {
-    transform: translate(-300px, 100vh) rotate(360deg);
+    transform: translate(100vw, 30vh) rotate(360deg);
     opacity: 0;
   }
 }
 
 @keyframes floatAround3 {
   0% {
-    transform: translate(100vw, -200px) rotate(0deg);
+    transform: translate(50vw, -200px) rotate(0deg);
     opacity: 0;
   }
-  10% {
-    transform: translate(40vw, 15vh) rotate(36deg);
-    opacity: 0.8;
-  }
-  25% {
-    transform: translate(60vw, 25vh) rotate(90deg);
+  20% {
+    transform: translate(50vw, 40vh) rotate(72deg);
     opacity: 1;
   }
-  50% {
-    transform: translate(30vw, 75vh) rotate(180deg);
+  40% {
+    transform: translate(10vw, 40vh) rotate(144deg);
+    opacity: 0.8;
+  }
+  60% {
+    transform: translate(10vw, 60vh) rotate(216deg);
     opacity: 0.6;
   }
-  75% {
-    transform: translate(50vw, 55vh) rotate(270deg);
+  80% {
+    transform: translate(90vw, 60vh) rotate(288deg);
     opacity: 0.9;
   }
-  90% {
-    transform: translate(35vw, 35vh) rotate(324deg);
-    opacity: 0.7;
-  }
   100% {
-    transform: translate(100vw, -200px) rotate(360deg);
+    transform: translate(50vw, -200px) rotate(360deg);
     opacity: 0;
   }
 }
 
 @keyframes floatAround4 {
   0% {
-    transform: translate(100vw, 100vh) rotate(0deg);
+    transform: translate(50vw, 100vh) rotate(0deg);
     opacity: 0;
   }
-  10% {
-    transform: translate(50vw, 25vh) rotate(36deg);
-    opacity: 0.8;
-  }
-  25% {
-    transform: translate(50vw, 35vh) rotate(90deg);
+  20% {
+    transform: translate(50vw, 60vh) rotate(72deg);
     opacity: 1;
   }
-  50% {
-    transform: translate(40vw, 65vh) rotate(180deg);
+  40% {
+    transform: translate(90vw, 60vh) rotate(144deg);
+    opacity: 0.8;
+  }
+  60% {
+    transform: translate(90vw, 40vh) rotate(216deg);
     opacity: 0.6;
   }
-  75% {
-    transform: translate(40vw, 45vh) rotate(270deg);
+  80% {
+    transform: translate(10vw, 40vh) rotate(288deg);
     opacity: 0.9;
   }
-  90% {
-    transform: translate(45vw, 25vh) rotate(324deg);
-    opacity: 0.7;
-  }
   100% {
-    transform: translate(100vw, 100vh) rotate(360deg);
+    transform: translate(50vw, 100vh) rotate(360deg);
     opacity: 0;
   }
 }
