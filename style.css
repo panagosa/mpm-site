@@ -691,7 +691,7 @@ body.wild-mode .footer {
   top: 25%;
   right: 15%;
   animation: floatPath2 2.5s ease-in-out infinite;
-  animation-delay: 0.5s;
+  animation-delay: 0s;
   font-size: 1.5rem;
   color: #ff00ff;
   text-shadow: 0 0 20px #ff00ff, 0 0 40px #ff00ff, 0 0 60px #ff00ff;
@@ -701,7 +701,7 @@ body.wild-mode .footer {
   top: 45%;
   left: 20%;
   animation: floatPath3 2.2s ease-in-out infinite;
-  animation-delay: 1s;
+  animation-delay: 0s;
   font-size: 1.8rem;
   color: #00ffff;
   text-shadow: 0 0 20px #00ffff, 0 0 40px #00ffff, 0 0 60px #00ffff;
@@ -711,7 +711,7 @@ body.wild-mode .footer {
   top: 65%;
   right: 25%;
   animation: floatPath4 2.8s ease-in-out infinite;
-  animation-delay: 1.5s;
+  animation-delay: 0s;
   font-size: 1.2rem;
   color: #00ff00;
   text-shadow: 0 0 20px #00ff00, 0 0 40px #00ff00, 0 0 60px #00ff00;
@@ -721,7 +721,7 @@ body.wild-mode .footer {
   top: 35%;
   left: 60%;
   animation: floatPath5 2.1s ease-in-out infinite;
-  animation-delay: 2s;
+  animation-delay: 0s;
   font-size: 1.4rem;
   color: #ff6600;
   text-shadow: 0 0 20px #ff6600, 0 0 40px #ff6600, 0 0 60px #ff6600;
@@ -731,7 +731,7 @@ body.wild-mode .footer {
   top: 75%;
   left: 5%;
   animation: floatPath6 2.3s ease-in-out infinite;
-  animation-delay: 2.5s;
+  animation-delay: 0s;
   font-size: 1.1rem;
   color: #ff00ff;
   text-shadow: 0 0 20px #ff00ff, 0 0 40px #ff00ff, 0 0 60px #ff00ff;
@@ -741,7 +741,7 @@ body.wild-mode .footer {
   top: 55%;
   right: 5%;
   animation: floatPath7 2.6s ease-in-out infinite;
-  animation-delay: 3s;
+  animation-delay: 0s;
   font-size: 1.6rem;
   color: #00ffff;
   text-shadow: 0 0 20px #00ffff, 0 0 40px #00ffff, 0 0 60px #00ffff;
