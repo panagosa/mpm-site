@@ -431,6 +431,15 @@ body.wild-mode .work-play-btn {
   }
 }
 
+body.wild-mode .work-content {
+  background: linear-gradient(135deg, #0a0a0a 0%, #1a0033 25%, #330066 50%, #6600cc 75%, #9900ff 100%);
+  animation: neonPulse 2s ease-in-out infinite;
+  padding: 1rem;
+  border-radius: 8px;
+  border: 1px solid #00ff00;
+  box-shadow: 0 0 15px rgba(0, 255, 0, 0.3);
+}
+
 body.wild-mode .work-content h3 {
   color: #ffff00 !important;
   text-shadow: 0 0 10px #ffff00, 0 0 20px #ffff00;
