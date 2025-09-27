@@ -525,7 +525,11 @@ body.wild-mode .footer {
 
 @keyframes floatAround {
   0% {
-    transform: translate(0, 0) rotate(0deg);
+    transform: translate(-100px, -100px) rotate(0deg);
+    opacity: 0;
+  }
+  10% {
+    transform: translate(20vw, 10vh) rotate(36deg);
     opacity: 0.8;
   }
   25% {
@@ -540,9 +544,13 @@ body.wild-mode .footer {
     transform: translate(70vw, 60vh) rotate(270deg);
     opacity: 0.9;
   }
+  90% {
+    transform: translate(10vw, 30vh) rotate(324deg);
+    opacity: 0.7;
+  }
   100% {
-    transform: translate(0, 0) rotate(360deg);
-    opacity: 0.8;
+    transform: translate(-100px, -100px) rotate(360deg);
+    opacity: 0;
   }
 }
 
@@ -603,7 +611,11 @@ body.wild-mode .footer {
 @keyframes floatAroundPhone {
   0% {
     transform: translate(100vw, 100vh) rotate(0deg);
-    opacity: 0.7;
+    opacity: 0;
+  }
+  15% {
+    transform: translate(80vw, 80vh) rotate(54deg);
+    opacity: 0.8;
   }
   20% {
     transform: translate(10vw, 80vh) rotate(72deg);
@@ -621,9 +633,13 @@ body.wild-mode .footer {
     transform: translate(70vw, 90vh) rotate(288deg);
     opacity: 0.6;
   }
+  85% {
+    transform: translate(90vw, 70vh) rotate(306deg);
+    opacity: 0.4;
+  }
   100% {
     transform: translate(100vw, 100vh) rotate(360deg);
-    opacity: 0.7;
+    opacity: 0;
   }
 }
 
