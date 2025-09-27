@@ -331,7 +331,13 @@ section {
 }
 
 /* ===== Neon Wild Mode Effects ===== */
-body.wild-mode {
+body.wild-mode,
+body.wild-mode .hero,
+body.wild-mode .work,
+body.wild-mode .about,
+body.wild-mode .contact,
+body.wild-mode .footer,
+body.wild-mode .navbar {
   background: linear-gradient(135deg, #0a0a0a 0%, #1a0033 25%, #330066 50%, #6600cc 75%, #9900ff 100%);
   animation: neonPulse 2s ease-in-out infinite;
 }
@@ -340,8 +346,14 @@ body.wild-mode {
   0%, 100% { 
     background: linear-gradient(135deg, #0a0a0a 0%, #1a0033 25%, #330066 50%, #6600cc 75%, #9900ff 100%);
   }
-  50% { 
+  25% { 
     background: linear-gradient(135deg, #1a0033 0%, #330066 25%, #6600cc 50%, #9900ff 75%, #cc00ff 100%);
+  }
+  50% { 
+    background: linear-gradient(135deg, #330066 0%, #6600cc 25%, #9900ff 50%, #cc00ff 75%, #ff00ff 100%);
+  }
+  75% { 
+    background: linear-gradient(135deg, #6600cc 0%, #9900ff 25%, #cc00ff 50%, #ff00ff 75%, #ff33ff 100%);
   }
 }
 
