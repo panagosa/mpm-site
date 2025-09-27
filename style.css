@@ -530,18 +530,6 @@ body.wild-mode .footer {
   10% {
     opacity: 1;
   }
-  25% {
-    transform: translate(20vw, -10vh) rotate(90deg);
-  }
-  50% {
-    transform: translate(40vw, 20vh) rotate(180deg);
-  }
-  75% {
-    transform: translate(60vw, -5vh) rotate(270deg);
-  }
-  90% {
-    opacity: 1;
-  }
   100% {
     transform: translate(80vw, 10vh) rotate(360deg);
     opacity: 0;
@@ -553,16 +541,7 @@ body.wild-mode .footer {
     transform: translate(0, 0) rotate(0deg);
     opacity: 0;
   }
-  15% {
-    opacity: 1;
-  }
-  30% {
-    transform: translate(-15vw, 15vh) rotate(-45deg);
-  }
-  60% {
-    transform: translate(-30vw, 30vh) rotate(-90deg);
-  }
-  85% {
+  10% {
     opacity: 1;
   }
   100% {
@@ -576,16 +555,7 @@ body.wild-mode .footer {
     transform: translate(0, 0) rotate(0deg);
     opacity: 0;
   }
-  20% {
-    opacity: 1;
-  }
-  40% {
-    transform: translate(25vw, 25vh) rotate(120deg);
-  }
-  70% {
-    transform: translate(50vw, 50vh) rotate(240deg);
-  }
-  90% {
+  10% {
     opacity: 1;
   }
   100% {
@@ -599,16 +569,7 @@ body.wild-mode .footer {
     transform: translate(0, 0) rotate(0deg);
     opacity: 0;
   }
-  12% {
-    opacity: 1;
-  }
-  35% {
-    transform: translate(-20vw, -20vh) rotate(-60deg);
-  }
-  65% {
-    transform: translate(-40vw, -40vh) rotate(-120deg);
-  }
-  88% {
+  10% {
     opacity: 1;
   }
   100% {
@@ -622,13 +583,7 @@ body.wild-mode .footer {
     transform: translate(0, 0) rotate(0deg);
     opacity: 0;
   }
-  18% {
-    opacity: 1;
-  }
-  45% {
-    transform: translate(30vw, -15vh) rotate(75deg);
-  }
-  80% {
+  10% {
     opacity: 1;
   }
   100% {
@@ -642,13 +597,7 @@ body.wild-mode .footer {
     transform: translate(0, 0) rotate(0deg);
     opacity: 0;
   }
-  25% {
-    opacity: 1;
-  }
-  50% {
-    transform: translate(-25vw, 20vh) rotate(-90deg);
-  }
-  75% {
+  10% {
     opacity: 1;
   }
   100% {
@@ -662,13 +611,7 @@ body.wild-mode .footer {
     transform: translate(0, 0) rotate(0deg);
     opacity: 0;
   }
-  22% {
-    opacity: 1;
-  }
-  55% {
-    transform: translate(35vw, 35vh) rotate(135deg);
-  }
-  78% {
+  10% {
     opacity: 1;
   }
   100% {
@@ -681,7 +624,7 @@ body.wild-mode .footer {
 .floating-hire-text span:nth-child(1) {
   top: 15%;
   left: 10%;
-  animation: floatPath1 2s ease-in-out infinite;
+  animation: floatPath1 2s linear infinite;
   animation-delay: 0s;
   color: #ffff00;
   text-shadow: 0 0 20px #ffff00, 0 0 40px #ffff00, 0 0 60px #ffff00;
@@ -690,7 +633,7 @@ body.wild-mode .footer {
 .floating-hire-text span:nth-child(2) {
   top: 25%;
   right: 15%;
-  animation: floatPath2 2.5s ease-in-out infinite;
+  animation: floatPath2 2.5s linear infinite;
   animation-delay: 0s;
   font-size: 1.5rem;
   color: #ff00ff;
@@ -700,7 +643,7 @@ body.wild-mode .footer {
 .floating-hire-text span:nth-child(3) {
   top: 45%;
   left: 20%;
-  animation: floatPath3 2.2s ease-in-out infinite;
+  animation: floatPath3 2.2s linear infinite;
   animation-delay: 0s;
   font-size: 1.8rem;
   color: #00ffff;
@@ -710,7 +653,7 @@ body.wild-mode .footer {
 .floating-hire-text span:nth-child(4) {
   top: 65%;
   right: 25%;
-  animation: floatPath4 2.8s ease-in-out infinite;
+  animation: floatPath4 2.8s linear infinite;
   animation-delay: 0s;
   font-size: 1.2rem;
   color: #00ff00;
@@ -720,7 +663,7 @@ body.wild-mode .footer {
 .floating-hire-text span:nth-child(5) {
   top: 35%;
   left: 60%;
-  animation: floatPath5 2.1s ease-in-out infinite;
+  animation: floatPath5 2.1s linear infinite;
   animation-delay: 0s;
   font-size: 1.4rem;
   color: #ff6600;
@@ -730,7 +673,7 @@ body.wild-mode .footer {
 .floating-hire-text span:nth-child(6) {
   top: 75%;
   left: 5%;
-  animation: floatPath6 2.3s ease-in-out infinite;
+  animation: floatPath6 2.3s linear infinite;
   animation-delay: 0s;
   font-size: 1.1rem;
   color: #ff00ff;
@@ -740,7 +683,7 @@ body.wild-mode .footer {
 .floating-hire-text span:nth-child(7) {
   top: 55%;
   right: 5%;
-  animation: floatPath7 2.6s ease-in-out infinite;
+  animation: floatPath7 2.6s linear infinite;
   animation-delay: 0s;
   font-size: 1.6rem;
   color: #00ffff;
