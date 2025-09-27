@@ -155,23 +155,6 @@ function triggerWildMode() {
   }
 }
 
-// ===== Opening Animation =====
-document.addEventListener('DOMContentLoaded', () => {
-  const openingAnimation = document.querySelector('.opening-animation');
-  const navLogo = document.querySelector('.nav-logo');
-  
-  // Hide opening animation after letters slide up (2.2 seconds)
-  setTimeout(() => {
-    if (openingAnimation) {
-      openingAnimation.classList.add('fade-out');
-      // Remove from DOM after fade completes
-      setTimeout(() => {
-        openingAnimation.remove();
-      }, 800);
-    }
-  }, 2200);
-});
-
 // Add some extra wild effects
 document.addEventListener('keydown', function(e) {
   // Konami code for extra wildness
