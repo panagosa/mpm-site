@@ -133,7 +133,7 @@ if (navToggle && navMenu) {
   });
 }
 
-// ===== Wild Animation on Hover =====
+// ===== Neon Wild Mode =====
 let wildTimeout;
 
 function triggerWildMode() {
@@ -144,27 +144,11 @@ function triggerWildMode() {
     clearTimeout(wildTimeout);
   }
   
-  // Set timeout to remove wild mode after 3 seconds
+  // Set timeout to remove wild mode after 5 seconds
   wildTimeout = setTimeout(() => {
     document.body.classList.remove('wild-mode');
-  }, 3000);
+  }, 5000);
 }
-
-// Listen for mouse hover over any text element
-document.addEventListener('mouseover', function(e) {
-  // Check if hovering over text content
-  if (e.target.textContent && e.target.textContent.trim().length > 0) {
-    triggerWildMode();
-  }
-});
-
-// Also listen for touch events on mobile
-document.addEventListener('touchstart', function(e) {
-  // Check if touching text content
-  if (e.target.textContent && e.target.textContent.trim().length > 0) {
-    triggerWildMode();
-  }
-});
 
 // Add some extra wild effects
 document.addEventListener('keydown', function(e) {
