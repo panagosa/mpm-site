@@ -1,26 +1,15 @@
 <svg width="60" height="60" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg">
-  <!-- Add subtle texture filter -->
-  <defs>
-    <filter id="texture">
-      <feTurbulence baseFrequency="0.9" numOctaves="4" result="noise" seed="1"/>
-      <feColorMatrix in="noise" type="saturate" values="0"/>
-      <feComponentTransfer>
-        <feFuncA type="discrete" tableValues="0 .5 .5 .5 .5 .5 .5 .5 .5 .5 .5 .5 .5 .5 .5 .5"/>
-      </feComponentTransfer>
-    </filter>
-  </defs>
-  
   <!-- Outermost background (dark teal) -->
-  <rect width="60" height="60" fill="#2C5F5D" filter="url(#texture)"/>
+  <rect width="60" height="60" fill="#2C5F5D"/>
   
   <!-- First concentric square (vibrant reddish-orange) -->
-  <rect x="5" y="5" width="50" height="50" fill="#E85D2A" filter="url(#texture)"/>
+  <rect x="5" y="5" width="50" height="50" fill="#E85D2A"/>
   
   <!-- Second concentric square (muted burnt orange) -->
-  <rect x="10" y="10" width="40" height="40" fill="#B8860B" filter="url(#texture)"/>
+  <rect x="10" y="10" width="40" height="40" fill="#B8860B"/>
   
   <!-- Innermost square (creamy beige) -->
-  <rect x="15" y="15" width="30" height="30" fill="#F5F5DC" filter="url(#texture)"/>
+  <rect x="15" y="15" width="30" height="30" fill="#F5F5DC"/>
   
   <!-- Face icon -->
   <!-- Eyes (dark teal circles) -->
