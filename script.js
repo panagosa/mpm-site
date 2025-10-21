@@ -1,36 +1,39 @@
-// ===== Carousel Functionality =====
+// ===== Auto-Scrolling Carousel =====
 const workGrid = document.querySelector('.work-grid');
-const prevBtn = document.querySelector('.carousel-btn.prev');
-const nextBtn = document.querySelector('.carousel-btn.next');
 
-if (workGrid && prevBtn && nextBtn) {
-  const scrollAmount = 420; // Item width + gap
+if (workGrid) {
+  let scrollSpeed = 1; // Pixels per frame
+  let scrollDirection = 1; // 1 for right, -1 for left
+  let isUserInteracting = false;
+  let animationId;
 
-  function updateButtons() {
-    const scrollLeft = workGrid.scrollLeft;
-    const maxScroll = workGrid.scrollWidth - workGrid.clientWidth;
+  function autoScroll() {
+    if (!isUserInteracting) {
+      workGrid.scrollLeft += scrollSpeed * scrollDirection;
+      
+      // Check if we've reached the end
+      const maxScroll = workGrid.scrollWidth - workGrid.clientWidth;
+      if (workGrid.scrollLeft >= maxScroll) {
+        scrollDirection = -1; // Reverse direction
+      } else if (workGrid.scrollLeft <= 0) {
+        scrollDirection = 1; // Go forward again
+      }
+    }
     
-    prevBtn.disabled = scrollLeft <= 0;
-    nextBtn.disabled = scrollLeft >= maxScroll - 5; // 5px tolerance
+    animationId = requestAnimationFrame(autoScroll);
   }
 
-  prevBtn.addEventListener('click', () => {
-    workGrid.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
-    setTimeout(updateButtons, 300);
+  // Start auto-scroll
+  autoScroll();
+
+  // Pause auto-scroll on hover
+  workGrid.addEventListener('mouseenter', () => {
+    isUserInteracting = true;
   });
 
-  nextBtn.addEventListener('click', () => {
-    workGrid.scrollBy({ left: scrollAmount, behavior: 'smooth' });
-    setTimeout(updateButtons, 300);
+  workGrid.addEventListener('mouseleave', () => {
+    isUserInteracting = false;
   });
-
-  workGrid.addEventListener('scroll', updateButtons);
-  
-  // Initial button state
-  updateButtons();
-  
-  // Update on window resize
-  window.addEventListener('resize', updateButtons);
 
   // Add touch/drag scrolling support
   let isDown = false;
@@ -39,19 +42,28 @@ if (workGrid && prevBtn && nextBtn) {
 
   workGrid.addEventListener('mousedown', (e) => {
     isDown = true;
+    isUserInteracting = true;
     startX = e.pageX - workGrid.offsetLeft;
     scrollLeftStart = workGrid.scrollLeft;
     workGrid.style.cursor = 'grabbing';
   });
 
   workGrid.addEventListener('mouseleave', () => {
-    isDown = false;
-    workGrid.style.cursor = 'grab';
+    if (isDown) {
+      isDown = false;
+      workGrid.style.cursor = 'grab';
+      setTimeout(() => {
+        isUserInteracting = false;
+      }, 1000);
+    }
   });
 
   workGrid.addEventListener('mouseup', () => {
     isDown = false;
     workGrid.style.cursor = 'grab';
+    setTimeout(() => {
+      isUserInteracting = false;
+    }, 1000);
   });
 
   workGrid.addEventListener('mousemove', (e) => {
@@ -60,6 +72,17 @@ if (workGrid && prevBtn && nextBtn) {
     const x = e.pageX - workGrid.offsetLeft;
     const walk = (x - startX) * 2;
     workGrid.scrollLeft = scrollLeftStart - walk;
+  });
+
+  // Pause on touch interactions
+  workGrid.addEventListener('touchstart', () => {
+    isUserInteracting = true;
+  });
+
+  workGrid.addEventListener('touchend', () => {
+    setTimeout(() => {
+      isUserInteracting = false;
+    }, 1000);
   });
 }
 
