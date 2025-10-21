@@ -17,7 +17,7 @@ if (logoImg) {
     // Remove the class after animation completes
     setTimeout(() => {
       logoImg.classList.remove('bounce-roll');
-    }, 1500);
+    }, 2000);
   });
 }
 
