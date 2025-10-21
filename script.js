@@ -2,7 +2,7 @@
 const workGrid = document.querySelector('.work-grid');
 
 if (workGrid) {
-  let scrollSpeed = 1.25; // 25% faster (1.25 pixels per frame)
+  let scrollSpeed = 1.5625; // 50% faster total (1.25 * 1.25 = 1.5625 pixels per frame)
   let isUserInteracting = false;
   let animationId;
 
