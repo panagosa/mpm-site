@@ -147,7 +147,11 @@ body {
 
 /* ===== Section Styles ===== */
 section {
-  padding: var(--spacing-2xl) 0;
+  padding: var(--spacing-lg) 0;
+}
+
+section.hero {
+  padding: 0;
 }
 
 /* ===== Work Section ===== */
