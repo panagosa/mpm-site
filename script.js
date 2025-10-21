@@ -1,3 +1,26 @@
+// ===== Logo Bounce and Roll Animation =====
+const logoImg = document.querySelector('.logo-img');
+
+if (logoImg) {
+  logoImg.addEventListener('click', (e) => {
+    e.preventDefault();
+    
+    // Remove the animation class if it exists (to allow re-triggering)
+    logoImg.classList.remove('bounce-roll');
+    
+    // Force a reflow to restart the animation
+    void logoImg.offsetWidth;
+    
+    // Add the animation class
+    logoImg.classList.add('bounce-roll');
+    
+    // Remove the class after animation completes
+    setTimeout(() => {
+      logoImg.classList.remove('bounce-roll');
+    }, 1500);
+  });
+}
+
 // ===== Auto-Scrolling Carousel =====
 const workGrid = document.querySelector('.work-grid');
 
