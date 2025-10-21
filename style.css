@@ -226,12 +226,13 @@ section {
   overflow: hidden;
   position: relative;
   margin-bottom: var(--spacing-sm);
+  background-color: #000;
 }
 
 .work-video video {
   width: 100%;
   height: 100%;
-  object-fit: contain;
+  object-fit: cover;
   background-color: #000;
   display: block;
 }
