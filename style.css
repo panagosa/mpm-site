@@ -172,7 +172,7 @@ section {
   scrollbar-width: none;
   -ms-overflow-style: none;
   padding: var(--spacing-sm) 0;
-  cursor: grab;
+  cursor: default;
   user-select: none;
   -webkit-overflow-scrolling: touch;
   touch-action: pan-x;
@@ -180,7 +180,7 @@ section {
 }
 
 .work-grid:active {
-  cursor: grabbing;
+  cursor: default;
 }
 
 .work-grid::-webkit-scrollbar {
@@ -271,6 +271,7 @@ section {
   margin-right: 0;
   position: relative;
   left: 0;
+  margin-top: var(--spacing-sm);
 }
 
 .work-content h3 {
