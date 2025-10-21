@@ -10,10 +10,14 @@ if (workGrid) {
     if (!isUserInteracting) {
       workGrid.scrollLeft += scrollSpeed;
       
-      // Check if we've reached the end and loop back to start
-      const maxScroll = workGrid.scrollWidth - workGrid.clientWidth;
-      if (workGrid.scrollLeft >= maxScroll) {
-        workGrid.scrollLeft = 0; // Jump back to start for continuous loop
+      // When we reach the middle point (end of first set), reset to start
+      // This creates a seamless infinite loop
+      const itemWidth = 600; // Width of one item + gap
+      const totalItems = 5; // Number of unique items
+      const resetPoint = itemWidth * totalItems;
+      
+      if (workGrid.scrollLeft >= resetPoint) {
+        workGrid.scrollLeft = 0;
       }
     }
     
@@ -71,16 +75,58 @@ if (workGrid) {
     workGrid.scrollLeft = scrollLeftStart - walk;
   });
 
-  // Pause on touch interactions
-  workGrid.addEventListener('touchstart', () => {
+  // Mobile touch interactions
+  let touchStartTime = 0;
+  let touchStartX = 0;
+  let touchStartY = 0;
+  let isTouchScrolling = false;
+
+  workGrid.addEventListener('touchstart', (e) => {
     isUserInteracting = true;
-  });
+    isTouchScrolling = true;
+    touchStartTime = Date.now();
+    touchStartX = e.touches[0].clientX;
+    touchStartY = e.touches[0].clientY;
+  }, { passive: true });
+
+  workGrid.addEventListener('touchmove', (e) => {
+    if (!isTouchScrolling) return;
+    
+    const touchX = e.touches[0].clientX;
+    const touchY = e.touches[0].clientY;
+    const deltaX = Math.abs(touchStartX - touchX);
+    const deltaY = Math.abs(touchStartY - touchY);
+    
+    // If user is scrolling horizontally, keep auto-scroll paused
+    if (deltaX > deltaY) {
+      isUserInteracting = true;
+    }
+  }, { passive: true });
 
   workGrid.addEventListener('touchend', () => {
-    setTimeout(() => {
-      isUserInteracting = false;
-    }, 1000);
-  });
+    const touchDuration = Date.now() - touchStartTime;
+    
+    // If it was a quick tap (less than 200ms), resume auto-scroll quickly
+    if (touchDuration < 200) {
+      setTimeout(() => {
+        isUserInteracting = false;
+        isTouchScrolling = false;
+      }, 500);
+    } else {
+      // If it was a longer interaction, wait longer before resuming
+      setTimeout(() => {
+        isUserInteracting = false;
+        isTouchScrolling = false;
+      }, 1500);
+    }
+  }, { passive: true });
+
+  // Ensure auto-scroll works on mobile by checking if it's still running
+  setInterval(() => {
+    if (!isUserInteracting && !isTouchScrolling && !animationId) {
+      autoScroll();
+    }
+  }, 100);
 }
 
 // ===== Navigation =====
