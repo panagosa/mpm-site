@@ -1,3 +1,68 @@
+// ===== Carousel Functionality =====
+const workGrid = document.querySelector('.work-grid');
+const prevBtn = document.querySelector('.carousel-btn.prev');
+const nextBtn = document.querySelector('.carousel-btn.next');
+
+if (workGrid && prevBtn && nextBtn) {
+  const scrollAmount = 420; // Item width + gap
+
+  function updateButtons() {
+    const scrollLeft = workGrid.scrollLeft;
+    const maxScroll = workGrid.scrollWidth - workGrid.clientWidth;
+    
+    prevBtn.disabled = scrollLeft <= 0;
+    nextBtn.disabled = scrollLeft >= maxScroll - 5; // 5px tolerance
+  }
+
+  prevBtn.addEventListener('click', () => {
+    workGrid.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
+    setTimeout(updateButtons, 300);
+  });
+
+  nextBtn.addEventListener('click', () => {
+    workGrid.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+    setTimeout(updateButtons, 300);
+  });
+
+  workGrid.addEventListener('scroll', updateButtons);
+  
+  // Initial button state
+  updateButtons();
+  
+  // Update on window resize
+  window.addEventListener('resize', updateButtons);
+
+  // Add touch/drag scrolling support
+  let isDown = false;
+  let startX;
+  let scrollLeftStart;
+
+  workGrid.addEventListener('mousedown', (e) => {
+    isDown = true;
+    startX = e.pageX - workGrid.offsetLeft;
+    scrollLeftStart = workGrid.scrollLeft;
+    workGrid.style.cursor = 'grabbing';
+  });
+
+  workGrid.addEventListener('mouseleave', () => {
+    isDown = false;
+    workGrid.style.cursor = 'grab';
+  });
+
+  workGrid.addEventListener('mouseup', () => {
+    isDown = false;
+    workGrid.style.cursor = 'grab';
+  });
+
+  workGrid.addEventListener('mousemove', (e) => {
+    if (!isDown) return;
+    e.preventDefault();
+    const x = e.pageX - workGrid.offsetLeft;
+    const walk = (x - startX) * 2;
+    workGrid.scrollLeft = scrollLeftStart - walk;
+  });
+}
+
 // ===== Navigation =====
 const navbar = document.querySelector('.navbar');
 const navLinks = document.querySelectorAll('.nav-link');
