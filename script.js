@@ -21,6 +21,19 @@ if (logoImg) {
   });
 }
 
+// ===== Video Click to Play =====
+const videos = document.querySelectorAll('video');
+
+videos.forEach(video => {
+  video.addEventListener('click', () => {
+    if (video.paused) {
+      video.play();
+    } else {
+      video.pause();
+    }
+  });
+});
+
 // ===== Auto-Scrolling Carousel =====
 const workGrid = document.querySelector('.work-grid');
 
