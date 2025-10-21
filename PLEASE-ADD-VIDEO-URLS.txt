@@ -1,0 +1,48 @@
+SNACKTIME SKETCH SHOW - VIDEO URLs NEEDED
+==========================================
+
+I've updated Manscaped and Totino's to use their actual YouTube thumbnails!
+✅ Manscaped - now using YouTube thumbnail
+✅ Totino's - now using YouTube thumbnail
+
+However, I need the actual YouTube video URLs for the 4 Snacktime Sketch Show episodes to get their thumbnails.
+
+WHAT TO DO:
+-----------
+1. Visit: https://www.youtube.com/@SnackTimeSketchShow
+
+2. Find these 4 episodes:
+   - Snack Island
+   - Corporate Meltdown  
+   - Remodel or Remarry
+   - Crisp AI
+
+3. For each video, copy the full URL from your browser
+   (It will look like: https://www.youtube.com/watch?v=XXXXX)
+
+4. Send me the URLs, or update index.html yourself using this pattern:
+
+   FIND (around line 79, 96, 113, 130):
+   <a href="https://www.youtube.com/@SnackTimeSketchShow" target="_blank" class="work-play-btn">
+   
+   REPLACE WITH:
+   <a href="https://www.youtube.com/watch?v=ACTUAL_VIDEO_ID" target="_blank" class="work-play-btn">
+
+5. Also update the thumbnail (the img tag above the link):
+   
+   CHANGE:
+   <img src="assets/snack-island.svg" alt="...">
+   
+   TO:
+   <img src="https://img.youtube.com/vi/ACTUAL_VIDEO_ID/maxresdefault.jpg" alt="...">
+
+EXAMPLE:
+--------
+If the video URL is: https://www.youtube.com/watch?v=abc123XYZ
+
+Then:
+- Link href: https://www.youtube.com/watch?v=abc123XYZ
+- Thumbnail src: https://img.youtube.com/vi/abc123XYZ/maxresdefault.jpg
+
+Once you have the URLs, just share them with me and I'll update everything instantly!
+
