@@ -110,12 +110,13 @@ body {
 
 /* ===== Hero Section ===== */
 .hero {
-  min-height: 100vh;
+  min-height: 60vh;
   display: flex;
   align-items: center;
   justify-content: center;
   text-align: center;
   padding-top: 60px;
+  padding-bottom: var(--spacing-lg);
 }
 
 .hero-title {
@@ -147,11 +148,7 @@ body {
 
 /* ===== Section Styles ===== */
 section {
-  padding: var(--spacing-sm) 0;
-}
-
-section.hero {
-  padding: var(--spacing-2xl) 0;
+  padding: var(--spacing-lg) 0;
 }
 
 /* ===== Work Section ===== */
@@ -763,18 +760,12 @@ body.wild-mode .footer {
     gap: var(--spacing-md);
   }
   
-  .carousel-container {
-    padding: 0 50px;
-  }
-  
-  .carousel-btn {
-    width: 35px;
-    height: 35px;
-    font-size: 1rem;
-  }
-  
   .work-item {
-    width: 350px;
+    width: 500px;
+  }
+  
+  .work-image {
+    height: 375px;
   }
   
   .hero {
@@ -785,22 +776,12 @@ body.wild-mode .footer {
     padding: var(--spacing-md) 0;
   }
   
-  section.hero {
-    padding: var(--spacing-xl) 0;
-  }
-  
-  .carousel-container {
-    padding: 0 40px;
-  }
-  
-  .carousel-btn {
-    width: 30px;
-    height: 30px;
-    font-size: 0.9rem;
-  }
-  
   .work-item {
-    width: 280px;
+    width: 350px;
+  }
+  
+  .work-image {
+    height: 300px;
   }
 }
 
