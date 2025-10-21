@@ -828,6 +828,10 @@ body.wild-mode .footer {
     height: 375px;
   }
   
+  .work-video {
+    height: 375px;
+  }
+  
   .hero {
     padding: 0 1rem;
   }
@@ -841,6 +845,10 @@ body.wild-mode .footer {
   }
   
   .work-image {
+    height: 300px;
+  }
+  
+  .work-video {
     height: 300px;
   }
 }
@@ -861,6 +869,14 @@ body.wild-mode .footer {
   
   .work-image {
     height: 250px;
+  }
+  
+  .work-video {
+    height: 250px;
+  }
+  
+  .work-item {
+    width: 280px;
   }
   
   .about-content {
