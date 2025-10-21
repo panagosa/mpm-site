@@ -168,7 +168,7 @@ section {
   display: flex;
   gap: var(--spacing-md);
   overflow-x: auto;
-  scroll-behavior: smooth;
+  scroll-behavior: auto;
   scrollbar-width: none;
   -ms-overflow-style: none;
   padding: var(--spacing-sm) 0;
@@ -176,6 +176,7 @@ section {
   user-select: none;
   -webkit-overflow-scrolling: touch;
   touch-action: pan-x;
+  will-change: scroll-position;
 }
 
 .work-grid:active {
