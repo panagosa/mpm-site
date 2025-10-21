@@ -585,7 +585,8 @@ body.wild-mode .footer p {
 
 /* Remove white dividers in neon mode */
 body.wild-mode .navbar {
-  border-bottom: none;
+  border-bottom: 2px solid #ff00ff !important;
+  box-shadow: 0 0 20px #ff00ff;
 }
 
 body.wild-mode .about {
@@ -597,7 +598,17 @@ body.wild-mode .contact {
 }
 
 body.wild-mode .footer {
-  border-top: none;
+  border-top: 2px solid #ff00ff !important;
+  box-shadow: 0 0 20px #ff00ff;
+}
+
+/* Remove all other section borders in wild mode */
+body.wild-mode section {
+  border: none !important;
+}
+
+body.wild-mode .work {
+  border: none !important;
 }
 
 /* Floating HIRE US text */
