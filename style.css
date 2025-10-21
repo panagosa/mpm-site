@@ -585,8 +585,8 @@ body.wild-mode .footer p {
 
 /* Remove white dividers in neon mode */
 body.wild-mode .navbar {
-  border-bottom: 2px solid #ff00ff !important;
-  box-shadow: 0 0 20px #ff00ff;
+  border-bottom: none !important;
+  box-shadow: none !important;
 }
 
 body.wild-mode .about {
@@ -598,8 +598,8 @@ body.wild-mode .contact {
 }
 
 body.wild-mode .footer {
-  border-top: 2px solid #ff00ff !important;
-  box-shadow: 0 0 20px #ff00ff;
+  border-top: none !important;
+  box-shadow: none !important;
 }
 
 /* Remove all other section borders in wild mode */
