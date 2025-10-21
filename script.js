@@ -46,13 +46,13 @@ if (workGrid) {
     isUserInteracting = true;
     startX = e.pageX - workGrid.offsetLeft;
     scrollLeftStart = workGrid.scrollLeft;
-    workGrid.style.cursor = 'grabbing';
+    workGrid.style.cursor = 'default';
   });
 
   workGrid.addEventListener('mouseleave', () => {
     if (isDown) {
       isDown = false;
-      workGrid.style.cursor = 'grab';
+      workGrid.style.cursor = 'default';
       setTimeout(() => {
         isUserInteracting = false;
       }, 1000);
@@ -61,7 +61,7 @@ if (workGrid) {
 
   workGrid.addEventListener('mouseup', () => {
     isDown = false;
-    workGrid.style.cursor = 'grab';
+    workGrid.style.cursor = 'default';
     setTimeout(() => {
       isUserInteracting = false;
     }, 1000);
