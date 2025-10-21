@@ -611,6 +611,18 @@ body.wild-mode .work {
   border: none !important;
 }
 
+body.wild-mode .about {
+  border-top: none !important;
+}
+
+body.wild-mode .contact {
+  border-top: none !important;
+}
+
+body.wild-mode .hero {
+  border: none !important;
+}
+
 /* Floating HIRE US text */
 .floating-hire-text {
   position: fixed;
