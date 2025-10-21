@@ -187,48 +187,6 @@ section.hero {
   display: none;
 }
 
-.carousel-btn {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  background: rgba(0, 0, 0, 0.5);
-  color: white;
-  border: none;
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  cursor: pointer;
-  z-index: 10;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 1.2rem;
-  transition: var(--transition);
-  backdrop-filter: blur(10px);
-}
-
-.carousel-btn:hover {
-  background: rgba(0, 0, 0, 0.8);
-  transform: translateY(-50%) scale(1.1);
-}
-
-.carousel-btn.prev {
-  left: 10px;
-}
-
-.carousel-btn.next {
-  right: 10px;
-}
-
-.carousel-btn:disabled {
-  opacity: 0.3;
-  cursor: not-allowed;
-}
-
-.carousel-btn:disabled:hover {
-  transform: translateY(-50%);
-  background: rgba(0, 0, 0, 0.5);
-}
 
 .work-item {
   background-color: var(--color-bg);
@@ -573,18 +531,6 @@ body.wild-mode .footer p {
   text-shadow: 0 0 8px #ff00ff, 0 0 16px #ff00ff;
 }
 
-body.wild-mode .carousel-btn {
-  background: linear-gradient(45deg, #ff00ff, #00ffff) !important;
-  color: #000 !important;
-  box-shadow: 0 0 20px #ff00ff, 0 0 30px #00ffff;
-  border: 2px solid #ffff00;
-}
-
-body.wild-mode .carousel-btn:hover {
-  box-shadow: 0 0 30px #ff00ff, 0 0 40px #00ffff;
-  transform: translateY(-50%) scale(1.2) rotate(360deg);
-  transition: all 0.5s ease;
-}
 
 /* Remove white dividers in neon mode */
 body.wild-mode .navbar {
