@@ -251,26 +251,11 @@ section {
 }
 
 .work-overlay {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: transparent;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  opacity: 0;
-  transition: var(--transition);
-}
-
-.work-item:hover .work-overlay {
-  opacity: 1;
+  display: none;
 }
 
 .work-item:hover .work-content {
-  opacity: 0;
-  transition: var(--transition);
+  opacity: 1;
 }
 
 .work-overlay video {
