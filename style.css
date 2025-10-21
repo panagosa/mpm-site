@@ -267,6 +267,8 @@ section {
 .work-content {
   padding: 0;
   text-align: left;
+  margin-left: 0;
+  margin-right: 0;
 }
 
 .work-content h3 {
@@ -274,6 +276,8 @@ section {
   font-weight: 400;
   color: var(--color-text);
   margin-bottom: 0.25rem;
+  margin-left: 0;
+  margin-right: 0;
   letter-spacing: 0.5px;
   text-align: left;
 }
@@ -282,6 +286,8 @@ section {
   color: var(--color-text-light);
   font-size: 0.9rem;
   font-weight: 300;
+  margin-left: 0;
+  margin-right: 0;
   letter-spacing: 0.5px;
   text-align: left;
 }
