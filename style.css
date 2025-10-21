@@ -228,18 +228,16 @@ section {
   overflow: hidden;
   position: relative;
   margin-bottom: var(--spacing-sm);
-  background-color: #f0f0f0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  background-color: #000;
+  display: block;
 }
 
 .work-video video {
   width: 100%;
-  height: auto;
+  height: 100%;
   max-height: 450px;
-  object-fit: contain;
-  background-color: transparent;
+  object-fit: cover;
+  background-color: #000;
   display: block;
 }
 
@@ -846,8 +844,7 @@ body.wild-mode .hero {
   }
   
   .work-video {
-    min-height: 250px;
-    max-height: 375px;
+    height: 375px;
   }
   
   .hero {
@@ -867,8 +864,7 @@ body.wild-mode .hero {
   }
   
   .work-video {
-    min-height: 200px;
-    max-height: 300px;
+    height: 300px;
   }
 }
 
@@ -891,8 +887,7 @@ body.wild-mode .hero {
   }
   
   .work-video {
-    min-height: 180px;
-    max-height: 250px;
+    height: 250px;
   }
   
   .work-item {
