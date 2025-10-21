@@ -2,24 +2,18 @@
 const workGrid = document.querySelector('.work-grid');
 
 if (workGrid) {
-  let scrollSpeed = 0.5; // Slower for mobile
-  let scrollDirection = 1; // 1 for right, -1 for left
+  let scrollSpeed = 1.25; // 25% faster (1.25 pixels per frame)
   let isUserInteracting = false;
   let animationId;
-  let touchStartX = 0;
-  let touchStartY = 0;
-  let isScrolling = false;
 
   function autoScroll() {
-    if (!isUserInteracting && !isScrolling) {
-      workGrid.scrollLeft += scrollSpeed * scrollDirection;
+    if (!isUserInteracting) {
+      workGrid.scrollLeft += scrollSpeed;
       
-      // Check if we've reached the end
+      // Check if we've reached the end and loop back to start
       const maxScroll = workGrid.scrollWidth - workGrid.clientWidth;
-      if (workGrid.scrollLeft >= maxScroll - 1) {
-        scrollDirection = -1; // Reverse direction
-      } else if (workGrid.scrollLeft <= 1) {
-        scrollDirection = 1; // Go forward again
+      if (workGrid.scrollLeft >= maxScroll) {
+        workGrid.scrollLeft = 0; // Jump back to start for continuous loop
       }
     }
     
@@ -29,7 +23,7 @@ if (workGrid) {
   // Start auto-scroll
   autoScroll();
 
-  // Desktop hover events
+  // Pause auto-scroll on hover
   workGrid.addEventListener('mouseenter', () => {
     isUserInteracting = true;
   });
@@ -38,7 +32,7 @@ if (workGrid) {
     isUserInteracting = false;
   });
 
-  // Mouse drag support
+  // Add touch/drag scrolling support
   let isDown = false;
   let startX;
   let scrollLeftStart;
@@ -49,6 +43,16 @@ if (workGrid) {
     startX = e.pageX - workGrid.offsetLeft;
     scrollLeftStart = workGrid.scrollLeft;
     workGrid.style.cursor = 'grabbing';
+  });
+
+  workGrid.addEventListener('mouseleave', () => {
+    if (isDown) {
+      isDown = false;
+      workGrid.style.cursor = 'grab';
+      setTimeout(() => {
+        isUserInteracting = false;
+      }, 1000);
+    }
   });
 
   workGrid.addEventListener('mouseup', () => {
@@ -67,68 +71,16 @@ if (workGrid) {
     workGrid.scrollLeft = scrollLeftStart - walk;
   });
 
-  // Touch events for mobile
-  workGrid.addEventListener('touchstart', (e) => {
+  // Pause on touch interactions
+  workGrid.addEventListener('touchstart', () => {
     isUserInteracting = true;
-    isScrolling = true;
-    touchStartX = e.touches[0].clientX;
-    touchStartY = e.touches[0].clientY;
-  }, { passive: true });
-
-  workGrid.addEventListener('touchmove', (e) => {
-    if (!isUserInteracting) return;
-    
-    const touchX = e.touches[0].clientX;
-    const touchY = e.touches[0].clientY;
-    const deltaX = touchStartX - touchX;
-    const deltaY = touchStartY - touchY;
-    
-    // Only prevent default if horizontal scroll is more significant
-    if (Math.abs(deltaX) > Math.abs(deltaY)) {
-      e.preventDefault();
-    }
-  }, { passive: false });
+  });
 
   workGrid.addEventListener('touchend', () => {
-    isUserInteracting = false;
     setTimeout(() => {
-      isScrolling = false;
-    }, 500);
-  });
-
-  // Pause auto-scroll when page is not visible (mobile optimization)
-  document.addEventListener('visibilitychange', () => {
-    if (document.hidden) {
-      isUserInteracting = true;
-    } else {
-      setTimeout(() => {
-        isUserInteracting = false;
-      }, 1000);
-    }
-  });
-
-  // Pause on scroll (mobile optimization)
-  let scrollTimeout;
-  window.addEventListener('scroll', () => {
-    isUserInteracting = true;
-    clearTimeout(scrollTimeout);
-    scrollTimeout = setTimeout(() => {
       isUserInteracting = false;
-    }, 2000);
+    }, 1000);
   });
-
-  // Resume auto-scroll when carousel comes into view
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        isUserInteracting = false;
-      } else {
-        isUserInteracting = true;
-      }
-    });
-  });
-
-  observer.observe(workGrid);
 }
 
 // ===== Navigation =====
