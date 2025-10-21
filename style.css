@@ -76,10 +76,52 @@ body {
   height: 32px;
   width: auto;
   transition: var(--transition);
+  cursor: pointer;
 }
 
 .logo-img:hover {
   transform: scale(1.05);
+}
+
+/* Rolling and bouncing animation */
+@keyframes rollBounce {
+  0% {
+    transform: translateX(0) translateY(0) rotate(0deg);
+  }
+  15% {
+    transform: translateX(50px) translateY(-30px) rotate(180deg);
+  }
+  30% {
+    transform: translateX(100px) translateY(0) rotate(360deg);
+  }
+  40% {
+    transform: translateX(100px) translateY(-15px) rotate(450deg);
+  }
+  50% {
+    transform: translateX(100px) translateY(0) rotate(540deg);
+  }
+  55% {
+    transform: translateX(100px) translateY(-8px) rotate(585deg);
+  }
+  60% {
+    transform: translateX(100px) translateY(0) rotate(630deg);
+  }
+  65% {
+    transform: translateX(100px) translateY(-4px) rotate(675deg);
+  }
+  70% {
+    transform: translateX(100px) translateY(0) rotate(720deg);
+  }
+  85% {
+    transform: translateX(50px) translateY(-30px) rotate(900deg);
+  }
+  100% {
+    transform: translateX(0) translateY(0) rotate(1080deg);
+  }
+}
+
+.logo-img.bounce-roll {
+  animation: rollBounce 1.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
 }
 
 .nav-menu {
