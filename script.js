@@ -34,6 +34,85 @@ videos.forEach(video => {
   });
 });
 
+// ===== Theater Mode =====
+const theaterOverlay = document.getElementById('theater-mode');
+const theaterVideo = document.querySelector('.theater-video');
+const theaterClose = document.querySelector('.theater-close');
+
+// Function to open theater mode
+function openTheaterMode(videoElement) {
+  // Get the video source from the clicked video
+  const source = videoElement.querySelector('source');
+  if (!source) return;
+  
+  // Set the theater video source
+  theaterVideo.innerHTML = `<source src="${source.src}" type="${source.type}">Your browser does not support the video tag.`;
+  
+  // Show theater mode with animation
+  theaterOverlay.style.display = 'flex';
+  setTimeout(() => {
+    theaterOverlay.classList.add('active');
+  }, 10);
+  
+  // Prevent body scroll
+  document.body.style.overflow = 'hidden';
+  
+  // Load and play the video
+  theaterVideo.load();
+  setTimeout(() => {
+    theaterVideo.play().catch(e => console.log('Autoplay prevented:', e));
+  }, 500);
+}
+
+// Function to close theater mode
+function closeTheaterMode() {
+  // Pause the video
+  theaterVideo.pause();
+  
+  // Hide theater mode with animation
+  theaterOverlay.classList.remove('active');
+  setTimeout(() => {
+    theaterOverlay.style.display = 'none';
+  }, 400);
+  
+  // Restore body scroll
+  document.body.style.overflow = '';
+  
+  // Clear video source
+  theaterVideo.innerHTML = '<!-- Video source will be dynamically inserted -->';
+}
+
+// Add click listeners to all videos for theater mode
+document.querySelectorAll('.work-video video').forEach(video => {
+  video.addEventListener('click', (e) => {
+    e.preventDefault();
+    e.stopPropagation();
+    openTheaterMode(video.parentElement);
+  });
+});
+
+// Close theater mode when clicking close button
+theaterClose.addEventListener('click', closeTheaterMode);
+
+// Close theater mode when clicking backdrop
+theaterOverlay.addEventListener('click', (e) => {
+  if (e.target === theaterOverlay || e.target.classList.contains('theater-backdrop')) {
+    closeTheaterMode();
+  }
+});
+
+// Close theater mode with Escape key
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape' && theaterOverlay.classList.contains('active')) {
+    closeTheaterMode();
+  }
+});
+
+// Prevent theater video clicks from bubbling up
+theaterVideo.addEventListener('click', (e) => {
+  e.stopPropagation();
+});
+
 // ===== Auto-Scrolling Carousel =====
 const workGrid = document.querySelector('.work-grid');
 
