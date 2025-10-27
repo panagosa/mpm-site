@@ -21,52 +21,10 @@ if (logoImg) {
   });
 }
 
-// ===== Lazy Loading for Images and Videos =====
-const lazyLoadObserver = new IntersectionObserver((entries) => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      const element = entry.target;
-      
-      if (element.tagName === 'IMG') {
-        element.src = element.dataset.src || element.src;
-        element.classList.remove('lazy');
-      } else if (element.tagName === 'VIDEO') {
-        element.load();
-        element.classList.remove('lazy');
-      }
-      
-      lazyLoadObserver.unobserve(element);
-    }
-  });
-}, {
-  rootMargin: '50px 0px',
-  threshold: 0.1
-});
-
-// Observe lazy-loaded elements
-document.addEventListener('DOMContentLoaded', () => {
-  const lazyImages = document.querySelectorAll('img[loading="lazy"]');
-  const lazyVideos = document.querySelectorAll('video[loading="lazy"]');
-  
-  [...lazyImages, ...lazyVideos].forEach(element => {
-    lazyLoadObserver.observe(element);
-  });
-});
-
-// ===== Video Performance Optimization =====
+// ===== Video Click to Play =====
 const videos = document.querySelectorAll('video');
 
 videos.forEach(video => {
-  // Add loading state
-  video.addEventListener('loadstart', () => {
-    video.style.opacity = '0.7';
-  });
-  
-  video.addEventListener('canplay', () => {
-    video.style.opacity = '1';
-  });
-  
-  // Click to play/pause
   video.addEventListener('click', () => {
     if (video.paused) {
       video.play();
@@ -74,17 +32,6 @@ videos.forEach(video => {
       video.pause();
     }
   });
-  
-  // Pause video when not in viewport
-  const videoObserver = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (!entry.isIntersecting && !video.paused) {
-        video.pause();
-      }
-    });
-  }, { threshold: 0.5 });
-  
-  videoObserver.observe(video);
 });
 
 // ===== Auto-Scrolling Carousel =====
@@ -334,7 +281,7 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 });
 
-// ===== Mobile Menu Toggle =====
+// ===== Mobile Menu Toggle (if needed) =====
 const navToggle = document.querySelector('.nav-toggle');
 const navMenu = document.querySelector('.nav-menu');
 
@@ -342,13 +289,6 @@ if (navToggle && navMenu) {
   navToggle.addEventListener('click', () => {
     navMenu.classList.toggle('active');
     navToggle.classList.toggle('active');
-    
-    // Prevent body scroll when menu is open
-    if (navMenu.classList.contains('active')) {
-      document.body.style.overflow = 'hidden';
-    } else {
-      document.body.style.overflow = '';
-    }
   });
 
   // Close mobile menu on link click
@@ -356,17 +296,7 @@ if (navToggle && navMenu) {
     link.addEventListener('click', () => {
       navMenu.classList.remove('active');
       navToggle.classList.remove('active');
-      document.body.style.overflow = '';
     });
-  });
-
-  // Close mobile menu on outside click
-  document.addEventListener('click', (e) => {
-    if (!navToggle.contains(e.target) && !navMenu.contains(e.target)) {
-      navMenu.classList.remove('active');
-      navToggle.classList.remove('active');
-      document.body.style.overflow = '';
-    }
   });
 }
 
