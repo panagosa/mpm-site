@@ -228,6 +228,21 @@
     <span>Call 1-800-DEAD-PAN</span>
   </div>
 
+  <!-- Theater Mode Overlay -->
+  <div id="theater-mode" class="theater-overlay">
+    <div class="theater-backdrop"></div>
+    <div class="theater-container">
+      <button class="theater-close" aria-label="Close theater mode">
+        <span class="close-icon">×</span>
+      </button>
+      <div class="theater-video-wrapper">
+        <video class="theater-video" controls>
+          <!-- Video source will be dynamically inserted -->
+        </video>
+      </div>
+    </div>
+  </div>
+
   <!-- Scripts -->
   <script src="script.js"></script>
 </body>
