@@ -1,23 +1,143 @@
-// ===== Logo Bounce and Roll Animation =====
-const logoImg = document.querySelector('.logo-img');
+// ===== Custom Cursor with Text Interaction =====
+const cursor = document.createElement('div');
+cursor.className = 'cursor';
+document.body.appendChild(cursor);
 
-if (logoImg) {
-  logoImg.addEventListener('click', (e) => {
-    e.preventDefault();
-    
-    // Remove the animation class if it exists (to allow re-triggering)
-    logoImg.classList.remove('bounce-roll');
-    
-    // Force a reflow to restart the animation
-    void logoImg.offsetWidth;
-    
-    // Add the animation class
-    logoImg.classList.add('bounce-roll');
-    
-    // Remove the class after animation completes
-    setTimeout(() => {
-      logoImg.classList.remove('bounce-roll');
-    }, 2000);
+const cursorDot = document.createElement('div');
+cursorDot.className = 'cursor-dot';
+document.body.appendChild(cursorDot);
+
+let mouseX = 0;
+let mouseY = 0;
+let cursorX = 0;
+let cursorY = 0;
+
+document.addEventListener('mousemove', (e) => {
+  mouseX = e.clientX;
+  mouseY = e.clientY;
+  cursorDot.style.left = mouseX + 'px';
+  cursorDot.style.top = mouseY + 'px';
+});
+
+// Smooth cursor follow
+function animateCursor() {
+  const dx = mouseX - cursorX;
+  const dy = mouseY - cursorY;
+  
+  cursorX += dx * 0.15;
+  cursorY += dy * 0.15;
+  
+  cursor.style.left = cursorX + 'px';
+  cursor.style.top = cursorY + 'px';
+  
+  requestAnimationFrame(animateCursor);
+}
+animateCursor();
+
+// Hover effects on interactive elements
+const interactiveElements = document.querySelectorAll('a, button, .hero-title span, .nav-link, .contact-item');
+interactiveElements.forEach(el => {
+  el.addEventListener('mouseenter', () => {
+    cursor.classList.add('hover');
+  });
+  
+  el.addEventListener('mouseleave', () => {
+    cursor.classList.remove('hover');
+  });
+});
+
+// Split hero title text into individual letters
+const heroTitleContainer = document.querySelector('.hero-title span');
+if (heroTitleContainer) {
+  const text = heroTitleContainer.textContent;
+  heroTitleContainer.textContent = '';
+  
+  text.split('').forEach((char, index) => {
+    const letterSpan = document.createElement('span');
+    letterSpan.className = 'letter';
+    letterSpan.textContent = char === ' ' ? '\u00A0' : char;
+    if (char === ' ') {
+      letterSpan.classList.add('space');
+    }
+    heroTitleContainer.appendChild(letterSpan);
+  });
+  
+  // Individual letter movement based on cursor
+  const letters = heroTitleContainer.querySelectorAll('.letter');
+  const heroSection = document.querySelector('.hero-title');
+  
+  // Use requestAnimationFrame for smooth updates
+  let animationFrameId = null;
+  let targetLifts = new Map();
+  
+  document.addEventListener('mousemove', (e) => {
+    if (heroSection) {
+      const rect = heroSection.getBoundingClientRect();
+      const mouseX = e.clientX;
+      const mouseY = e.clientY;
+      
+      // Calculate target lifts for each letter
+      letters.forEach((letter) => {
+        const letterRect = letter.getBoundingClientRect();
+        const letterCenterX = letterRect.left + letterRect.width / 2;
+        const letterCenterY = letterRect.top + letterRect.height / 2;
+        
+        // Calculate distance from cursor to letter center
+        const deltaX = mouseX - letterCenterX;
+        const deltaY = mouseY - letterCenterY;
+        const distance = Math.sqrt(deltaX * deltaX + deltaY * deltaY);
+        
+        // Maximum effect distance (adjust for sensitivity)
+        const maxDistance = 150;
+        
+        // Calculate how much to lift the letter (closer = more lift)
+        const liftAmount = Math.max(0, (maxDistance - distance) / maxDistance);
+        const lift = liftAmount * -30; // Maximum lift of 30px
+        
+        targetLifts.set(letter, lift);
+      });
+      
+      // Smooth animation using requestAnimationFrame
+      if (!animationFrameId) {
+        const animate = () => {
+          letters.forEach((letter) => {
+            const targetLift = targetLifts.get(letter) || 0;
+            const currentTransform = letter.style.transform;
+            const currentMatch = currentTransform.match(/translateY\(([-\d.]+)px\)/);
+            const currentLift = currentMatch ? parseFloat(currentMatch[1]) : 0;
+            
+            // Smooth interpolation
+            const newLift = currentLift + (targetLift - currentLift) * 0.15;
+            
+            if (Math.abs(newLift - targetLift) > 0.1) {
+              letter.style.transform = `translateY(${newLift}px)`;
+              animationFrameId = requestAnimationFrame(animate);
+            } else {
+              letter.style.transform = `translateY(${targetLift}px)`;
+            }
+          });
+          
+          if (Array.from(targetLifts.values()).some(lift => Math.abs(lift) > 0.1)) {
+            animationFrameId = requestAnimationFrame(animate);
+          } else {
+            animationFrameId = null;
+          }
+        };
+        animationFrameId = requestAnimationFrame(animate);
+      }
+    }
+  });
+  
+  // Reset letters when mouse leaves the hero area
+  heroSection.addEventListener('mouseleave', () => {
+    letters.forEach(letter => {
+      targetLifts.set(letter, 0);
+      letter.style.transform = 'translateY(0px)';
+    });
+    if (animationFrameId) {
+      cancelAnimationFrame(animationFrameId);
+      animationFrameId = null;
+    }
   });
 }
 
@@ -169,16 +289,8 @@ if (workGrid) {
 const navbar = document.querySelector('.navbar');
 const navLinks = document.querySelectorAll('.nav-link');
 
-// Sticky navigation
-window.addEventListener('scroll', () => {
-  const currentScroll = window.pageYOffset;
-  
-  if (currentScroll > 100) {
-    navbar.style.backgroundColor = 'rgba(255, 255, 255, 0.98)';
-  } else {
-    navbar.style.backgroundColor = 'rgba(255, 255, 255, 0.95)';
-  }
-});
+// Navbar at bottom - scroll behavior not needed
+// Navbar background uses CSS variable, no need to update here
 
 // Smooth scrolling for navigation links
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
@@ -186,7 +298,7 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     e.preventDefault();
     const target = document.querySelector(this.getAttribute('href'));
     if (target) {
-      const offsetTop = target.offsetTop - 70; // Account for fixed navbar
+      const offsetTop = target.offsetTop;
       window.scrollTo({
         top: offsetTop,
         behavior: 'smooth'
