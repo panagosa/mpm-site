@@ -66,6 +66,18 @@ body {
   z-index: 10001;
 }
 
+/* Hide custom cursor on mobile devices */
+@media (max-width: 768px) {
+  body {
+    cursor: auto;
+  }
+  
+  .cursor,
+  .cursor-dot {
+    display: none;
+  }
+}
+
 html {
   font-size: 16px;
   scroll-behavior: smooth;
