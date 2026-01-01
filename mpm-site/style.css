@@ -239,11 +239,12 @@ section {
 /* ===== Work Section ===== */
 .work {
   background-color: var(--color-bg);
-  overflow: hidden;
+  overflow-y: auto;
+  overflow-x: hidden;
   min-height: calc(100vh - 80px); /* Full viewport minus navbar */
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  align-items: center;
   padding: 2rem 0;
   padding-bottom: calc(2rem + 80px); /* Extra padding for bottom navbar */
 }
@@ -251,27 +252,30 @@ section {
 .carousel-container {
   position: relative;
   width: 100%;
-  overflow: hidden;
+  max-width: 100%;
+  overflow: visible;
   padding: 0;
   margin: 0 auto;
 }
 
 .work-grid {
   display: flex;
-  gap: 1.5rem;
-  overflow-x: auto;
-  overflow-y: hidden;
+  flex-direction: column;
+  gap: 2.5rem;
+  overflow-x: hidden;
+  overflow-y: visible;
   scroll-behavior: smooth;
   scrollbar-width: none;
   -ms-overflow-style: none;
-  padding: 1rem 2rem;
+  padding: 1rem 0;
+  width: 100%;
   cursor: default;
   user-select: none;
   -webkit-overflow-scrolling: touch;
-  touch-action: pan-x;
+  touch-action: pan-y;
   will-change: scroll-position;
-  scroll-snap-type: x proximity;
-  align-items: stretch;
+  scroll-snap-type: y proximity;
+  align-items: center;
 }
 
 .work-grid:active {
@@ -287,8 +291,8 @@ section {
   background-color: transparent;
   transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94), opacity 0.4s ease;
   flex: 0 0 auto;
-  width: calc(90vw - 4rem);
-  max-width: 650px;
+  width: 70vw;
+  max-width: 70vw;
   scroll-snap-align: start;
   opacity: 0.85;
 }
@@ -302,7 +306,6 @@ section {
   width: 100%;
   height: auto;
   min-height: 320px;
-  max-height: calc(70vh - 120px);
   aspect-ratio: 16 / 9;
   overflow: hidden;
   position: relative;
@@ -958,8 +961,8 @@ body.wild-mode .hero {
   }
   
   .work-grid {
-    padding: 1rem 1.5rem;
-    gap: 1.25rem;
+    padding: 1rem 0;
+    gap: 2rem;
   }
   
   .team {
@@ -968,13 +971,12 @@ body.wild-mode .hero {
   }
   
   .work-item {
-    width: calc(85vw - 3rem);
-    max-width: 500px;
+    width: 70vw;
+    max-width: 70vw;
   }
   
   .work-video {
     min-height: 280px;
-    max-height: calc(60vh - 120px);
   }
   
   .hero {
@@ -1010,18 +1012,17 @@ body.wild-mode .hero {
   }
   
   .work-grid {
-    padding: 0.75rem 1rem;
-    gap: 1rem;
+    padding: 0.75rem 0;
+    gap: 1.5rem;
   }
   
   .work-item {
-    width: calc(90vw - 2rem);
-    max-width: 320px;
+    width: 70vw;
+    max-width: 70vw;
   }
   
   .work-video {
     min-height: 220px;
-    max-height: calc(55vh - 120px);
     margin-bottom: 0.75rem;
   }
   
