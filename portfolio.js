@@ -1,13 +1,22 @@
 // ===== Portfolio Page JavaScript =====
 
 // ===== Main Video Player Functionality =====
-const mainVideo = document.getElementById('mainVideo');
-const mainVideoInfo = document.getElementById('mainVideoInfo');
-const mainVideoTitle = mainVideoInfo.querySelector('.main-video-title');
-const mainVideoClient = mainVideoInfo.querySelector('.main-video-client');
-const mainVideoDescription = mainVideoInfo.querySelector('.main-video-description');
-const mainVideoYear = mainVideoInfo.querySelector('.main-video-year');
-const sidebarItems = document.querySelectorAll('.sidebar-video-item');
+// Wait for DOM to be ready before accessing elements
+let mainVideo, mainVideoInfo, mainVideoTitle, mainVideoClient, mainVideoDescription, mainVideoYear, sidebarItems;
+
+// Initialize elements when DOM is ready
+function initPortfolioElements() {
+  mainVideo = document.getElementById('mainVideo');
+  mainVideoInfo = document.getElementById('mainVideoInfo');
+  if (!mainVideo || !mainVideoInfo) return false;
+  
+  mainVideoTitle = mainVideoInfo.querySelector('.main-video-title');
+  mainVideoClient = mainVideoInfo.querySelector('.main-video-client');
+  mainVideoDescription = mainVideoInfo.querySelector('.main-video-description');
+  mainVideoYear = mainVideoInfo.querySelector('.main-video-year');
+  sidebarItems = document.querySelectorAll('.sidebar-video-item');
+  return true;
+}
 
 // Function to load video into main player
 function loadMainVideo(videoSrc, poster, title, client, description, year, shouldAutoplay = false) {
@@ -35,8 +44,11 @@ function loadMainVideo(videoSrc, poster, title, client, description, year, shoul
 
 // Initialize with first video (no autoplay on initial load)
 document.addEventListener('DOMContentLoaded', () => {
+  // Initialize elements
+  if (!initPortfolioElements()) return;
+  
   const firstItem = sidebarItems[0];
-  if (firstItem) {
+  if (firstItem && mainVideo) {
     const videoSrc = firstItem.getAttribute('data-video');
     const poster = firstItem.getAttribute('data-poster');
     const title = firstItem.getAttribute('data-title');
@@ -50,24 +62,28 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 // Sidebar item click handlers
-sidebarItems.forEach(item => {
-  item.addEventListener('click', () => {
-    // Remove active class from all items
-    sidebarItems.forEach(i => i.classList.remove('active'));
-    
-    // Add active class to clicked item
-    item.classList.add('active');
-    
-    // Get video data
-    const videoSrc = item.getAttribute('data-video');
-    const poster = item.getAttribute('data-poster');
-    const title = item.getAttribute('data-title');
-    const client = item.getAttribute('data-client');
-    const description = item.getAttribute('data-description');
-    const year = item.getAttribute('data-year');
-    
-    // Load video into main player with autoplay
-    loadMainVideo(videoSrc, poster, title, client, description, year, true);
+document.addEventListener('DOMContentLoaded', () => {
+  if (!initPortfolioElements()) return;
+  
+  sidebarItems.forEach(item => {
+    item.addEventListener('click', () => {
+      // Remove active class from all items
+      sidebarItems.forEach(i => i.classList.remove('active'));
+      
+      // Add active class to clicked item
+      item.classList.add('active');
+      
+      // Get video data
+      const videoSrc = item.getAttribute('data-video');
+      const poster = item.getAttribute('data-poster');
+      const title = item.getAttribute('data-title');
+      const client = item.getAttribute('data-client');
+      const description = item.getAttribute('data-description');
+      const year = item.getAttribute('data-year');
+      
+      // Load video into main player with autoplay
+      loadMainVideo(videoSrc, poster, title, client, description, year, true);
+    });
   });
 });
 
