@@ -448,7 +448,7 @@ html.portfolio-page {
     padding: 0 1rem;
     padding-top: 0; /* Remove top padding to shift content up */
     padding-bottom: 0; /* Remove bottom padding */
-    margin-top: 10vh; /* Shift video player section down 35% from previous position */
+    margin-top: 0vh; /* Shift video player section up 10% from previous position */
     align-items: flex-start;
   }
   
