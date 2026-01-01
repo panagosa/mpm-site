@@ -239,36 +239,41 @@ section {
 /* ===== Work Section ===== */
 .work {
   background-color: var(--color-bg);
-  overflow-y: auto;
-  overflow-x: hidden;
+  overflow-y: auto !important;
+  overflow-x: hidden !important;
   min-height: calc(100vh - 80px); /* Full viewport minus navbar */
   display: flex;
   flex-direction: column;
   align-items: center;
   padding: 2rem 0;
   padding-bottom: calc(2rem + 80px); /* Extra padding for bottom navbar */
+  width: 100%;
+  max-width: 100%;
 }
 
 .carousel-container {
   position: relative;
   width: 100%;
   max-width: 100%;
-  overflow: visible;
+  overflow-x: hidden !important;
+  overflow-y: visible;
   padding: 0;
   margin: 0 auto;
 }
 
 .work-grid {
   display: flex;
-  flex-direction: column;
+  flex-direction: column !important;
+  flex-wrap: nowrap !important;
   gap: 2.5rem;
-  overflow-x: hidden;
+  overflow-x: hidden !important;
   overflow-y: visible;
   scroll-behavior: smooth;
   scrollbar-width: none;
   -ms-overflow-style: none;
   padding: 1rem 0;
   width: 100%;
+  max-width: 100%;
   cursor: default;
   user-select: none;
   -webkit-overflow-scrolling: touch;
@@ -290,11 +295,15 @@ section {
 .work-item {
   background-color: transparent;
   transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94), opacity 0.4s ease;
-  flex: 0 0 auto;
-  width: 70vw;
-  max-width: 70vw;
+  flex: 0 0 auto !important;
+  flex-shrink: 0 !important;
+  flex-grow: 0 !important;
+  width: 70vw !important;
+  max-width: 70vw !important;
+  min-width: 70vw !important;
   scroll-snap-align: start;
   opacity: 0.85;
+  box-sizing: border-box;
 }
 
 .work-item:hover {
@@ -303,7 +312,8 @@ section {
 }
 
 .work-video {
-  width: 100%;
+  width: 100% !important;
+  max-width: 100% !important;
   height: auto;
   min-height: 320px;
   aspect-ratio: 16 / 9;
@@ -314,6 +324,7 @@ section {
   display: block;
   border-radius: 4px;
   transition: box-shadow 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  box-sizing: border-box;
 }
 
 .work-item:hover .work-video {
