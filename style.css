@@ -1132,16 +1132,25 @@ body.wild-mode .hero {
 @media (max-width: 768px) {
   .top-logo {
     top: 1rem;
-    left: 1rem;
+    left: 50%;
+    transform: translateX(-50%);
+    text-align: center;
   }
   
   .top-logo-link {
-    font-size: 1rem;
-    gap: 0.4rem;
+    font-size: 0.85rem;
+    gap: 0.35rem;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
   }
   
   .top-logo-img {
-    height: 36px; /* 30% smaller than 51px (51 * 0.7 = 35.7, rounded to 36) */
+    height: 28px; /* Smaller for better mobile scaling */
+  }
+  
+  .top-logo-link span {
+    font-size: 0.85rem;
   }
   
   .nav-container {
@@ -1152,34 +1161,47 @@ body.wild-mode .hero {
     display: flex;
     position: fixed;
     top: 1rem;
-    right: 1rem;
+    left: 1rem;
     z-index: 1001;
   }
   
   .nav-menu {
     position: fixed;
     top: 0;
-    right: 0;
-    width: 280px;
+    left: 0;
+    width: 200px;
     height: 100vh;
     background-color: var(--color-bg);
-    border-left: 1px solid var(--color-text);
     flex-direction: column;
-    gap: 2rem;
-    padding: 5rem 2rem 2rem;
-    transform: translateX(100%);
+    gap: 1.5rem;
+    padding: 4rem 1.5rem 2rem;
+    transform: translateX(-100%);
     opacity: 0;
     visibility: hidden;
     transition: transform 0.3s ease, opacity 0.3s ease, visibility 0.3s ease;
     z-index: 999;
-    box-shadow: -4px 0 20px rgba(0, 0, 0, 0.1);
+    box-shadow: 4px 0 20px rgba(0, 0, 0, 0.1);
     overflow-y: auto;
+    align-items: flex-start;
   }
   
   .nav-menu.active {
     transform: translateX(0);
     opacity: 1;
     visibility: visible;
+  }
+  
+  .nav-link {
+    font-size: 1rem;
+    color: var(--color-text-light);
+    text-transform: lowercase;
+    letter-spacing: 0.5px;
+    animation: none;
+  }
+  
+  .nav-link:hover {
+    color: var(--color-text);
+    transform: none;
   }
   
   /* Backdrop overlay when menu is open */
