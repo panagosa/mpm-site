@@ -239,37 +239,48 @@ section {
 /* ===== Work Section ===== */
 .work {
   background-color: var(--color-bg);
-  overflow: hidden;
+  overflow-y: auto !important;
+  overflow-x: hidden !important;
   min-height: calc(100vh - 80px); /* Full viewport minus navbar */
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  padding: var(--spacing-lg) 0;
-  padding-bottom: calc(var(--spacing-lg) + 80px); /* Extra padding for bottom navbar */
+  align-items: center;
+  padding: 2rem 0;
+  padding-bottom: calc(2rem + 80px); /* Extra padding for bottom navbar */
+  width: 100%;
+  max-width: 100%;
 }
 
 .carousel-container {
   position: relative;
   width: 100%;
-  overflow: hidden;
+  max-width: 100%;
+  overflow-x: hidden !important;
+  overflow-y: visible;
   padding: 0;
   margin: 0 auto;
 }
 
 .work-grid {
   display: flex;
-  gap: 1.5rem;
-  overflow-x: auto;
+  flex-direction: column !important;
+  flex-wrap: nowrap !important;
+  gap: 2.5rem;
+  overflow-x: hidden !important;
+  overflow-y: visible;
   scroll-behavior: smooth;
   scrollbar-width: none;
   -ms-overflow-style: none;
-  padding: 1rem 2rem;
+  padding: 1rem 0;
+  width: 100%;
+  max-width: 100%;
   cursor: default;
   user-select: none;
   -webkit-overflow-scrolling: touch;
-  touch-action: pan-x;
+  touch-action: pan-y;
   will-change: scroll-position;
-  scroll-snap-type: x proximity;
+  scroll-snap-type: y proximity;
+  align-items: center;
 }
 
 .work-grid:active {
@@ -284,11 +295,15 @@ section {
 .work-item {
   background-color: transparent;
   transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94), opacity 0.4s ease;
-  flex: 0 0 auto;
-  width: calc(90vw - 4rem);
-  max-width: 650px;
+  flex: 0 0 auto !important;
+  flex-shrink: 0 !important;
+  flex-grow: 0 !important;
+  width: 70vw !important;
+  max-width: 70vw !important;
+  min-width: 70vw !important;
   scroll-snap-align: start;
   opacity: 0.85;
+  box-sizing: border-box;
 }
 
 .work-item:hover {
@@ -297,10 +312,10 @@ section {
 }
 
 .work-video {
-  width: 100%;
+  width: 100% !important;
+  max-width: 100% !important;
   height: auto;
   min-height: 320px;
-  max-height: calc(70vh - 120px);
   aspect-ratio: 16 / 9;
   overflow: hidden;
   position: relative;
@@ -309,6 +324,7 @@ section {
   display: block;
   border-radius: 4px;
   transition: box-shadow 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  box-sizing: border-box;
 }
 
 .work-item:hover .work-video {
@@ -956,8 +972,8 @@ body.wild-mode .hero {
   }
   
   .work-grid {
-    padding: 1rem 1.5rem;
-    gap: 1.25rem;
+    padding: 1rem 0;
+    gap: 2rem;
   }
   
   .team {
@@ -966,13 +982,12 @@ body.wild-mode .hero {
   }
   
   .work-item {
-    width: calc(85vw - 3rem);
-    max-width: 500px;
+    width: 70vw;
+    max-width: 70vw;
   }
   
   .work-video {
     min-height: 280px;
-    max-height: calc(60vh - 120px);
   }
   
   .hero {
@@ -1003,18 +1018,36 @@ body.wild-mode .hero {
   .about,
   .contact {
     min-height: calc(100vh - 80px);
+    padding-top: 1.5rem;
+    padding-bottom: calc(1.5rem + 80px);
   }
   
-  .work-image {
-    height: 250px;
-  }
-  
-  .work-video {
-    height: 250px;
+  .work-grid {
+    padding: 0.75rem 0;
+    gap: 1.5rem;
   }
   
   .work-item {
-    width: 280px;
+    width: 70vw;
+    max-width: 70vw;
+  }
+  
+  .work-video {
+    min-height: 220px;
+    margin-bottom: 0.75rem;
+  }
+  
+  .work-content {
+    margin-top: 0.5rem;
+  }
+  
+  .work-content h3 {
+    font-size: 1rem;
+    margin-bottom: 0.25rem;
+  }
+  
+  .work-content p {
+    font-size: 0.85rem;
   }
   
   .about-content {
