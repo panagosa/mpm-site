@@ -1150,27 +1150,73 @@ body.wild-mode .hero {
   
   .nav-toggle {
     display: flex;
+    position: fixed;
+    top: 1rem;
+    right: 1rem;
+    z-index: 1001;
   }
   
   .nav-menu {
     position: fixed;
-    bottom: 70px;
-    left: 0;
-    width: 100%;
+    top: 0;
+    right: 0;
+    width: 280px;
+    height: 100vh;
     background-color: var(--color-bg);
-    border-top: 1px solid var(--color-text);
+    border-left: 1px solid var(--color-text);
     flex-direction: column;
-    gap: 1.5rem;
-    padding: 2rem;
-    transform: translateY(100%);
+    gap: 2rem;
+    padding: 5rem 2rem 2rem;
+    transform: translateX(100%);
     opacity: 0;
     visibility: hidden;
     transition: transform 0.3s ease, opacity 0.3s ease, visibility 0.3s ease;
     z-index: 999;
+    box-shadow: -4px 0 20px rgba(0, 0, 0, 0.1);
+    overflow-y: auto;
   }
   
   .nav-menu.active {
-    transform: translateY(0);
+    transform: translateX(0);
+    opacity: 1;
+    visibility: visible;
+  }
+  
+  /* Backdrop overlay when menu is open */
+  .nav-menu.active::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.3);
+    z-index: -1;
+    opacity: 0;
+    animation: fadeIn 0.3s ease forwards;
+  }
+  
+  @keyframes fadeIn {
+    to {
+      opacity: 1;
+    }
+  }
+  
+  /* Close menu when clicking backdrop */
+  .nav-menu-backdrop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.3);
+    z-index: 998;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+  }
+  
+  .nav-menu-backdrop.active {
     opacity: 1;
     visibility: visible;
   }
