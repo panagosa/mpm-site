@@ -137,12 +137,5 @@ if (lightbox) {
   });
 }
 
-// ===== Smooth Page Load =====
-window.addEventListener('load', () => {
-  document.body.style.opacity = '0';
-  setTimeout(() => {
-    document.body.style.transition = 'opacity 0.5s ease';
-    document.body.style.opacity = '1';
-  }, 100);
-});
+// Removed page load fade animation to prevent double-load effect
 
