@@ -1,0 +1,363 @@
+/* ===== Portfolio Page Styles ===== */
+
+/* Portfolio Work Section */
+.portfolio-work {
+  background-color: var(--color-bg);
+  min-height: calc(100vh - 80px);
+  padding: var(--spacing-lg) 0;
+  padding-bottom: calc(var(--spacing-lg) + 80px);
+  width: 100%;
+}
+
+.portfolio-work .container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+.portfolio-work .section-header {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.portfolio-work .section-title {
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 300;
+  color: var(--color-text);
+  margin-bottom: 0.5rem;
+  letter-spacing: 1px;
+}
+
+.portfolio-work .section-description {
+  font-size: 1rem;
+  color: var(--color-text-light);
+  font-weight: 300;
+  letter-spacing: 0.5px;
+}
+
+/* Filter Buttons */
+.filter-container {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-bottom: 3rem;
+  flex-wrap: wrap;
+}
+
+.filter-btn {
+  background-color: transparent;
+  border: 1px solid var(--color-text);
+  color: var(--color-text);
+  padding: 0.75rem 1.5rem;
+  font-size: 0.95rem;
+  font-weight: 400;
+  letter-spacing: 0.5px;
+  cursor: pointer;
+  transition: var(--transition);
+  border-radius: 0;
+  font-family: var(--font-primary);
+}
+
+.filter-btn:hover {
+  background-color: var(--color-accent-mustard);
+  border-color: var(--color-accent-mustard);
+  color: #F3F2DA;
+}
+
+.filter-btn.active {
+  background-color: var(--color-text);
+  color: var(--color-bg);
+  border-color: var(--color-text);
+}
+
+/* Video Grid */
+.video-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+.video-item {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 0.4s ease, transform 0.4s ease;
+}
+
+.video-item.hidden {
+  display: none;
+}
+
+.video-thumbnail {
+  position: relative;
+  width: 100%;
+  padding-bottom: 56.25%; /* 16:9 aspect ratio */
+  overflow: hidden;
+  background-color: #000;
+  cursor: pointer;
+  margin-bottom: 1rem;
+  border-radius: 4px;
+  transition: box-shadow 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.video-thumbnail:hover {
+  box-shadow: 0 12px 40px rgba(63, 95, 90, 0.15);
+}
+
+.video-thumbnail img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.video-thumbnail:hover img {
+  transform: scale(1.03);
+}
+
+.video-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.video-thumbnail:hover .video-overlay {
+  opacity: 1;
+}
+
+.play-btn {
+  background-color: rgba(255, 255, 255, 0.9);
+  border: none;
+  border-radius: 50%;
+  width: 80px;
+  height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  padding: 0;
+}
+
+.play-btn:hover {
+  background-color: var(--color-accent-mustard);
+  transform: scale(1.1);
+}
+
+.play-btn svg {
+  width: 30px;
+  height: 30px;
+  margin-left: 3px;
+  fill: var(--color-text);
+}
+
+.play-btn:hover svg {
+  fill: #F3F2DA;
+}
+
+.video-info {
+  padding: 0.5rem 0;
+}
+
+.video-title {
+  font-size: 1.25rem;
+  font-weight: 400;
+  color: var(--color-text);
+  margin-bottom: 0.5rem;
+  letter-spacing: 0.5px;
+}
+
+.video-client {
+  font-size: 1rem;
+  color: var(--color-text-light);
+  margin-bottom: 0.25rem;
+  font-weight: 300;
+}
+
+.video-year {
+  font-size: 0.9rem;
+  color: var(--color-text-light);
+  font-weight: 300;
+  opacity: 0.6;
+}
+
+/* Lightbox */
+.lightbox {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 10000;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+}
+
+.lightbox.active {
+  display: flex;
+}
+
+.lightbox-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(217, 106, 58, 0.95);
+  backdrop-filter: blur(10px);
+}
+
+.lightbox-content {
+  position: relative;
+  z-index: 10001;
+  max-width: 1200px;
+  width: 100%;
+  background-color: var(--color-bg);
+  border: 1px solid var(--color-text);
+  animation: lightboxFadeIn 0.3s ease;
+}
+
+@keyframes lightboxFadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.lightbox-close {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background-color: rgba(63, 95, 90, 0.1);
+  border: 1px solid var(--color-text);
+  color: var(--color-text);
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: var(--transition);
+  z-index: 10002;
+}
+
+.lightbox-close:hover {
+  background-color: var(--color-accent-mustard);
+  border-color: var(--color-accent-mustard);
+  color: #F3F2DA;
+}
+
+.lightbox-video-wrapper {
+  position: relative;
+  width: 100%;
+  padding-bottom: 56.25%; /* 16:9 aspect ratio */
+  background-color: #000;
+}
+
+.lightbox-video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.lightbox-info {
+  padding: 2rem;
+}
+
+.lightbox-title {
+  font-size: 1.75rem;
+  font-weight: 400;
+  color: var(--color-text);
+  margin-bottom: 0.5rem;
+  letter-spacing: 0.5px;
+}
+
+.lightbox-client {
+  font-size: 1.1rem;
+  color: var(--color-text-light);
+  margin-bottom: 1rem;
+  font-weight: 300;
+}
+
+.lightbox-description {
+  font-size: 1rem;
+  color: var(--color-text-light);
+  line-height: 1.6;
+  margin-bottom: 0.5rem;
+  font-weight: 300;
+}
+
+.lightbox-year {
+  font-size: 0.9rem;
+  color: var(--color-text-light);
+  opacity: 0.6;
+  font-weight: 300;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .portfolio-work {
+    padding: var(--spacing-md) 0;
+    padding-bottom: calc(var(--spacing-md) + 80px);
+  }
+  
+  .portfolio-work .container {
+    padding: 0 1rem;
+  }
+  
+  .video-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+  
+  .filter-container {
+    gap: 0.75rem;
+  }
+  
+  .filter-btn {
+    padding: 0.6rem 1.2rem;
+    font-size: 0.85rem;
+  }
+  
+  .lightbox-content {
+    margin: 1rem;
+  }
+  
+  .lightbox-info {
+    padding: 1.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .portfolio-work .section-header {
+    margin-bottom: 2rem;
+  }
+  
+  .filter-container {
+    margin-bottom: 2rem;
+  }
+  
+  .video-grid {
+    gap: 1.25rem;
+  }
+}

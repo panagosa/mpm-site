@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Portfolio - Deadpan Media</title>
+  
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  
+  <!-- Styles -->
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="portfolio.css">
+</head>
+<body>
+  <!-- Navigation -->
+  <nav class="navbar">
+    <div class="nav-container">
+      <button class="nav-toggle" aria-label="Toggle navigation menu" aria-expanded="false">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+      <div class="nav-menu">
+        <a href="index.html" class="nav-link">Home</a>
+        <a href="portfolio.html" class="nav-link">Portfolio</a>
+        <a href="about.html" class="nav-link">About</a>
+        <a href="contact.html" class="nav-link">Contact</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Portfolio Section -->
+  <section class="portfolio-work">
+    <div class="container">
+      <!-- Filter Buttons -->
+      <div class="filter-container">
+        <button class="filter-btn active" data-filter="all">All</button>
+        <button class="filter-btn" data-filter="ads">Ads</button>
+        <button class="filter-btn" data-filter="brand-films">Brand Films</button>
+        <button class="filter-btn" data-filter="social-media">Social Media</button>
+      </div>
+
+      <!-- Video Grid -->
+      <div class="video-grid" id="videoGrid">
+        <!-- Video Item 1 -->
+        <div class="video-item" data-category="ads" data-year="2024">
+          <div class="video-thumbnail">
+            <img src="https://img.youtube.com/vi/gqceI4x3uNg/maxresdefault.jpg" alt="Manscaped Commercial">
+            <div class="video-overlay">
+              <button class="play-btn" 
+                      data-video="https://dc5bt2teggic6.cloudfront.net/Pete Davidson x MANSCAPED®： Ball-Ber Shop - The Lawn Mower® 5.0 Ultra-2.mp4"
+                      data-title="Ball-Ber Shop"
+                      data-client="Manscaped"
+                      data-description="A humorous commercial featuring Pete Davidson showcasing Manscaped's premium grooming products. This campaign combines comedy with product demonstration to engage a modern male audience."
+                      data-year="2024">
+                <svg width="60" height="60" viewBox="0 0 24 24" fill="white">
+                  <path d="M8 5v14l11-7z"/>
+                </svg>
+              </button>
+            </div>
+          </div>
+          <div class="video-info">
+            <h3 class="video-title">Ball-Ber Shop</h3>
+            <p class="video-client">Manscaped</p>
+            <p class="video-year">2024</p>
+          </div>
+        </div>
+
+        <!-- Video Item 2 -->
+        <div class="video-item" data-category="ads" data-year="2024">
+          <div class="video-thumbnail">
+            <img src="https://img.youtube.com/vi/ACrp2HN3f0w/maxresdefault.jpg" alt="Totino's Commercial">
+            <div class="video-overlay">
+              <button class="play-btn" 
+                      data-video="https://dc5bt2teggic6.cloudfront.net/Totinos： Petes Fleet delivers Totinos Pizza Rolls!.mp4"
+                      data-title="Game Night"
+                      data-client="Totino's"
+                      data-description="A fun, energetic commercial featuring Pete Davidson's delivery fleet bringing Totino's Pizza Rolls to game night. This spot emphasizes convenience and taste for the target demographic."
+                      data-year="2024">
+                <svg width="60" height="60" viewBox="0 0 24 24" fill="white">
+                  <path d="M8 5v14l11-7z"/>
+                </svg>
+              </button>
+            </div>
+          </div>
+          <div class="video-info">
+            <h3 class="video-title">Game Night</h3>
+            <p class="video-client">Totino's</p>
+            <p class="video-year">2024</p>
+          </div>
+        </div>
+
+        <!-- Video Item 3 -->
+        <div class="video-item" data-category="brand-films" data-year="2024">
+          <div class="video-thumbnail">
+            <img src="https://img.youtube.com/vi/BZZIpThjURI/maxresdefault.jpg" alt="Snacktime Sketch Show">
+            <div class="video-overlay">
+              <button class="play-btn" 
+                      data-video="https://dc5bt2teggic6.cloudfront.net/03_SI_v08_FINAL_260825_01_wBumper.mp4"
+                      data-title="Snack Island"
+                      data-client="Snacktime Sketch Show"
+                      data-description="A comedic brand film that showcases the Snacktime Sketch Show's unique style. This piece combines humor with brand storytelling to create memorable content."
+                      data-year="2024">
+                <svg width="60" height="60" viewBox="0 0 24 24" fill="white">
+                  <path d="M8 5v14l11-7z"/>
+                </svg>
+              </button>
+            </div>
+          </div>
+          <div class="video-info">
+            <h3 class="video-title">Snack Island</h3>
+            <p class="video-client">Snacktime Sketch Show</p>
+            <p class="video-year">2024</p>
+          </div>
+        </div>
+
+        <!-- Video Item 4 -->
+        <div class="video-item" data-category="brand-films" data-year="2024">
+          <div class="video-thumbnail">
+            <img src="https://img.youtube.com/vi/TNu3y2lIb9Q/maxresdefault.jpg" alt="Snacktime Sketch Show">
+            <div class="video-overlay">
+              <button class="play-btn" 
+                      data-video="https://dc5bt2teggic6.cloudfront.net/02_CORP_v10_FINAL_260825_01_wBumper.mp4"
+                      data-title="Corporate Meltdown"
+                      data-client="Snacktime Sketch Show"
+                      data-description="A satirical brand film that humorously explores corporate culture through the lens of snack time. This piece demonstrates creative storytelling and brand voice."
+                      data-year="2024">
+                <svg width="60" height="60" viewBox="0 0 24 24" fill="white">
+                  <path d="M8 5v14l11-7z"/>
+                </svg>
+              </button>
+            </div>
+          </div>
+          <div class="video-info">
+            <h3 class="video-title">Corporate Meltdown</h3>
+            <p class="video-client">Snacktime Sketch Show</p>
+            <p class="video-year">2024</p>
+          </div>
+        </div>
+
+        <!-- Video Item 5 -->
+        <div class="video-item" data-category="social-media" data-year="2024">
+          <div class="video-thumbnail">
+            <img src="https://img.youtube.com/vi/1aCRNBkhOEY/maxresdefault.jpg" alt="Snacktime Sketch Show">
+            <div class="video-overlay">
+              <button class="play-btn" 
+                      data-video="https://dc5bt2teggic6.cloudfront.net/01_AI_v09_FINAL_260825_01_wBumper.mp4"
+                      data-title="Crisp AI"
+                      data-client="Snacktime Sketch Show"
+                      data-description="A social media focused video that explores AI themes through comedic storytelling. This piece is optimized for digital platforms and engagement."
+                      data-year="2024">
+                <svg width="60" height="60" viewBox="0 0 24 24" fill="white">
+                  <path d="M8 5v14l11-7z"/>
+                </svg>
+              </button>
+            </div>
+          </div>
+          <div class="video-info">
+            <h3 class="video-title">Crisp AI</h3>
+            <p class="video-client">Snacktime Sketch Show</p>
+            <p class="video-year">2024</p>
+          </div>
+        </div>
+
+        <!-- Add more video items as needed -->
+      </div>
+    </div>
+  </section>
+
+  <!-- Video Lightbox -->
+  <div class="lightbox" id="lightbox">
+    <div class="lightbox-overlay"></div>
+    <div class="lightbox-content">
+      <button class="lightbox-close" aria-label="Close">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <line x1="18" y1="6" x2="6" y2="18"></line>
+          <line x1="6" y1="6" x2="18" y2="18"></line>
+        </svg>
+      </button>
+      <div class="lightbox-video-wrapper">
+        <video class="lightbox-video" controls>
+          <source src="" type="video/mp4">
+          Your browser does not support the video tag.
+        </video>
+      </div>
+      <div class="lightbox-info">
+        <h3 class="lightbox-title"></h3>
+        <p class="lightbox-client"></p>
+        <p class="lightbox-description"></p>
+        <p class="lightbox-year"></p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Floating HIRE US text for neon mode -->
+  <div id="floating-hire" class="floating-hire-text" style="display: none;">
+    <span>HIRE US</span>
+    <span>HIRE US</span>
+    <span>HIRE US</span>
+    <span>HIRE US</span>
+    <span>Call 1-800-DEAD-PAN</span>
+    <span>Call 1-800-DEAD-PAN</span>
+    <span>Call 1-800-DEAD-PAN</span>
+  </div>
+
+  <!-- Scripts -->
+  <script src="script.js"></script>
+  <script src="portfolio.js"></script>
+</body>
+</html>
+

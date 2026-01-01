@@ -154,135 +154,92 @@ videos.forEach(video => {
   });
 });
 
-// ===== Auto-Scrolling Carousel =====
+// ===== Flashcard-Style Video Carousel =====
 const workGrid = document.querySelector('.work-grid');
+const prevArrow = document.querySelector('.carousel-arrow-prev');
+const nextArrow = document.querySelector('.carousel-arrow-next');
 
-if (workGrid) {
-  let scrollSpeed = 1.5625; // 50% faster total (1.25 * 1.25 = 1.5625 pixels per frame)
-  let isUserInteracting = false;
-  let animationId;
+if (workGrid && prevArrow && nextArrow) {
+  const workItems = workGrid.querySelectorAll('.work-item');
+  let currentIndex = 0;
+  let isTransitioning = false;
 
-  function autoScroll() {
-    if (!isUserInteracting) {
-      workGrid.scrollLeft += scrollSpeed;
-      
-      // When we reach the middle point (end of first set), reset to start
-      // This creates a seamless infinite loop
-      const itemWidth = 600; // Width of one item + gap
-      const totalItems = 5; // Number of unique items
-      const resetPoint = itemWidth * totalItems;
-      
-      if (workGrid.scrollLeft >= resetPoint) {
-        workGrid.scrollLeft = 0;
+  // Pause any playing videos when switching
+  function pauseAllVideos() {
+    workItems.forEach(item => {
+      const video = item.querySelector('video');
+      if (video) {
+        video.pause();
       }
-    }
-    
-    animationId = requestAnimationFrame(autoScroll);
+    });
   }
 
-  // Start auto-scroll
-  autoScroll();
+  function updateCarousel() {
+    // Remove active class from all items
+    workItems.forEach((item, index) => {
+      item.classList.remove('active');
+    });
 
-  // Pause auto-scroll on hover
-  workGrid.addEventListener('mouseenter', () => {
-    isUserInteracting = true;
-  });
-
-  workGrid.addEventListener('mouseleave', () => {
-    isUserInteracting = false;
-  });
-
-  // Add touch/drag scrolling support
-  let isDown = false;
-  let startX;
-  let scrollLeftStart;
-
-  workGrid.addEventListener('mousedown', (e) => {
-    isDown = true;
-    isUserInteracting = true;
-    startX = e.pageX - workGrid.offsetLeft;
-    scrollLeftStart = workGrid.scrollLeft;
-    workGrid.style.cursor = 'default';
-  });
-
-  workGrid.addEventListener('mouseleave', () => {
-    if (isDown) {
-      isDown = false;
-      workGrid.style.cursor = 'default';
-      setTimeout(() => {
-        isUserInteracting = false;
-      }, 1000);
+    // Add active class to current item
+    if (workItems[currentIndex]) {
+      workItems[currentIndex].classList.add('active');
     }
-  });
 
-  workGrid.addEventListener('mouseup', () => {
-    isDown = false;
-    workGrid.style.cursor = 'default';
-    setTimeout(() => {
-      isUserInteracting = false;
-    }, 1000);
-  });
-
-  workGrid.addEventListener('mousemove', (e) => {
-    if (!isDown) return;
-    e.preventDefault();
-    const x = e.pageX - workGrid.offsetLeft;
-    const walk = (x - startX) * 2;
-    workGrid.scrollLeft = scrollLeftStart - walk;
-  });
-
-  // Mobile touch interactions
-  let touchStartTime = 0;
-  let touchStartX = 0;
-  let touchStartY = 0;
-  let isTouchScrolling = false;
-
-  workGrid.addEventListener('touchstart', (e) => {
-    isUserInteracting = true;
-    isTouchScrolling = true;
-    touchStartTime = Date.now();
-    touchStartX = e.touches[0].clientX;
-    touchStartY = e.touches[0].clientY;
-  }, { passive: true });
-
-  workGrid.addEventListener('touchmove', (e) => {
-    if (!isTouchScrolling) return;
+    // Update arrow states
+    prevArrow.classList.toggle('disabled', currentIndex === 0);
+    nextArrow.classList.toggle('disabled', currentIndex === workItems.length - 1);
     
-    const touchX = e.touches[0].clientX;
-    const touchY = e.touches[0].clientY;
-    const deltaX = Math.abs(touchStartX - touchX);
-    const deltaY = Math.abs(touchStartY - touchY);
-    
-    // If user is scrolling horizontally, keep auto-scroll paused
-    if (deltaX > deltaY) {
-      isUserInteracting = true;
-    }
-  }, { passive: true });
+    isTransitioning = false;
+  }
 
-  workGrid.addEventListener('touchend', () => {
-    const touchDuration = Date.now() - touchStartTime;
-    
-    // If it was a quick tap (less than 200ms), resume auto-scroll quickly
-    if (touchDuration < 200) {
-      setTimeout(() => {
-        isUserInteracting = false;
-        isTouchScrolling = false;
-      }, 500);
-    } else {
-      // If it was a longer interaction, wait longer before resuming
-      setTimeout(() => {
-        isUserInteracting = false;
-        isTouchScrolling = false;
-      }, 1500);
+  function goToNext() {
+    if (isTransitioning) return;
+    if (currentIndex < workItems.length - 1) {
+      isTransitioning = true;
+      pauseAllVideos();
+      currentIndex++;
+      updateCarousel();
     }
-  }, { passive: true });
+  }
 
-  // Ensure auto-scroll works on mobile by checking if it's still running
-  setInterval(() => {
-    if (!isUserInteracting && !isTouchScrolling && !animationId) {
-      autoScroll();
+  function goToPrev() {
+    if (isTransitioning) return;
+    if (currentIndex > 0) {
+      isTransitioning = true;
+      pauseAllVideos();
+      currentIndex--;
+      updateCarousel();
     }
-  }, 100);
+  }
+
+  // Arrow click handlers
+  nextArrow.addEventListener('click', goToNext);
+  prevArrow.addEventListener('click', goToPrev);
+
+  // Keyboard navigation
+  document.addEventListener('keydown', (e) => {
+    if (workItems.length === 0 || isTransitioning) return;
+    
+    // Only handle if work section is visible
+    const activeItem = workGrid.querySelector('.work-item.active');
+    if (!activeItem) return;
+    
+    const rect = activeItem.getBoundingClientRect();
+    const isVisible = rect.top < window.innerHeight && rect.bottom > 0;
+    
+    if (!isVisible) return;
+
+    if (e.key === 'ArrowRight' || e.key === 'ArrowDown') {
+      e.preventDefault();
+      goToNext();
+    } else if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') {
+      e.preventDefault();
+      goToPrev();
+    }
+  });
+
+  // Initialize carousel
+  updateCarousel();
 }
 
 // ===== Navigation =====
@@ -393,14 +350,15 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 });
 
-// ===== Mobile Menu Toggle (if needed) =====
+// ===== Mobile Menu Toggle =====
 const navToggle = document.querySelector('.nav-toggle');
 const navMenu = document.querySelector('.nav-menu');
 
 if (navToggle && navMenu) {
   navToggle.addEventListener('click', () => {
-    navMenu.classList.toggle('active');
+    const isActive = navMenu.classList.toggle('active');
     navToggle.classList.toggle('active');
+    navToggle.setAttribute('aria-expanded', isActive);
   });
 
   // Close mobile menu on link click
@@ -408,6 +366,7 @@ if (navToggle && navMenu) {
     link.addEventListener('click', () => {
       navMenu.classList.remove('active');
       navToggle.classList.remove('active');
+      navToggle.setAttribute('aria-expanded', 'false');
     });
   });
 }
@@ -435,11 +394,11 @@ function triggerWildMode() {
 }
 
 // Add some extra wild effects
+// Konami code for extra wildness
+const konamiCode = ['ArrowUp', 'ArrowUp', 'ArrowDown', 'ArrowDown', 'ArrowLeft', 'ArrowRight', 'ArrowLeft', 'ArrowRight', 'KeyB', 'KeyA'];
+let konamiIndex = 0;
+
 document.addEventListener('keydown', function(e) {
-  // Konami code for extra wildness
-  const konamiCode = ['ArrowUp', 'ArrowUp', 'ArrowDown', 'ArrowDown', 'ArrowLeft', 'ArrowRight', 'ArrowLeft', 'ArrowRight', 'KeyB', 'KeyA'];
-  let konamiIndex = 0;
-  
   if (e.code === konamiCode[konamiIndex]) {
     konamiIndex++;
     if (konamiIndex === konamiCode.length) {
