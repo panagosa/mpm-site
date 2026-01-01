@@ -2,11 +2,13 @@
 
 // ===== Main Video Player Functionality =====
 // Initialize elements when DOM is ready to prevent null reference errors
-let mainVideo, mainVideoInfo, mainVideoTitle, mainVideoClient, mainVideoDescription, mainVideoYear, sidebarItems;
+let mainVideo, mainVideoInfo, mainVideoTitle, mainVideoClient, mainVideoDescription, mainVideoYear, sidebarItems, mainVideoWrapper;
+let currentVideoSrc = ''; // Track current video to prevent unnecessary reloads
 
 function initPortfolioElements() {
   mainVideo = document.getElementById('mainVideo');
   mainVideoInfo = document.getElementById('mainVideoInfo');
+  mainVideoWrapper = document.querySelector('.main-video-wrapper');
   
   if (!mainVideo || !mainVideoInfo) {
     console.error('Portfolio video elements not found');
@@ -29,9 +31,24 @@ function loadMainVideo(videoSrc, poster, title, client, description, year, shoul
     return;
   }
   
-  // Update video source
-  mainVideo.poster = poster;
-  mainVideo.src = videoSrc;
+  // Only reload if it's a different video
+  if (currentVideoSrc !== videoSrc) {
+    mainVideo.poster = poster;
+    mainVideo.src = videoSrc;
+    currentVideoSrc = videoSrc;
+    
+    // Set background image for sleek paused thumbnail
+    if (mainVideoWrapper && poster) {
+      mainVideoWrapper.style.setProperty('--poster-image', `url(${poster})`);
+      mainVideoWrapper.style.backgroundImage = `var(--poster-image)`;
+    }
+    if (mainVideoWrapper) {
+      mainVideoWrapper.classList.remove('playing'); // Reset playing state
+    }
+    
+    // Load the new video
+    mainVideo.load();
+  }
   
   // Update video info
   if (mainVideoTitle) mainVideoTitle.textContent = title || '';
@@ -39,10 +56,7 @@ function loadMainVideo(videoSrc, poster, title, client, description, year, shoul
   if (mainVideoDescription) mainVideoDescription.textContent = description || '';
   if (mainVideoYear) mainVideoYear.textContent = year || '';
   
-  // Load the new video
-  mainVideo.load();
-  
-  // Autoplay only if requested (not on initial page load)
+  // Autoplay only if requested
   if (shouldAutoplay) {
     // Wait for video to be ready
     const playVideo = () => {
@@ -76,8 +90,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const description = firstItem.getAttribute('data-description');
     const year = firstItem.getAttribute('data-year');
     
-    // Load first video without autoplay
-    loadMainVideo(videoSrc, poster, title, client, description, year, false);
+    // Load first video with autoplay (muted)
+    loadMainVideo(videoSrc, poster, title, client, description, year, true);
   }
   
   // Sidebar item click handlers
@@ -101,6 +115,19 @@ document.addEventListener('DOMContentLoaded', () => {
       loadMainVideo(videoSrc, poster, title, client, description, year, true);
     });
   });
+  
+  // Handle play/pause states for sleek thumbnail overlay
+  if (mainVideo && mainVideoWrapper) {
+    mainVideo.addEventListener('play', () => {
+      mainVideoWrapper.classList.add('playing');
+    });
+    mainVideo.addEventListener('pause', () => {
+      mainVideoWrapper.classList.remove('playing');
+    });
+    mainVideo.addEventListener('ended', () => {
+      mainVideoWrapper.classList.remove('playing');
+    });
+  }
 });
 
 // ===== Lightbox Functionality =====
@@ -116,20 +143,24 @@ if (lightbox) {
 
   // Open lightbox
   function openLightbox(videoSrc, title, client, description, year) {
+    if (!lightboxVideo || !lightboxTitle || !lightboxClient) return;
+    
     lightboxVideo.src = videoSrc;
-    lightboxTitle.textContent = title;
-    lightboxClient.textContent = client;
-    lightboxDescription.textContent = description || '';
-    lightboxYear.textContent = year || '';
+    lightboxTitle.textContent = title || '';
+    if (lightboxClient) lightboxClient.textContent = client || '';
+    if (lightboxDescription) lightboxDescription.textContent = description || '';
+    if (lightboxYear) lightboxYear.textContent = year || '';
     
     lightbox.classList.add('active');
     document.body.style.overflow = 'hidden';
     
     // Play video
     setTimeout(() => {
-      lightboxVideo.play().catch(err => {
-        console.log('Autoplay prevented:', err);
-      });
+      if (lightboxVideo) {
+        lightboxVideo.play().catch(err => {
+          console.log('Autoplay prevented:', err);
+        });
+      }
     }, 300);
   }
 
@@ -137,8 +168,10 @@ if (lightbox) {
   function closeLightbox() {
     lightbox.classList.remove('active');
     document.body.style.overflow = '';
-    lightboxVideo.pause();
-    lightboxVideo.src = '';
+    if (lightboxVideo) {
+      lightboxVideo.pause();
+      lightboxVideo.src = '';
+    }
   }
 
   // Close lightbox handlers

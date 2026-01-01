@@ -1,21 +1,20 @@
-<svg width="60" height="60" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg">
-  <!-- Outermost background (dark teal) -->
-  <rect width="60" height="60" fill="#3F5F5A"/>
+<svg width="200" height="200" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+  <!-- Outermost circle (dark teal) -->
+  <circle cx="100" cy="100" r="95" fill="#0d4e46"/>
   
-  <!-- First concentric square (burnt orange / rust) -->
-  <rect x="5" y="5" width="50" height="50" fill="#D96A3A"/>
+  <!-- Background circle (reddish-orange) -->
+  <circle cx="100" cy="100" r="85" fill="#df2e09"/>
   
-  <!-- Second concentric square (mustard / golden brown) -->
-  <rect x="10" y="10" width="40" height="40" fill="#C89A3A"/>
+  <!-- Middle circle (warm medium orange) -->
+  <circle cx="100" cy="100" r="75" fill="#e47413"/>
   
-  <!-- Innermost square (light cream - face background) -->
-  <rect x="15" y="15" width="30" height="30" fill="#F3F2DA"/>
+  <!-- Inner circle (face - creamy yellow) -->
+  <circle cx="100" cy="100" r="60" fill="#eece91"/>
   
-  <!-- Face icon -->
-  <!-- Eyes (dark teal) -->
-  <circle cx="22" cy="22" r="2.5" fill="#3F5F5A"/>
-  <circle cx="38" cy="22" r="2.5" fill="#3F5F5A"/>
+  <!-- Eyes -->
+  <circle cx="85" cy="90" r="4" fill="#0d4e46"/>
+  <circle cx="115" cy="90" r="4" fill="#0d4e46"/>
   
-  <!-- Mouth (dark teal) -->
-  <rect x="25" y="32" width="10" height="2" fill="#3F5F5A"/>
+  <!-- Mouth -->
+  <line x1="90" y1="110" x2="110" y2="110" stroke="#0d4e46" stroke-width="2" stroke-linecap="round"/>
 </svg>

@@ -141,6 +141,84 @@ if (heroTitleContainer) {
   });
 }
 
+// ===== Logo Bounce Animation (similar to hero letters) =====
+// Note: Top logo bounce removed per user request
+const navLogo = document.querySelector('.nav-logo');
+const logoImg = document.querySelector('.logo-img');
+const heroLogo = document.querySelector('.hero-logo');
+
+// Function to apply bounce animation to a logo element
+function setupLogoBounce(logoElement) {
+  if (!logoElement) return;
+  
+  let logoAnimationFrameId = null;
+  let targetLift = 0;
+  
+  document.addEventListener('mousemove', (e) => {
+    const logoRect = logoElement.getBoundingClientRect();
+    const logoCenterX = logoRect.left + logoRect.width / 2;
+    const logoCenterY = logoRect.top + logoRect.height / 2;
+    
+    // Calculate distance from cursor to logo center
+    const deltaX = e.clientX - logoCenterX;
+    const deltaY = e.clientY - logoCenterY;
+    const distance = Math.sqrt(deltaX * deltaX + deltaY * deltaY);
+    
+    // Maximum effect distance (adjust for sensitivity)
+    const maxDistance = 150;
+    
+    // Calculate how much to lift the logo (closer = more lift)
+    const liftAmount = Math.max(0, (maxDistance - distance) / maxDistance);
+    targetLift = liftAmount * -30; // Maximum lift of 30px
+    
+    // Smooth animation using requestAnimationFrame
+    if (!logoAnimationFrameId) {
+      const animate = () => {
+        const currentTransform = logoElement.style.transform;
+        const currentMatch = currentTransform.match(/translateY\(([-\d.]+)px\)/);
+        const currentLift = currentMatch ? parseFloat(currentMatch[1]) : 0;
+        
+        // Smooth interpolation
+        const newLift = currentLift + (targetLift - currentLift) * 0.15;
+        
+        if (Math.abs(newLift - targetLift) > 0.1) {
+          logoElement.style.transform = `translateY(${newLift}px)`;
+          logoAnimationFrameId = requestAnimationFrame(animate);
+        } else {
+          logoElement.style.transform = `translateY(${targetLift}px)`;
+          if (Math.abs(targetLift) > 0.1) {
+            logoAnimationFrameId = requestAnimationFrame(animate);
+          } else {
+            logoAnimationFrameId = null;
+          }
+        }
+      };
+      logoAnimationFrameId = requestAnimationFrame(animate);
+    }
+  });
+  
+  // Reset logo when mouse leaves the logo area
+  logoElement.addEventListener('mouseleave', () => {
+    targetLift = 0;
+    logoElement.style.transform = 'translateY(0px)';
+    if (logoAnimationFrameId) {
+      cancelAnimationFrame(logoAnimationFrameId);
+      logoAnimationFrameId = null;
+    }
+  });
+}
+
+// Apply bounce animation to nav logo and hero logo only (not top logo)
+if (navLogo) {
+  setupLogoBounce(navLogo);
+}
+if (logoImg) {
+  setupLogoBounce(logoImg);
+}
+if (heroLogo) {
+  setupLogoBounce(heroLogo);
+}
+
 // ===== Video Click to Play =====
 const videos = document.querySelectorAll('video');
 

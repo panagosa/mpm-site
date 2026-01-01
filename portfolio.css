@@ -1,18 +1,38 @@
 /* ===== Portfolio Page Styles ===== */
 
+/* Disable scrolling on portfolio page */
+body.portfolio-page {
+  overflow: hidden;
+  height: 100vh;
+}
+
+html.portfolio-page {
+  overflow: hidden;
+  height: 100vh;
+}
+
 /* Portfolio Work Section */
 .portfolio-work {
   background-color: var(--color-bg);
-  min-height: calc(100vh - 80px);
-  padding: var(--spacing-lg) 0;
-  padding-bottom: calc(var(--spacing-lg) + 80px);
+  height: 100vh;
   width: 100%;
+  overflow: hidden;
+  padding: 0;
+  display: flex;
+  align-items: center;
 }
 
 .portfolio-work .container {
   max-width: 1400px;
   margin: 0 auto;
   padding: 0 2rem;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  padding-top: 100px; /* Space for top logo */
+  padding-bottom: 100px; /* Space for bottom nav */
+  box-sizing: border-box;
 }
 
 .portfolio-work .section-header {
@@ -61,7 +81,7 @@
 .filter-btn:hover {
   background-color: var(--color-accent-mustard);
   border-color: var(--color-accent-mustard);
-  color: #F3F2DA;
+  color: var(--color-bg);
 }
 
 .filter-btn.active {
@@ -76,6 +96,9 @@
   grid-template-columns: 1fr 400px;
   gap: 3rem;
   align-items: start;
+  height: 100%;
+  max-height: calc(100vh - 200px); /* Account for logo and nav */
+  overflow: hidden;
 }
 
 /* Main Video Container */
@@ -91,6 +114,28 @@
   margin-bottom: 2rem;
   border-radius: 4px;
   overflow: hidden;
+  background-size: cover; /* For poster image */
+  background-position: center;
+  background-repeat: no-repeat;
+  transition: background-image 0.3s ease;
+}
+
+.main-video-wrapper::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.3);
+  opacity: 1;
+  transition: opacity 0.3s ease;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.main-video-wrapper.playing::before {
+  opacity: 0;
 }
 
 .main-video {
@@ -100,6 +145,8 @@
   width: 100%;
   height: 100%;
   object-fit: contain;
+  transition: opacity 0.3s ease;
+  z-index: 2;
 }
 
 .main-video-info {
@@ -323,7 +370,7 @@
 .lightbox-close:hover {
   background-color: var(--color-accent-mustard);
   border-color: var(--color-accent-mustard);
-  color: #F3F2DA;
+  color: var(--color-bg);
 }
 
 .lightbox-video-wrapper {
@@ -393,6 +440,7 @@
 @media (max-width: 768px) {
   .portfolio-work {
     padding: var(--spacing-md) 0;
+    padding-top: calc(var(--spacing-md) + 80px); /* Extra padding for top logo on mobile */
     padding-bottom: calc(var(--spacing-md) + 80px);
   }
   
