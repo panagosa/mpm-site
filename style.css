@@ -84,6 +84,13 @@ html {
   font-size: 16px;
   scroll-behavior: smooth;
   background-color: var(--color-bg);
+  -webkit-text-size-adjust: 100%;
+  -moz-text-size-adjust: 100%;
+  -ms-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+  overflow-x: hidden;
+  width: 100%;
+  max-width: 100vw;
 }
 
 body {
@@ -92,6 +99,9 @@ body {
   color: var(--color-text);
   line-height: 1.4;
   font-weight: 400;
+  overflow-x: hidden;
+  width: 100%;
+  max-width: 100vw;
 }
 
 /* ===== Navigation ===== */
@@ -1144,26 +1154,31 @@ body.wild-mode .hero {
     left: 50%;
     transform: translateX(-50%);
     text-align: center;
+    max-width: calc(100% - 2rem);
+    width: auto;
   }
   
   .top-logo-link {
-    font-size: 0.85rem;
+    font-size: clamp(0.75rem, 2.5vw, 0.85rem);
     gap: 0.2rem;
     flex-direction: row;
     align-items: center;
     justify-content: center;
+    flex-wrap: nowrap;
   }
   
   .top-logo-img {
-    height: 28px; /* Smaller for better mobile scaling */
+    height: clamp(24px, 7vw, 28px);
     width: auto;
     max-width: 100%;
     object-fit: contain;
+    flex-shrink: 0;
   }
   
   .top-logo-link span {
-    font-size: 0.85rem;
+    font-size: clamp(0.75rem, 2.5vw, 0.85rem);
     line-height: 1;
+    white-space: nowrap;
   }
   
   .nav-container {
@@ -1181,22 +1196,24 @@ body.wild-mode .hero {
     width: 100%;
     background-color: transparent;
     flex-direction: row;
-    gap: 2rem;
-    padding: 1rem 1.5rem;
+    gap: clamp(1rem, 4vw, 2rem);
+    padding: 1rem clamp(0.75rem, 3vw, 1.5rem);
     transform: none;
     opacity: 1;
     visibility: visible;
     z-index: 999;
     align-items: center;
     justify-content: center;
+    flex-wrap: wrap;
   }
   
   .nav-link {
-    font-size: 1rem;
+    font-size: clamp(0.85rem, 3vw, 1rem);
     color: var(--color-text-light);
     text-transform: lowercase;
     letter-spacing: 0.5px;
     animation: none;
+    white-space: nowrap;
   }
   
   .nav-link:hover {
@@ -1274,8 +1291,26 @@ body.wild-mode .hero {
 }
 
 @media (max-width: 480px) {
+  .top-logo-link {
+    font-size: clamp(0.7rem, 3vw, 0.85rem);
+    gap: 0.15rem;
+  }
+  
+  .top-logo-img {
+    height: clamp(20px, 6vw, 24px);
+  }
+  
+  .top-logo-link span {
+    font-size: clamp(0.7rem, 3vw, 0.85rem);
+  }
+  
   .nav-menu {
-    gap: 1.5rem;
+    gap: clamp(0.75rem, 3vw, 1.5rem);
+    padding: 0.75rem clamp(0.5rem, 2vw, 1rem);
+  }
+  
+  .nav-link {
+    font-size: clamp(0.75rem, 2.5vw, 0.9rem);
   }
   
   .nav-container {
