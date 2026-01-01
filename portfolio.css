@@ -30,10 +30,9 @@ html.portfolio-page {
   height: 100%;
   display: flex;
   align-items: center;
-  padding-top: 120px; /* Space for top logo - shifted down */
-  padding-bottom: 100px; /* Space for bottom nav */
+  padding-top: 80px; /* Minimal space for top logo */
+  padding-bottom: 80px; /* Minimal space for bottom nav */
   box-sizing: border-box;
-  margin-top: 2rem; /* Additional shift */
 }
 
 .portfolio-work .section-header {
@@ -98,9 +97,8 @@ html.portfolio-page {
   gap: 3rem;
   align-items: start;
   height: 100%;
-  max-height: calc(100vh - 240px); /* Account for logo, nav, and shift */
+  max-height: calc(100vh - 160px); /* Account for logo and nav */
   overflow: hidden;
-  margin-top: 1rem; /* Additional shift for content */
 }
 
 /* Main Video Container */
@@ -113,7 +111,7 @@ html.portfolio-page {
   width: 100%;
   padding-bottom: 56.25%; /* 16:9 aspect ratio */
   background-color: #000;
-  margin-bottom: 2rem;
+  margin-bottom: 1rem;
   border-radius: 4px;
   overflow: hidden;
   background-size: cover; /* For poster image */
