@@ -35,137 +35,135 @@
   <!-- Portfolio Section -->
   <section class="portfolio-work">
     <div class="container">
-      <!-- Filter Buttons -->
-      <div class="filter-container">
-        <button class="filter-btn active" data-filter="all">All</button>
-        <button class="filter-btn" data-filter="ads">Ads</button>
-        <button class="filter-btn" data-filter="brand-films">Brand Films</button>
-        <button class="filter-btn" data-filter="social-media">Social Media</button>
-      </div>
-
-      <!-- Video Grid -->
-      <div class="video-grid" id="videoGrid">
-        <!-- Video Item 1 -->
-        <div class="video-item" data-category="ads" data-year="2024">
-          <div class="video-thumbnail">
-            <img src="https://img.youtube.com/vi/gqceI4x3uNg/maxresdefault.jpg" alt="Manscaped Commercial">
-            <div class="video-overlay">
-              <button class="play-btn" 
-                      data-video="https://dc5bt2teggic6.cloudfront.net/Pete Davidson x MANSCAPED®： Ball-Ber Shop - The Lawn Mower® 5.0 Ultra-2.mp4"
-                      data-title="Ball-Ber Shop"
-                      data-client="Manscaped"
-                      data-description="A humorous commercial featuring Pete Davidson showcasing Manscaped's premium grooming products. This campaign combines comedy with product demonstration to engage a modern male audience."
-                      data-year="2024">
-                <svg width="60" height="60" viewBox="0 0 24 24" fill="white">
-                  <path d="M8 5v14l11-7z"/>
-                </svg>
-              </button>
-            </div>
+      <div class="portfolio-layout">
+        <!-- Main Video Player -->
+        <div class="main-video-container">
+          <div class="main-video-wrapper">
+            <video class="main-video" controls poster="" id="mainVideo">
+              <source src="" type="video/mp4">
+              Your browser does not support the video tag.
+            </video>
           </div>
-          <div class="video-info">
-            <h3 class="video-title">Ball-Ber Shop</h3>
-            <p class="video-client">Manscaped</p>
-            <p class="video-year">2024</p>
+          <div class="main-video-info" id="mainVideoInfo">
+            <h2 class="main-video-title"></h2>
+            <p class="main-video-client"></p>
+            <p class="main-video-description"></p>
+            <p class="main-video-year"></p>
           </div>
         </div>
 
-        <!-- Video Item 2 -->
-        <div class="video-item" data-category="ads" data-year="2024">
-          <div class="video-thumbnail">
-            <img src="https://img.youtube.com/vi/ACrp2HN3f0w/maxresdefault.jpg" alt="Totino's Commercial">
-            <div class="video-overlay">
-              <button class="play-btn" 
-                      data-video="https://dc5bt2teggic6.cloudfront.net/Totinos： Petes Fleet delivers Totinos Pizza Rolls!.mp4"
-                      data-title="Game Night"
-                      data-client="Totino's"
-                      data-description="A fun, energetic commercial featuring Pete Davidson's delivery fleet bringing Totino's Pizza Rolls to game night. This spot emphasizes convenience and taste for the target demographic."
-                      data-year="2024">
-                <svg width="60" height="60" viewBox="0 0 24 24" fill="white">
+        <!-- Video Sidebar -->
+        <div class="video-sidebar" id="videoSidebar">
+          <!-- Video Item 1 -->
+          <div class="sidebar-video-item active" 
+               data-video="https://dc5bt2teggic6.cloudfront.net/Pete Davidson x MANSCAPED®： Ball-Ber Shop - The Lawn Mower® 5.0 Ultra-2.mp4"
+               data-poster="https://img.youtube.com/vi/gqceI4x3uNg/maxresdefault.jpg"
+               data-title="Ball-Ber Shop"
+               data-client="Manscaped"
+               data-description="A humorous commercial featuring Pete Davidson showcasing Manscaped's premium grooming products. This campaign combines comedy with product demonstration to engage a modern male audience."
+               data-year="2024">
+            <div class="sidebar-thumbnail">
+              <img src="https://img.youtube.com/vi/gqceI4x3uNg/maxresdefault.jpg" alt="Manscaped Commercial">
+              <div class="sidebar-play-overlay">
+                <svg width="40" height="40" viewBox="0 0 24 24" fill="white">
                   <path d="M8 5v14l11-7z"/>
                 </svg>
-              </button>
+              </div>
+            </div>
+            <div class="sidebar-video-info">
+              <h3 class="sidebar-video-title">Ball-Ber Shop</h3>
+              <p class="sidebar-video-client">Manscaped</p>
             </div>
           </div>
-          <div class="video-info">
-            <h3 class="video-title">Game Night</h3>
-            <p class="video-client">Totino's</p>
-            <p class="video-year">2024</p>
-          </div>
-        </div>
 
-        <!-- Video Item 3 -->
-        <div class="video-item" data-category="brand-films" data-year="2024">
-          <div class="video-thumbnail">
-            <img src="https://img.youtube.com/vi/BZZIpThjURI/maxresdefault.jpg" alt="Snacktime Sketch Show">
-            <div class="video-overlay">
-              <button class="play-btn" 
-                      data-video="https://dc5bt2teggic6.cloudfront.net/03_SI_v08_FINAL_260825_01_wBumper.mp4"
-                      data-title="Snack Island"
-                      data-client="Snacktime Sketch Show"
-                      data-description="A comedic brand film that showcases the Snacktime Sketch Show's unique style. This piece combines humor with brand storytelling to create memorable content."
-                      data-year="2024">
-                <svg width="60" height="60" viewBox="0 0 24 24" fill="white">
+          <!-- Video Item 2 -->
+          <div class="sidebar-video-item" 
+               data-video="https://dc5bt2teggic6.cloudfront.net/Totinos： Petes Fleet delivers Totinos Pizza Rolls!.mp4"
+               data-poster="https://img.youtube.com/vi/ACrp2HN3f0w/maxresdefault.jpg"
+               data-title="Game Night"
+               data-client="Totino's"
+               data-description="A fun, energetic commercial featuring Pete Davidson's delivery fleet bringing Totino's Pizza Rolls to game night. This spot emphasizes convenience and taste for the target demographic."
+               data-year="2024">
+            <div class="sidebar-thumbnail">
+              <img src="https://img.youtube.com/vi/ACrp2HN3f0w/maxresdefault.jpg" alt="Totino's Commercial">
+              <div class="sidebar-play-overlay">
+                <svg width="40" height="40" viewBox="0 0 24 24" fill="white">
                   <path d="M8 5v14l11-7z"/>
                 </svg>
-              </button>
+              </div>
+            </div>
+            <div class="sidebar-video-info">
+              <h3 class="sidebar-video-title">Game Night</h3>
+              <p class="sidebar-video-client">Totino's</p>
             </div>
           </div>
-          <div class="video-info">
-            <h3 class="video-title">Snack Island</h3>
-            <p class="video-client">Snacktime Sketch Show</p>
-            <p class="video-year">2024</p>
-          </div>
-        </div>
 
-        <!-- Video Item 4 -->
-        <div class="video-item" data-category="brand-films" data-year="2024">
-          <div class="video-thumbnail">
-            <img src="https://img.youtube.com/vi/TNu3y2lIb9Q/maxresdefault.jpg" alt="Snacktime Sketch Show">
-            <div class="video-overlay">
-              <button class="play-btn" 
-                      data-video="https://dc5bt2teggic6.cloudfront.net/02_CORP_v10_FINAL_260825_01_wBumper.mp4"
-                      data-title="Corporate Meltdown"
-                      data-client="Snacktime Sketch Show"
-                      data-description="A satirical brand film that humorously explores corporate culture through the lens of snack time. This piece demonstrates creative storytelling and brand voice."
-                      data-year="2024">
-                <svg width="60" height="60" viewBox="0 0 24 24" fill="white">
+          <!-- Video Item 3 -->
+          <div class="sidebar-video-item" 
+               data-video="https://dc5bt2teggic6.cloudfront.net/03_SI_v08_FINAL_260825_01_wBumper.mp4"
+               data-poster="https://img.youtube.com/vi/BZZIpThjURI/maxresdefault.jpg"
+               data-title="Snack Island"
+               data-client="Snacktime Sketch Show"
+               data-description="A comedic brand film that showcases the Snacktime Sketch Show's unique style. This piece combines humor with brand storytelling to create memorable content."
+               data-year="2024">
+            <div class="sidebar-thumbnail">
+              <img src="https://img.youtube.com/vi/BZZIpThjURI/maxresdefault.jpg" alt="Snacktime Sketch Show">
+              <div class="sidebar-play-overlay">
+                <svg width="40" height="40" viewBox="0 0 24 24" fill="white">
                   <path d="M8 5v14l11-7z"/>
                 </svg>
-              </button>
+              </div>
+            </div>
+            <div class="sidebar-video-info">
+              <h3 class="sidebar-video-title">Snack Island</h3>
+              <p class="sidebar-video-client">Snacktime Sketch Show</p>
             </div>
           </div>
-          <div class="video-info">
-            <h3 class="video-title">Corporate Meltdown</h3>
-            <p class="video-client">Snacktime Sketch Show</p>
-            <p class="video-year">2024</p>
-          </div>
-        </div>
 
-        <!-- Video Item 5 -->
-        <div class="video-item" data-category="social-media" data-year="2024">
-          <div class="video-thumbnail">
-            <img src="https://img.youtube.com/vi/1aCRNBkhOEY/maxresdefault.jpg" alt="Snacktime Sketch Show">
-            <div class="video-overlay">
-              <button class="play-btn" 
-                      data-video="https://dc5bt2teggic6.cloudfront.net/01_AI_v09_FINAL_260825_01_wBumper.mp4"
-                      data-title="Crisp AI"
-                      data-client="Snacktime Sketch Show"
-                      data-description="A social media focused video that explores AI themes through comedic storytelling. This piece is optimized for digital platforms and engagement."
-                      data-year="2024">
-                <svg width="60" height="60" viewBox="0 0 24 24" fill="white">
+          <!-- Video Item 4 -->
+          <div class="sidebar-video-item" 
+               data-video="https://dc5bt2teggic6.cloudfront.net/02_CORP_v10_FINAL_260825_01_wBumper.mp4"
+               data-poster="https://img.youtube.com/vi/TNu3y2lIb9Q/maxresdefault.jpg"
+               data-title="Corporate Meltdown"
+               data-client="Snacktime Sketch Show"
+               data-description="A satirical brand film that humorously explores corporate culture through the lens of snack time. This piece demonstrates creative storytelling and brand voice."
+               data-year="2024">
+            <div class="sidebar-thumbnail">
+              <img src="https://img.youtube.com/vi/TNu3y2lIb9Q/maxresdefault.jpg" alt="Snacktime Sketch Show">
+              <div class="sidebar-play-overlay">
+                <svg width="40" height="40" viewBox="0 0 24 24" fill="white">
                   <path d="M8 5v14l11-7z"/>
                 </svg>
-              </button>
+              </div>
+            </div>
+            <div class="sidebar-video-info">
+              <h3 class="sidebar-video-title">Corporate Meltdown</h3>
+              <p class="sidebar-video-client">Snacktime Sketch Show</p>
             </div>
           </div>
-          <div class="video-info">
-            <h3 class="video-title">Crisp AI</h3>
-            <p class="video-client">Snacktime Sketch Show</p>
-            <p class="video-year">2024</p>
+
+          <!-- Video Item 5 -->
+          <div class="sidebar-video-item" 
+               data-video="https://dc5bt2teggic6.cloudfront.net/01_AI_v09_FINAL_260825_01_wBumper.mp4"
+               data-poster="https://img.youtube.com/vi/1aCRNBkhOEY/maxresdefault.jpg"
+               data-title="Crisp AI"
+               data-client="Snacktime Sketch Show"
+               data-description="A social media focused video that explores AI themes through comedic storytelling. This piece is optimized for digital platforms and engagement."
+               data-year="2024">
+            <div class="sidebar-thumbnail">
+              <img src="https://img.youtube.com/vi/1aCRNBkhOEY/maxresdefault.jpg" alt="Snacktime Sketch Show">
+              <div class="sidebar-play-overlay">
+                <svg width="40" height="40" viewBox="0 0 24 24" fill="white">
+                  <path d="M8 5v14l11-7z"/>
+                </svg>
+              </div>
+            </div>
+            <div class="sidebar-video-info">
+              <h3 class="sidebar-video-title">Crisp AI</h3>
+              <p class="sidebar-video-client">Snacktime Sketch Show</p>
+            </div>
           </div>
         </div>
-
-        <!-- Add more video items as needed -->
       </div>
     </div>
   </section>
