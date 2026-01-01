@@ -30,8 +30,8 @@ html.portfolio-page {
   height: 100%;
   display: flex;
   align-items: center;
-  padding-top: 80px; /* Minimal space for top logo */
-  padding-bottom: 80px; /* Minimal space for bottom nav */
+  padding-top: 100px; /* Space for top logo */
+  padding-bottom: 100px; /* Space for bottom nav */
   box-sizing: border-box;
 }
 
@@ -97,7 +97,7 @@ html.portfolio-page {
   gap: 3rem;
   align-items: start;
   height: 100%;
-  max-height: calc(100vh - 160px); /* Account for logo and nav */
+  max-height: calc(100vh - 200px); /* Account for logo and nav */
   overflow: hidden;
 }
 
@@ -111,7 +111,7 @@ html.portfolio-page {
   width: 100%;
   padding-bottom: 56.25%; /* 16:9 aspect ratio */
   background-color: #000;
-  margin-bottom: 1rem;
+  margin-bottom: 2rem;
   border-radius: 4px;
   overflow: hidden;
   background-size: cover; /* For poster image */
@@ -439,19 +439,24 @@ html.portfolio-page {
 
 @media (max-width: 768px) {
   .portfolio-work {
-    padding: var(--spacing-md) 0;
-    padding-top: calc(var(--spacing-md) + 100px); /* Extra padding for top logo on mobile - shifted */
-    padding-bottom: calc(var(--spacing-md) + 80px);
+    padding: 0;
+    padding-top: 60px; /* Minimal space for top logo on mobile */
+    padding-bottom: 60px; /* Minimal space for bottom nav on mobile */
   }
   
   .portfolio-work .container {
     padding: 0 1rem;
-    margin-top: 1.5rem; /* Additional shift on mobile */
+    padding-top: 0; /* Remove top padding to shift content up */
+    padding-bottom: 0; /* Remove bottom padding */
+    margin-top: -25vh; /* Shift video player section up 50% of viewport */
+    align-items: flex-start;
   }
   
   .portfolio-layout {
     grid-template-columns: 1fr;
     gap: 2rem;
+    max-height: calc(100vh - 120px); /* Reduced for mobile */
+    margin-top: 0;
   }
   
   .video-sidebar {
