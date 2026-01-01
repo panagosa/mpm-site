@@ -102,23 +102,32 @@ body {
   left: 2rem;
   z-index: 1001;
   text-align: left;
+  max-width: calc(100% - 4rem);
 }
 
 .top-logo-link {
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
   gap: 0.5rem;
   font-size: 1.2rem;
   font-weight: 400;
   color: var(--color-text);
   text-decoration: none;
   letter-spacing: 1px;
+  white-space: nowrap;
+}
+
+.top-logo-link span {
+  font-size: 1.2rem;
+  line-height: 1;
 }
 
 .top-logo-img {
   height: 45px; /* 30% smaller than 64px (64 * 0.7 = 44.8, rounded to 45) */
   width: auto;
+  max-width: 100%;
+  object-fit: contain;
 }
 
 .navbar {
@@ -1147,10 +1156,14 @@ body.wild-mode .hero {
   
   .top-logo-img {
     height: 28px; /* Smaller for better mobile scaling */
+    width: auto;
+    max-width: 100%;
+    object-fit: contain;
   }
   
   .top-logo-link span {
     font-size: 0.85rem;
+    line-height: 1;
   }
   
   .nav-container {
