@@ -244,8 +244,8 @@ section {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  padding: 2rem 0;
-  padding-bottom: calc(2rem + 80px); /* Extra padding for bottom navbar */
+  padding: var(--spacing-lg) 0;
+  padding-bottom: calc(var(--spacing-lg) + 80px); /* Extra padding for bottom navbar */
 }
 
 .carousel-container {
