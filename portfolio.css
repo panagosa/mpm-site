@@ -70,61 +70,150 @@
   border-color: var(--color-text);
 }
 
-/* Video Grid */
-.video-grid {
+/* Portfolio Layout */
+.portfolio-layout {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
-  gap: 2rem;
-  margin-top: 2rem;
+  grid-template-columns: 1fr 400px;
+  gap: 3rem;
+  align-items: start;
 }
 
-.video-item {
-  opacity: 1;
-  transform: translateY(0);
-  transition: opacity 0.4s ease, transform 0.4s ease;
+/* Main Video Container */
+.main-video-container {
+  width: 100%;
 }
 
-.video-item.hidden {
-  display: none;
-}
-
-.video-thumbnail {
+.main-video-wrapper {
   position: relative;
   width: 100%;
   padding-bottom: 56.25%; /* 16:9 aspect ratio */
-  overflow: hidden;
   background-color: #000;
-  cursor: pointer;
-  margin-bottom: 1rem;
+  margin-bottom: 2rem;
   border-radius: 4px;
-  transition: box-shadow 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  overflow: hidden;
 }
 
-.video-thumbnail:hover {
-  box-shadow: 0 12px 40px rgba(63, 95, 90, 0.15);
-}
-
-.video-thumbnail img {
+.main-video {
   position: absolute;
   top: 0;
   left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.main-video-info {
+  padding: 0;
+}
+
+.main-video-title {
+  font-size: 2rem;
+  font-weight: 400;
+  color: var(--color-text);
+  margin-bottom: 0.75rem;
+  letter-spacing: 0.5px;
+}
+
+.main-video-client {
+  font-size: 1.25rem;
+  color: var(--color-text-light);
+  margin-bottom: 1rem;
+  font-weight: 300;
+}
+
+.main-video-description {
+  font-size: 1rem;
+  color: var(--color-text-light);
+  line-height: 1.6;
+  margin-bottom: 0.5rem;
+  font-weight: 300;
+}
+
+.main-video-year {
+  font-size: 0.9rem;
+  color: var(--color-text-light);
+  font-weight: 300;
+  opacity: 0.6;
+}
+
+/* Video Sidebar */
+.video-sidebar {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  max-height: calc(100vh - 200px);
+  overflow-y: auto;
+  padding-right: 0.5rem;
+}
+
+.video-sidebar::-webkit-scrollbar {
+  width: 4px;
+}
+
+.video-sidebar::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.video-sidebar::-webkit-scrollbar-thumb {
+  background: var(--color-text);
+  border-radius: 2px;
+}
+
+.video-sidebar::-webkit-scrollbar-thumb:hover {
+  background: var(--color-accent-mustard);
+}
+
+.sidebar-video-item {
+  display: flex;
+  gap: 1rem;
+  cursor: pointer;
+  padding: 0.75rem;
+  border: 1px solid transparent;
+  transition: var(--transition);
+  opacity: 0.7;
+}
+
+.sidebar-video-item:hover {
+  opacity: 1;
+  border-color: var(--color-text);
+  background-color: rgba(63, 95, 90, 0.05);
+}
+
+.sidebar-video-item.active {
+  opacity: 1;
+  border-color: var(--color-accent-mustard);
+  background-color: rgba(200, 154, 58, 0.1);
+}
+
+.sidebar-thumbnail {
+  position: relative;
+  width: 120px;
+  min-width: 120px;
+  height: 68px;
+  overflow: hidden;
+  background-color: #000;
+  border-radius: 4px;
+  flex-shrink: 0;
+}
+
+.sidebar-thumbnail img {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  transition: transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  transition: transform 0.3s ease;
 }
 
-.video-thumbnail:hover img {
-  transform: scale(1.03);
+.sidebar-video-item:hover .sidebar-thumbnail img {
+  transform: scale(1.05);
 }
 
-.video-overlay {
+.sidebar-play-overlay {
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.3);
+  background-color: rgba(0, 0, 0, 0.4);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -132,64 +221,37 @@
   transition: opacity 0.3s ease;
 }
 
-.video-thumbnail:hover .video-overlay {
+.sidebar-video-item:hover .sidebar-play-overlay {
   opacity: 1;
 }
 
-.play-btn {
-  background-color: rgba(255, 255, 255, 0.9);
-  border: none;
-  border-radius: 50%;
-  width: 80px;
-  height: 80px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  padding: 0;
-}
-
-.play-btn:hover {
-  background-color: var(--color-accent-mustard);
-  transform: scale(1.1);
-}
-
-.play-btn svg {
+.sidebar-play-overlay svg {
   width: 30px;
   height: 30px;
-  margin-left: 3px;
-  fill: var(--color-text);
 }
 
-.play-btn:hover svg {
-  fill: #F3F2DA;
+.sidebar-video-info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-width: 0;
 }
 
-.video-info {
-  padding: 0.5rem 0;
-}
-
-.video-title {
-  font-size: 1.25rem;
+.sidebar-video-title {
+  font-size: 0.95rem;
   font-weight: 400;
   color: var(--color-text);
-  margin-bottom: 0.5rem;
-  letter-spacing: 0.5px;
-}
-
-.video-client {
-  font-size: 1rem;
-  color: var(--color-text-light);
   margin-bottom: 0.25rem;
-  font-weight: 300;
+  letter-spacing: 0.5px;
+  line-height: 1.3;
 }
 
-.video-year {
-  font-size: 0.9rem;
+.sidebar-video-client {
+  font-size: 0.85rem;
   color: var(--color-text-light);
   font-weight: 300;
-  opacity: 0.6;
+  line-height: 1.3;
 }
 
 /* Lightbox */
@@ -315,6 +377,19 @@
 }
 
 /* Responsive Design */
+@media (max-width: 1024px) {
+  .portfolio-layout {
+    grid-template-columns: 1fr 320px;
+    gap: 2rem;
+  }
+  
+  .sidebar-thumbnail {
+    width: 100px;
+    min-width: 100px;
+    height: 56px;
+  }
+}
+
 @media (max-width: 768px) {
   .portfolio-work {
     padding: var(--spacing-md) 0;
@@ -325,18 +400,42 @@
     padding: 0 1rem;
   }
   
-  .video-grid {
+  .portfolio-layout {
     grid-template-columns: 1fr;
-    gap: 1.5rem;
+    gap: 2rem;
   }
   
-  .filter-container {
-    gap: 0.75rem;
+  .video-sidebar {
+    max-height: none;
+    flex-direction: row;
+    overflow-x: auto;
+    overflow-y: hidden;
+    gap: 1rem;
+    padding-right: 0;
+    padding-bottom: 0.5rem;
   }
   
-  .filter-btn {
-    padding: 0.6rem 1.2rem;
-    font-size: 0.85rem;
+  .video-sidebar::-webkit-scrollbar {
+    height: 4px;
+    width: auto;
+  }
+  
+  .sidebar-video-item {
+    min-width: 200px;
+    flex-direction: column;
+  }
+  
+  .sidebar-thumbnail {
+    width: 100%;
+    height: 112px;
+  }
+  
+  .main-video-title {
+    font-size: 1.5rem;
+  }
+  
+  .main-video-client {
+    font-size: 1.1rem;
   }
   
   .lightbox-content {
@@ -353,11 +452,23 @@
     margin-bottom: 2rem;
   }
   
-  .filter-container {
-    margin-bottom: 2rem;
+  .main-video-title {
+    font-size: 1.25rem;
   }
   
-  .video-grid {
-    gap: 1.25rem;
+  .main-video-client {
+    font-size: 1rem;
+  }
+  
+  .main-video-description {
+    font-size: 0.9rem;
+  }
+  
+  .sidebar-video-item {
+    min-width: 160px;
+  }
+  
+  .sidebar-thumbnail {
+    height: 90px;
   }
 }
