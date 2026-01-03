@@ -843,7 +843,7 @@ class SquareWithOffset {
       // Set video source
       videoPlayer.poster = data.poster || '';
       videoPlayer.src = data.video;
-      videoPlayer.muted = true;
+      videoPlayer.muted = false;
       videoPlayer.playsInline = true;
       videoPlayer.load();
       
@@ -884,7 +884,7 @@ class SquareWithOffset {
         
         if (lightboxVideo) {
           lightboxVideo.src = data.video;
-          lightboxVideo.muted = true;
+          lightboxVideo.muted = false;
         }
         if (lightboxTitle) lightboxTitle.textContent = data.title || '';
         if (lightboxClient) lightboxClient.textContent = data.client || '';
@@ -1015,7 +1015,7 @@ class Square {
       // Set video source
       videoPlayer.poster = data.poster || '';
       videoPlayer.src = data.video;
-      videoPlayer.muted = true;
+      videoPlayer.muted = false;
       videoPlayer.playsInline = true;
       videoPlayer.load();
       
@@ -1056,7 +1056,7 @@ class Square {
         
         if (lightboxVideo) {
           lightboxVideo.src = data.video;
-          lightboxVideo.muted = true;
+          lightboxVideo.muted = false;
         }
         if (lightboxTitle) lightboxTitle.textContent = data.title || '';
         if (lightboxClient) lightboxClient.textContent = data.client || '';
