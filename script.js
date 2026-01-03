@@ -359,16 +359,24 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 // ===== Video Click to Play =====
+// Only add click handlers for videos without native controls
+// Videos with controls will use their native play/pause buttons
 const videos = document.querySelectorAll('video');
 
 videos.forEach(video => {
-  video.addEventListener('click', () => {
-    if (video.paused) {
-      video.play();
-    } else {
-      video.pause();
-    }
-  });
+  // Only add click-to-play for videos without controls
+  // Videos with controls already have play/pause functionality
+  if (!video.hasAttribute('controls')) {
+    video.addEventListener('click', (e) => {
+      e.stopPropagation(); // Prevent event bubbling
+      if (video.paused) {
+        video.play().catch(() => {});
+      } else {
+        video.pause();
+      }
+    });
+  }
+  // Videos with controls: native controls handle play/pause, no custom handler needed
 });
 
 // ===== Flashcard-Style Video Carousel =====
