@@ -155,7 +155,7 @@ body {
   margin: 0 auto;
   padding: 0 2rem;
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
   height: 60px;
 }
@@ -1139,7 +1139,8 @@ body.wild-mode .hero {
   }
   
   .nav-container {
-    padding: 0 1rem;
+    padding: 0;
+    height: auto;
   }
 
   .nav-menu {
@@ -1147,7 +1148,7 @@ body.wild-mode .hero {
     bottom: 0;
     left: 0;
     width: 100%;
-    background-color: transparent;
+    background-color: var(--color-bg);
     flex-direction: row;
     gap: clamp(1rem, 4vw, 2rem);
     padding: 1rem clamp(0.75rem, 3vw, 1.5rem);
@@ -1158,6 +1159,7 @@ body.wild-mode .hero {
     align-items: center;
     justify-content: center;
     flex-wrap: wrap;
+    border-top: 1px solid rgba(13, 78, 70, 0.1);
   }
   
   .nav-link {
@@ -1261,13 +1263,13 @@ body.wild-mode .hero {
     gap: clamp(0.75rem, 3vw, 1.5rem);
     padding: 0.75rem clamp(0.5rem, 2vw, 1rem);
   }
-  
+
   .nav-link {
     font-size: clamp(0.75rem, 2.5vw, 0.9rem);
   }
-  
+
   .nav-container {
-    height: 50px;
+    height: auto;
   }
   
   .hero {
