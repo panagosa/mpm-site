@@ -2,76 +2,79 @@
 
 // ===== Main Video Player Functionality =====
 // Initialize elements when DOM is ready to prevent null reference errors
-let mainVideo, mainVideoInfo, mainVideoTitle, mainVideoClient, mainVideoDescription, mainVideoYear, sidebarItems, mainVideoWrapper;
+let mainVideo, sidebarItems, mainVideoWrapper;
 let currentVideoSrc = ''; // Track current video to prevent unnecessary reloads
 
 function initPortfolioElements() {
   mainVideo = document.getElementById('mainVideo');
-  mainVideoInfo = document.getElementById('mainVideoInfo');
   mainVideoWrapper = document.querySelector('.main-video-wrapper');
   
-  if (!mainVideo || !mainVideoInfo) {
+  if (!mainVideo) {
     console.error('Portfolio video elements not found');
     return false;
   }
   
-  mainVideoTitle = mainVideoInfo.querySelector('.main-video-title');
-  mainVideoClient = mainVideoInfo.querySelector('.main-video-client');
-  mainVideoDescription = mainVideoInfo.querySelector('.main-video-description');
-  mainVideoYear = mainVideoInfo.querySelector('.main-video-year');
   sidebarItems = document.querySelectorAll('.sidebar-video-item');
   
   return true;
 }
 
-// Function to load video into main player
-function loadMainVideo(videoSrc, poster, title, client, description, year, shouldAutoplay = false) {
-  if (!mainVideo || !mainVideoInfo) {
+// Function to load video into main player (exposed globally)
+window.loadMainVideo = function(videoSrc, poster, title, client, description, year, shouldAutoplay = false) {
+  if (!mainVideo) {
     console.error('Cannot load video: elements not initialized');
     return;
   }
   
   // Only reload if it's a different video
   if (currentVideoSrc !== videoSrc) {
-    mainVideo.poster = poster;
+    mainVideo.poster = poster || '';
     mainVideo.src = videoSrc;
+    mainVideo.muted = true; // Ensure muted for autoplay
+    mainVideo.playsInline = true; // For mobile devices
     currentVideoSrc = videoSrc;
-    
-    // Set background image for sleek paused thumbnail
-    if (mainVideoWrapper && poster) {
-      mainVideoWrapper.style.setProperty('--poster-image', `url(${poster})`);
-      mainVideoWrapper.style.backgroundImage = `var(--poster-image)`;
-    }
-    if (mainVideoWrapper) {
-      mainVideoWrapper.classList.remove('playing'); // Reset playing state
-    }
     
     // Load the new video
     mainVideo.load();
   }
   
-  // Update video info
+  // Set title, client, and year
+  const mainVideoTitle = document.getElementById('mainVideoTitle');
+  const mainVideoClient = document.getElementById('mainVideoClient');
+  const mainVideoYear = document.getElementById('mainVideoYear');
   if (mainVideoTitle) mainVideoTitle.textContent = title || '';
   if (mainVideoClient) mainVideoClient.textContent = client || '';
-  if (mainVideoDescription) mainVideoDescription.textContent = description || '';
   if (mainVideoYear) mainVideoYear.textContent = year || '';
   
   // Autoplay only if requested
   if (shouldAutoplay) {
     // Wait for video to be ready
     const playVideo = () => {
+      // Ensure video is muted for autoplay
+      mainVideo.muted = true;
       mainVideo.play().catch(err => {
         console.log('Autoplay prevented:', err);
       });
     };
     
-    if (mainVideo.readyState >= 2) {
+    // Try multiple events to ensure video plays
+    if (mainVideo.readyState >= 3) {
+      // Video has enough data to play
       playVideo();
-    } else {
+    } else if (mainVideo.readyState >= 2) {
+      // Video has metadata
+      mainVideo.addEventListener('canplay', playVideo, { once: true });
       mainVideo.addEventListener('loadeddata', playVideo, { once: true });
+    } else {
+      // Video not loaded yet
+      mainVideo.addEventListener('canplay', playVideo, { once: true });
+      mainVideo.addEventListener('loadeddata', playVideo, { once: true });
+      mainVideo.addEventListener('loadedmetadata', () => {
+        mainVideo.addEventListener('canplay', playVideo, { once: true });
+      }, { once: true });
     }
   }
-}
+};
 
 // Initialize with first video (no autoplay on initial load)
 document.addEventListener('DOMContentLoaded', () => {
@@ -91,7 +94,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const year = firstItem.getAttribute('data-year');
     
     // Load first video with autoplay (muted)
-    loadMainVideo(videoSrc, poster, title, client, description, year, true);
+    window.loadMainVideo(videoSrc, poster, title, client, description, year, true);
   }
   
   // Sidebar item click handlers
@@ -112,22 +115,10 @@ document.addEventListener('DOMContentLoaded', () => {
       const year = item.getAttribute('data-year');
       
       // Load video into main player with autoplay
-      loadMainVideo(videoSrc, poster, title, client, description, year, true);
+      window.loadMainVideo(videoSrc, poster, title, client, description, year, true);
     });
   });
   
-  // Handle play/pause states for sleek thumbnail overlay
-  if (mainVideo && mainVideoWrapper) {
-    mainVideo.addEventListener('play', () => {
-      mainVideoWrapper.classList.add('playing');
-    });
-    mainVideo.addEventListener('pause', () => {
-      mainVideoWrapper.classList.remove('playing');
-    });
-    mainVideo.addEventListener('ended', () => {
-      mainVideoWrapper.classList.remove('playing');
-    });
-  }
 });
 
 // ===== Lightbox Functionality =====
@@ -141,8 +132,8 @@ if (lightbox) {
   const lightboxClose = lightbox.querySelector('.lightbox-close');
   const lightboxOverlay = lightbox.querySelector('.lightbox-overlay');
 
-  // Open lightbox
-  function openLightbox(videoSrc, title, client, description, year) {
+  // Open lightbox (exposed globally)
+  window.openLightbox = function(videoSrc, title, client, description, year) {
     if (!lightboxVideo || !lightboxTitle || !lightboxClient) return;
     
     lightboxVideo.src = videoSrc;
@@ -162,7 +153,7 @@ if (lightbox) {
         });
       }
     }, 300);
-  }
+  };
 
   // Close lightbox
   function closeLightbox() {

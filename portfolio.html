@@ -44,23 +44,53 @@
     </div>
   </nav>
 
+  <!-- Looping Images Section -->
+  <section class="looping-images-section">
+    <div class="looping-images-container">
+      <div class="looping-images-wrapper" id="loopingImagesWrapper"></div>
+      <!-- Video Player Overlay -->
+      <div class="video-overlay" id="videoOverlay">
+        <button class="video-overlay-close" id="videoOverlayClose" aria-label="Close video">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <line x1="18" y1="6" x2="6" y2="18"></line>
+            <line x1="6" y1="6" x2="18" y2="18"></line>
+          </svg>
+        </button>
+        <div class="video-overlay-content">
+          <div class="video-overlay-wrapper">
+            <video class="video-overlay-player" controls muted playsinline id="videoOverlayPlayer">
+              <source src="" type="video/mp4">
+              Your browser does not support the video tag.
+            </video>
+          </div>
+          <div class="video-overlay-info">
+            <h3 class="video-overlay-title" id="videoOverlayTitle"></h3>
+            <p class="video-overlay-client" id="videoOverlayClient"></p>
+            <p class="video-overlay-year" id="videoOverlayYear"></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- Portfolio Section -->
   <section class="portfolio-work">
     <div class="container">
       <div class="portfolio-layout">
         <!-- Main Video Player -->
         <div class="main-video-container">
-          <div class="main-video-wrapper">
-            <video class="main-video" controls muted poster="" id="mainVideo">
-              <source src="" type="video/mp4">
-              Your browser does not support the video tag.
-            </video>
-          </div>
-          <div class="main-video-info" id="mainVideoInfo">
-            <h2 class="main-video-title"></h2>
-            <p class="main-video-client"></p>
-            <p class="main-video-description"></p>
-            <p class="main-video-year"></p>
+          <div class="main-video-content">
+            <div class="main-video-wrapper">
+              <video class="main-video" controls muted playsinline poster="" id="mainVideo">
+                <source src="" type="video/mp4">
+                Your browser does not support the video tag.
+              </video>
+            </div>
+            <div class="main-video-info">
+              <h3 class="main-video-title" id="mainVideoTitle"></h3>
+              <p class="main-video-client" id="mainVideoClient"></p>
+              <p class="main-video-year" id="mainVideoYear"></p>
+            </div>
           </div>
         </div>
 

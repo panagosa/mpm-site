@@ -6,6 +6,188 @@ body.portfolio-page {
   height: 100vh;
 }
 
+/* Looping Images Section */
+.looping-images-section {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  background-color: var(--color-bg);
+  padding: 4rem;
+}
+
+.looping-images-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+
+.looping-images-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.looping-images-inner {
+  position: relative;
+  width: 500px;
+  height: 500px;
+}
+
+.square {
+  position: absolute;
+  width: 150px;
+  height: 150px;
+  border-radius: 8px;
+  overflow: hidden;
+  will-change: transform;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+  z-index: 1;
+}
+
+.square:hover {
+  z-index: 2;
+}
+
+.square img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  pointer-events: none;
+  user-select: none;
+}
+
+.square-with-offset {
+  position: absolute;
+  inset: 0;
+  border-radius: 8px;
+  overflow: hidden;
+  will-change: transform;
+  cursor: pointer;
+  z-index: 1;
+}
+
+.square-with-offset:hover {
+  z-index: 2;
+}
+
+.square-with-offset img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  pointer-events: none;
+  user-select: none;
+}
+
+.square-children {
+  position: absolute;
+  inset: 0;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+/* Video Overlay */
+.video-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: var(--color-bg);
+  z-index: 10000;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.video-overlay.active {
+  display: flex;
+  opacity: 1;
+}
+
+.video-overlay-close {
+  position: absolute;
+  top: 2rem;
+  right: 2rem;
+  background-color: rgba(63, 95, 90, 0.1);
+  border: 1px solid var(--color-text);
+  color: var(--color-text);
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: var(--transition);
+  z-index: 10001;
+  border-radius: 4px;
+}
+
+.video-overlay-close:hover {
+  background-color: var(--color-accent-mustard);
+  border-color: var(--color-accent-mustard);
+  color: var(--color-bg);
+}
+
+.video-overlay-content {
+  width: 72%; /* 20% smaller than 90% */
+  max-width: 960px; /* 20% smaller than 1200px */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.video-overlay-wrapper {
+  position: relative;
+  width: 100%;
+  padding-bottom: 50.625%; /* 16:9 aspect ratio */
+  background-color: #000;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.video-overlay-player {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.video-overlay-info {
+  width: 100%;
+  padding: 1.5rem 0;
+  text-align: center;
+}
+
+.video-overlay-title {
+  font-size: 1.5rem;
+  font-weight: 400;
+  color: var(--color-text);
+  margin-bottom: 0.5rem;
+  letter-spacing: 0.5px;
+}
+
+.video-overlay-client {
+  font-size: 1.1rem;
+  color: var(--color-text-light);
+  font-weight: 300;
+  margin-bottom: 0.25rem;
+  letter-spacing: 0.5px;
+}
+
+.video-overlay-year {
+  font-size: 1rem;
+  color: var(--color-text-light);
+  font-weight: 300;
+  letter-spacing: 0.5px;
+}
+
 html.portfolio-page {
   overflow: hidden;
   height: 100vh;
@@ -106,36 +288,19 @@ html.portfolio-page {
   width: 100%;
 }
 
+.main-video-content {
+  width: 80%; /* 20% smaller */
+  display: flex;
+  flex-direction: column;
+}
+
 .main-video-wrapper {
   position: relative;
   width: 100%;
   padding-bottom: 56.25%; /* 16:9 aspect ratio */
   background-color: #000;
-  margin-bottom: 2rem;
   border-radius: 4px;
   overflow: hidden;
-  background-size: cover; /* For poster image */
-  background-position: center;
-  background-repeat: no-repeat;
-  transition: background-image 0.3s ease;
-}
-
-.main-video-wrapper::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.3);
-  opacity: 1;
-  transition: opacity 0.3s ease;
-  z-index: 1;
-  pointer-events: none;
-}
-
-.main-video-wrapper.playing::before {
-  opacity: 0;
 }
 
 .main-video {
@@ -145,42 +310,34 @@ html.portfolio-page {
   width: 100%;
   height: 100%;
   object-fit: contain;
-  transition: opacity 0.3s ease;
-  z-index: 2;
 }
 
 .main-video-info {
-  padding: 0;
+  width: 100%;
+  padding: 1rem 0;
 }
 
 .main-video-title {
-  font-size: 2rem;
+  font-size: 1.25rem;
   font-weight: 400;
   color: var(--color-text);
-  margin-bottom: 0.75rem;
+  margin-bottom: 0.25rem;
   letter-spacing: 0.5px;
 }
 
 .main-video-client {
-  font-size: 1.25rem;
-  color: var(--color-text-light);
-  margin-bottom: 1rem;
-  font-weight: 300;
-}
-
-.main-video-description {
   font-size: 1rem;
   color: var(--color-text-light);
-  line-height: 1.6;
-  margin-bottom: 0.5rem;
   font-weight: 300;
+  margin-bottom: 0.25rem;
+  letter-spacing: 0.5px;
 }
 
 .main-video-year {
-  font-size: 0.9rem;
+  font-size: 0.95rem;
   color: var(--color-text-light);
   font-weight: 300;
-  opacity: 0.6;
+  letter-spacing: 0.5px;
 }
 
 /* Video Sidebar */
@@ -498,6 +655,42 @@ html.portfolio-page {
   
   .lightbox-info {
     padding: 1.5rem;
+  }
+  
+  .video-overlay-content {
+    width: 90%; /* Larger on mobile for better viewing */
+  }
+  
+  .video-overlay-info {
+    padding: 1rem 0;
+  }
+  
+  .video-overlay-title {
+    font-size: 1.25rem;
+  }
+  
+  .video-overlay-client {
+    font-size: 1rem;
+  }
+  
+  .video-overlay-year {
+    font-size: 0.9rem;
+  }
+  
+  .main-video-content {
+    width: 100%; /* Full width on mobile */
+  }
+  
+  .main-video-info {
+    padding: 0.75rem 0;
+  }
+  
+  .main-video-title {
+    font-size: 1.1rem;
+  }
+  
+  .main-video-year {
+    font-size: 0.85rem;
   }
 }
 

@@ -1372,4 +1372,20 @@ body.wild-mode .hero {
   .about-content {
     gap: var(--spacing-md);
   }
-} 
+}
+
+/* ===== Logo Spin Animation ===== */
+@keyframes logoSpin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.logo-spin-hover {
+  animation: logoSpin 3s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+  transform-origin: center center;
+  transition: none !important;
+}

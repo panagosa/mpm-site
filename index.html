@@ -59,5 +59,17 @@
 
   <!-- Scripts -->
   <script src="script.js"></script>
+  <script type="module">
+    import { animate, stagger } from "https://cdn.jsdelivr.net/npm/motion@12.23.24/+esm"
+
+    // Set initial state for nav links (hidden, positioned below)
+    document.querySelectorAll(".nav-link").forEach(link => {
+      link.style.opacity = "0";
+      link.style.transform = "translateY(20px)";
+    });
+
+    // Animate navigation links with stagger (30% slower for smoother effect)
+    animate(".nav-link", { opacity: 1, y: [20, 0] }, { delay: stagger(0.13) })
+  </script>
 </body>
 </html>
