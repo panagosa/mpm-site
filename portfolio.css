@@ -692,6 +692,16 @@ html.portfolio-page {
   .main-video-year {
     font-size: 0.85rem;
   }
+  
+  /* Scale looping images for mobile */
+  .looping-images-section {
+    padding: 2rem 1rem;
+  }
+  
+  .looping-images-inner {
+    transform: scale(0.6);
+    transform-origin: center center;
+  }
 }
 
 @media (max-width: 480px) {
@@ -717,5 +727,10 @@ html.portfolio-page {
   
   .sidebar-thumbnail {
     height: 90px;
+  }
+  
+  /* Scale looping images even more for small mobile */
+  .looping-images-inner {
+    transform: scale(0.5);
   }
 }
