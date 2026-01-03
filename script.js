@@ -731,8 +731,8 @@ function customEase(t) {
 class AnimationController {
   constructor() {
     this.startTime = null;
-    this.duration = 7000; // 7 seconds
-    this.repeatDelay = 1000; // 1 second
+    this.duration = 2000; // 2 seconds
+    this.repeatDelay = 500; // 0.5 seconds
     this.isRunning = false;
     this.animationFrameId = null;
   }
