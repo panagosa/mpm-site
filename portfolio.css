@@ -699,7 +699,7 @@ html.portfolio-page {
   }
   
   .looping-images-inner {
-    transform: scale(0.6);
+    transform: scale(0.75); /* 25% bigger than 0.6 */
     transform-origin: center center;
   }
 }
@@ -731,6 +731,6 @@ html.portfolio-page {
   
   /* Scale looping images even more for small mobile */
   .looping-images-inner {
-    transform: scale(0.5);
+    transform: scale(0.625); /* 25% bigger than 0.5 */
   }
 }
