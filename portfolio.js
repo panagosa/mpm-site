@@ -83,7 +83,12 @@ document.addEventListener('DOMContentLoaded', () => {
     console.error('Failed to initialize portfolio elements');
     return;
   }
-  
+
+  // Setup loading states for main video
+  if (mainVideo && mainVideoWrapper && typeof setupVideoLoadingState === 'function') {
+    setupVideoLoadingState(mainVideo, mainVideoWrapper);
+  }
+
   const firstItem = sidebarItems[0];
   if (firstItem) {
     const videoSrc = firstItem.getAttribute('data-video');
@@ -92,20 +97,20 @@ document.addEventListener('DOMContentLoaded', () => {
     const client = firstItem.getAttribute('data-client');
     const description = firstItem.getAttribute('data-description');
     const year = firstItem.getAttribute('data-year');
-    
-    // Load first video with autoplay (unmuted)
-    window.loadMainVideo(videoSrc, poster, title, client, description, year, true);
+
+    // Load first video without autoplay to comply with browser policies
+    window.loadMainVideo(videoSrc, poster, title, client, description, year, false);
   }
   
   // Sidebar item click handlers
   sidebarItems.forEach(item => {
-    item.addEventListener('click', () => {
+    const loadVideo = () => {
       // Remove active class from all items
       sidebarItems.forEach(i => i.classList.remove('active'));
-      
+
       // Add active class to clicked item
       item.classList.add('active');
-      
+
       // Get video data
       const videoSrc = item.getAttribute('data-video');
       const poster = item.getAttribute('data-poster');
@@ -113,9 +118,19 @@ document.addEventListener('DOMContentLoaded', () => {
       const client = item.getAttribute('data-client');
       const description = item.getAttribute('data-description');
       const year = item.getAttribute('data-year');
-      
-      // Load video into main player with autoplay
+
+      // Load video into main player (user initiated, can autoplay)
       window.loadMainVideo(videoSrc, poster, title, client, description, year, true);
+    };
+
+    item.addEventListener('click', loadVideo);
+
+    // Keyboard support for accessibility
+    item.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        loadVideo();
+      }
     });
   });
   

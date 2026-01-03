@@ -5,7 +5,7 @@ A bold, distinctive portfolio website showcasing the work and team of Deadpan Me
 ## 🎯 Features
 
 ### Design
-- **Bold Color Palette**: Rust/orange background (#D96A3A) with dark teal text (#3F5F5A)
+- **Bold Color Palette**: Cream background (#eece91) with dark teal text (#0d4e46)
 - **Custom Cursor**: Interactive custom cursor with hover effects
 - **Modern Typography**: Space Grotesk font family
 - **Responsive Design**: Fully optimized for all devices with mobile menu
@@ -64,12 +64,13 @@ A bold, distinctive portfolio website showcasing the work and team of Deadpan Me
 Edit the CSS variables in `style.css`:
 ```css
 :root {
-  --color-bg: #D96A3A;              /* Rust/orange background */
-  --color-text: #3F5F5A;            /* Dark teal text */
-  --color-text-light: rgba(63, 95, 90, 0.8); /* Teal with opacity */
-  --color-border: #3F5F5A;         /* Dark teal borders */
-  --color-accent-rust: #D96A3A;    /* Rust accent */
-  --color-accent-mustard: #C89A3A; /* Mustard/gold hover accent */
+  --color-bg: #eece91;              /* Cream background */
+  --color-text: #0d4e46;            /* Dark teal text */
+  --color-text-light: rgba(13, 78, 70, 0.8); /* Dark teal with opacity */
+  --color-border: #0d4e46;          /* Dark teal borders */
+  --color-accent-rust: #df2e09;     /* Reddish-orange accent */
+  --color-accent-orange: #e47413;   /* Medium orange accent */
+  --color-accent-mustard: #e47413;  /* Medium orange for hover/accent */
 }
 ```
 

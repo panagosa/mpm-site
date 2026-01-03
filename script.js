@@ -1,3 +1,71 @@
+// ===== Video Loading and Error Handling Utilities =====
+function createVideoLoadingOverlay(container) {
+  const overlay = document.createElement('div');
+  overlay.className = 'video-loading-overlay hidden';
+  const spinner = document.createElement('div');
+  spinner.className = 'video-spinner';
+  overlay.appendChild(spinner);
+  container.appendChild(overlay);
+  return overlay;
+}
+
+function createVideoErrorMessage(container) {
+  const errorDiv = document.createElement('div');
+  errorDiv.className = 'video-error-message';
+  errorDiv.innerHTML = `
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <circle cx="12" cy="12" r="10"></circle>
+      <line x1="12" y1="8" x2="12" y2="12"></line>
+      <line x1="12" y1="16" x2="12.01" y2="16"></line>
+    </svg>
+    <p>Failed to load video</p>
+    <button class="video-error-retry">Retry</button>
+  `;
+  container.appendChild(errorDiv);
+  return errorDiv;
+}
+
+function setupVideoLoadingState(video, wrapper) {
+  if (!video || !wrapper) return null;
+
+  const loadingOverlay = createVideoLoadingOverlay(wrapper);
+  const errorMessage = createVideoErrorMessage(wrapper);
+
+  const showLoading = () => {
+    loadingOverlay.classList.remove('hidden');
+    errorMessage.classList.remove('visible');
+  };
+
+  const hideLoading = () => {
+    loadingOverlay.classList.add('hidden');
+  };
+
+  const showError = () => {
+    loadingOverlay.classList.add('hidden');
+    errorMessage.classList.add('visible');
+  };
+
+  const hideError = () => {
+    errorMessage.classList.remove('visible');
+  };
+
+  // Event listeners
+  video.addEventListener('loadstart', showLoading);
+  video.addEventListener('canplay', hideLoading);
+  video.addEventListener('error', showError);
+
+  // Retry button
+  const retryBtn = errorMessage.querySelector('.video-error-retry');
+  if (retryBtn) {
+    retryBtn.addEventListener('click', () => {
+      hideError();
+      video.load();
+    });
+  }
+
+  return { showLoading, hideLoading, showError, hideError };
+}
+
 // ===== Custom Cursor with Text Interaction =====
 const cursor = document.createElement('div');
 cursor.className = 'cursor';
@@ -19,19 +87,34 @@ document.addEventListener('mousemove', (e) => {
   cursorDot.style.top = mouseY + 'px';
 });
 
-// Smooth cursor follow
+// Smooth cursor follow with performance optimization
+let cursorAnimationActive = true;
+
 function animateCursor() {
+  if (!cursorAnimationActive) return;
+
   const dx = mouseX - cursorX;
   const dy = mouseY - cursorY;
-  
+
   cursorX += dx * 0.15;
   cursorY += dy * 0.15;
-  
+
   cursor.style.left = cursorX + 'px';
   cursor.style.top = cursorY + 'px';
-  
+
   requestAnimationFrame(animateCursor);
 }
+
+// Only animate cursor when page is visible
+document.addEventListener('visibilitychange', () => {
+  if (document.hidden) {
+    cursorAnimationActive = false;
+  } else {
+    cursorAnimationActive = true;
+    animateCursor();
+  }
+});
+
 animateCursor();
 
 // Hover effects on interactive elements
@@ -65,10 +148,26 @@ if (heroTitleContainer) {
   // Individual letter movement based on cursor
   const letters = heroTitleContainer.querySelectorAll('.letter');
   const heroSection = document.querySelector('.hero-title');
-  
+
   // Use requestAnimationFrame for smooth updates
   let animationFrameId = null;
   let targetLifts = new Map();
+  let heroVisible = true;
+
+  // Pause animation when hero is off-screen
+  const heroObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      heroVisible = entry.isIntersecting;
+      if (!heroVisible && animationFrameId) {
+        cancelAnimationFrame(animationFrameId);
+        animationFrameId = null;
+      }
+    });
+  }, { threshold: 0.1 });
+
+  if (heroSection) {
+    heroObserver.observe(heroSection);
+  }
   
   document.addEventListener('mousemove', (e) => {
     if (heroSection) {
@@ -98,8 +197,13 @@ if (heroTitleContainer) {
       });
       
       // Smooth animation using requestAnimationFrame
-      if (!animationFrameId) {
+      if (!animationFrameId && heroVisible) {
         const animate = () => {
+          if (!heroVisible) {
+            animationFrameId = null;
+            return;
+          }
+
           letters.forEach((letter) => {
             const targetLift = targetLifts.get(letter) || 0;
             const currentTransform = letter.style.transform;
@@ -465,6 +569,15 @@ if (workGrid && prevArrow && nextArrow) {
 
   // Initialize carousel
   updateCarousel();
+
+  // Setup loading states for all videos in carousel
+  workItems.forEach(item => {
+    const video = item.querySelector('video');
+    const videoWrapper = item.querySelector('.work-video');
+    if (video && videoWrapper) {
+      setupVideoLoadingState(video, videoWrapper);
+    }
+  });
 }
 
 // ===== Navigation =====
@@ -575,56 +688,7 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 });
 
-// ===== Mobile Menu Toggle =====
-const navToggle = document.querySelector('.nav-toggle');
-const navMenu = document.querySelector('.nav-menu');
-
-if (navToggle && navMenu) {
-  // Create backdrop element
-  let backdrop = document.querySelector('.nav-menu-backdrop');
-  if (!backdrop) {
-    backdrop = document.createElement('div');
-    backdrop.className = 'nav-menu-backdrop';
-    document.body.appendChild(backdrop);
-  }
-  
-  navToggle.addEventListener('click', (e) => {
-    e.stopPropagation();
-    const isActive = navMenu.classList.toggle('active');
-    navToggle.classList.toggle('active');
-    navToggle.setAttribute('aria-expanded', isActive);
-    backdrop.classList.toggle('active');
-  });
-  
-  // Close menu when clicking backdrop
-  backdrop.addEventListener('click', () => {
-    navMenu.classList.remove('active');
-    navToggle.classList.remove('active');
-    navToggle.setAttribute('aria-expanded', 'false');
-    backdrop.classList.remove('active');
-  });
-  
-  // Close mobile menu when clicking a link
-  const navLinks = navMenu.querySelectorAll('.nav-link');
-  navLinks.forEach(link => {
-    link.addEventListener('click', () => {
-      navMenu.classList.remove('active');
-      navToggle.classList.remove('active');
-      navToggle.setAttribute('aria-expanded', 'false');
-      backdrop.classList.remove('active');
-    });
-  });
-  
-  // Close menu on Escape key
-  document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape' && navMenu.classList.contains('active')) {
-      navMenu.classList.remove('active');
-      navToggle.classList.remove('active');
-      navToggle.setAttribute('aria-expanded', 'false');
-      backdrop.classList.remove('active');
-    }
-  });
-}
+// Mobile menu toggle code removed - navigation is always visible at bottom
 
 // ===== Neon Wild Mode Toggle =====
 let isWildMode = false;
@@ -652,15 +716,27 @@ function triggerWildMode() {
 // Konami code for extra wildness
 const konamiCode = ['ArrowUp', 'ArrowUp', 'ArrowDown', 'ArrowDown', 'ArrowLeft', 'ArrowRight', 'ArrowLeft', 'ArrowRight', 'KeyB', 'KeyA'];
 let konamiIndex = 0;
+let konamiTimeout = null;
 
 document.addEventListener('keydown', function(e) {
+  // Reset if too much time passes between keys (3 seconds)
+  clearTimeout(konamiTimeout);
+  konamiTimeout = setTimeout(() => {
+    konamiIndex = 0;
+  }, 3000);
+
   if (e.code === konamiCode[konamiIndex]) {
     konamiIndex++;
     if (konamiIndex === konamiCode.length) {
-      triggerWildMode();
+      // Only trigger if not already in the mode we're trying to enter
+      if (!isWildMode) {
+        triggerWildMode();
+      }
       konamiIndex = 0;
+      clearTimeout(konamiTimeout);
     }
   } else {
+    // Wrong key, reset sequence
     konamiIndex = 0;
   }
 });

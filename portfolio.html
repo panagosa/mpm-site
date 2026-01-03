@@ -3,8 +3,29 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Portfolio - Deadpan Media</title>
-  
+  <title>Portfolio - Deadpan Media | Video Production Work</title>
+
+  <!-- SEO Meta Tags -->
+  <meta name="description" content="View our portfolio of creative video work including commercials for Manscaped, Totino's, and General Mills. Bold storytelling with unique style.">
+  <meta name="keywords" content="video portfolio, commercial work, brand films, deadpan media portfolio, video production showcase">
+  <meta name="author" content="Deadpan Media">
+
+  <!-- Open Graph Meta Tags -->
+  <meta property="og:title" content="Portfolio - Deadpan Media | Video Production Work">
+  <meta property="og:description" content="View our portfolio of creative video work including commercials for Manscaped, Totino's, and General Mills.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://deadpanmedia.com/portfolio.html">
+  <meta property="og:image" content="https://deadpanmedia.com/logo.svg">
+
+  <!-- Twitter Card Meta Tags -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Portfolio - Deadpan Media | Video Production Work">
+  <meta name="twitter:description" content="View our portfolio of creative video work including commercials for Manscaped, Totino's, and General Mills.">
+  <meta name="twitter:image" content="https://deadpanmedia.com/logo.svg">
+
+  <!-- Canonical URL -->
+  <link rel="canonical" href="https://deadpanmedia.com/portfolio.html">
+
   <!-- Favicon -->
   <link rel="icon" type="image/svg+xml" href="logo.svg">
   <link rel="alternate icon" href="logo.svg">
@@ -19,6 +40,9 @@
   <link rel="stylesheet" href="portfolio.css">
 </head>
 <body class="portfolio-page">
+  <!-- Skip to main content link for accessibility -->
+  <a href="#portfolio-main" class="skip-link">Skip to main content</a>
+
   <!-- Logo at Top Center -->
   <div class="top-logo">
     <a href="index.html" class="top-logo-link">
@@ -28,13 +52,8 @@
   </div>
 
   <!-- Navigation -->
-  <nav class="navbar">
+  <nav class="navbar" role="navigation" aria-label="Main navigation">
     <div class="nav-container">
-      <button class="nav-toggle" aria-label="Toggle navigation menu" aria-expanded="false">
-        <span></span>
-        <span></span>
-        <span></span>
-      </button>
       <div class="nav-menu">
         <a href="index.html" class="nav-link">Home</a>
         <a href="portfolio.html" class="nav-link">Portfolio</a>
@@ -58,7 +77,7 @@
         </button>
         <div class="video-overlay-content">
           <div class="video-overlay-wrapper">
-            <video class="video-overlay-player" controls playsinline id="videoOverlayPlayer">
+            <video class="video-overlay-player" controls playsinline preload="metadata" id="videoOverlayPlayer">
               <source src="" type="video/mp4">
               Your browser does not support the video tag.
             </video>
@@ -74,14 +93,14 @@
   </section>
 
   <!-- Portfolio Section -->
-  <section class="portfolio-work">
+  <section class="portfolio-work" id="portfolio-main">
     <div class="container">
       <div class="portfolio-layout">
         <!-- Main Video Player -->
         <div class="main-video-container">
           <div class="main-video-content">
             <div class="main-video-wrapper">
-              <video class="main-video" controls playsinline poster="" id="mainVideo">
+              <video class="main-video" controls playsinline preload="metadata" poster="" id="mainVideo">
                 <source src="" type="video/mp4">
                 Your browser does not support the video tag.
               </video>
@@ -95,9 +114,9 @@
         </div>
 
         <!-- Video Sidebar -->
-        <div class="video-sidebar" id="videoSidebar">
+        <div class="video-sidebar" id="videoSidebar" role="list" aria-label="Portfolio videos">
           <!-- Video Item 1 -->
-          <div class="sidebar-video-item active" 
+          <div class="sidebar-video-item active" role="listitem" tabindex="0" 
                data-video="https://dc5bt2teggic6.cloudfront.net/Pete Davidson x MANSCAPED®： Ball-Ber Shop - The Lawn Mower® 5.0 Ultra-2.mp4"
                data-poster="https://img.youtube.com/vi/gqceI4x3uNg/maxresdefault.jpg"
                data-title="Ball-Ber Shop"
@@ -119,7 +138,7 @@
           </div>
 
           <!-- Video Item 2 -->
-          <div class="sidebar-video-item" 
+          <div class="sidebar-video-item" role="listitem" tabindex="0" 
                data-video="https://dc5bt2teggic6.cloudfront.net/Totinos： Petes Fleet delivers Totinos Pizza Rolls!.mp4"
                data-poster="https://img.youtube.com/vi/ACrp2HN3f0w/maxresdefault.jpg"
                data-title="Game Night"
@@ -141,7 +160,7 @@
           </div>
 
           <!-- Video Item 3 -->
-          <div class="sidebar-video-item" 
+          <div class="sidebar-video-item" role="listitem" tabindex="0" 
                data-video="https://dc5bt2teggic6.cloudfront.net/03_SI_v08_FINAL_260825_01_wBumper.mp4"
                data-poster="https://img.youtube.com/vi/BZZIpThjURI/maxresdefault.jpg"
                data-title="Snack Island"
@@ -163,7 +182,7 @@
           </div>
 
           <!-- Video Item 4 -->
-          <div class="sidebar-video-item" 
+          <div class="sidebar-video-item" role="listitem" tabindex="0" 
                data-video="https://dc5bt2teggic6.cloudfront.net/02_CORP_v10_FINAL_260825_01_wBumper.mp4"
                data-poster="https://img.youtube.com/vi/TNu3y2lIb9Q/maxresdefault.jpg"
                data-title="Corporate Meltdown"
@@ -185,7 +204,7 @@
           </div>
 
           <!-- Video Item 5 -->
-          <div class="sidebar-video-item" 
+          <div class="sidebar-video-item" role="listitem" tabindex="0" 
                data-video="https://dc5bt2teggic6.cloudfront.net/01_AI_v09_FINAL_260825_01_wBumper.mp4"
                data-poster="https://img.youtube.com/vi/1aCRNBkhOEY/maxresdefault.jpg"
                data-title="Crisp AI"
@@ -221,7 +240,7 @@
         </svg>
       </button>
       <div class="lightbox-video-wrapper">
-        <video class="lightbox-video" controls>
+        <video class="lightbox-video" controls preload="metadata">
           <source src="" type="video/mp4">
           Your browser does not support the video tag.
         </video>

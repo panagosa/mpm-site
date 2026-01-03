@@ -3,8 +3,29 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Deadpan Media</title>
-  
+  <title>Deadpan Media - Creative Video Production & Brand Films</title>
+
+  <!-- SEO Meta Tags -->
+  <meta name="description" content="Deadpan Media creates bold, distinctive video content for brands. Specializing in commercials, brand films, and social media content with unique creative vision.">
+  <meta name="keywords" content="video production, brand films, commercials, creative agency, deadpan media, social media content">
+  <meta name="author" content="Deadpan Media">
+
+  <!-- Open Graph Meta Tags -->
+  <meta property="og:title" content="Deadpan Media - Creative Video Production & Brand Films">
+  <meta property="og:description" content="Bold, distinctive video content for brands. Specializing in commercials, brand films, and social media content.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://deadpanmedia.com">
+  <meta property="og:image" content="https://deadpanmedia.com/logo.svg">
+
+  <!-- Twitter Card Meta Tags -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Deadpan Media - Creative Video Production & Brand Films">
+  <meta name="twitter:description" content="Bold, distinctive video content for brands. Specializing in commercials, brand films, and social media content.">
+  <meta name="twitter:image" content="https://deadpanmedia.com/logo.svg">
+
+  <!-- Canonical URL -->
+  <link rel="canonical" content="https://deadpanmedia.com">
+
   <!-- Favicon -->
   <link rel="icon" type="image/svg+xml" href="logo.svg">
   <link rel="alternate icon" href="logo.svg">
@@ -18,14 +39,12 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
+  <!-- Skip to main content link for accessibility -->
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
   <!-- Navigation -->
-  <nav class="navbar">
+  <nav class="navbar" role="navigation" aria-label="Main navigation">
     <div class="nav-container">
-      <button class="nav-toggle" aria-label="Toggle navigation menu" aria-expanded="false">
-        <span></span>
-        <span></span>
-        <span></span>
-      </button>
       <div class="nav-menu">
         <a href="index.html" class="nav-link">Home</a>
         <a href="portfolio.html" class="nav-link">Portfolio</a>
@@ -36,13 +55,13 @@
   </nav>
 
   <!-- Hero Section -->
-  <section class="hero">
+  <section class="hero" id="main-content">
     <div class="container">
       <h1 class="hero-title">
         <img src="logo.svg" alt="Deadpan Media Logo" class="hero-logo">
         <span>Deadpan Media</span>
       </h1>
-      <button class="fun-button" onclick="triggerWildMode()">DO NOT PRESS THIS BUTTON</button>
+      <button class="fun-button" onclick="triggerWildMode()" aria-label="Toggle wild mode theme">DO NOT PRESS THIS BUTTON</button>
     </div>
   </section>
 
