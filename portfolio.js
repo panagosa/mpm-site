@@ -30,7 +30,7 @@ window.loadMainVideo = function(videoSrc, poster, title, client, description, ye
   if (currentVideoSrc !== videoSrc) {
     mainVideo.poster = poster || '';
     mainVideo.src = videoSrc;
-    mainVideo.muted = true; // Ensure muted for autoplay
+    mainVideo.muted = false; // Unmuted for user interaction
     mainVideo.playsInline = true; // For mobile devices
     currentVideoSrc = videoSrc;
     
@@ -50,8 +50,8 @@ window.loadMainVideo = function(videoSrc, poster, title, client, description, ye
   if (shouldAutoplay) {
     // Wait for video to be ready
     const playVideo = () => {
-      // Ensure video is muted for autoplay
-      mainVideo.muted = true;
+      // Video is unmuted for user interaction
+      mainVideo.muted = false;
       mainVideo.play().catch(err => {
         console.log('Autoplay prevented:', err);
       });
@@ -93,7 +93,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const description = firstItem.getAttribute('data-description');
     const year = firstItem.getAttribute('data-year');
     
-    // Load first video with autoplay (muted)
+    // Load first video with autoplay (unmuted)
     window.loadMainVideo(videoSrc, poster, title, client, description, year, true);
   }
   
