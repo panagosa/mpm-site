@@ -137,6 +137,7 @@ if (lightbox) {
     if (!lightboxVideo || !lightboxTitle || !lightboxClient) return;
     
     lightboxVideo.src = videoSrc;
+    lightboxVideo.muted = false; // Ensure unmuted
     lightboxTitle.textContent = title || '';
     if (lightboxClient) lightboxClient.textContent = client || '';
     if (lightboxDescription) lightboxDescription.textContent = description || '';
