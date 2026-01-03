@@ -188,6 +188,9 @@ body {
 
 
 /* Nav toggle removed - navigation always visible at bottom */
+.nav-toggle {
+  display: none;
+}
 
 .nav-menu {
   display: flex;
