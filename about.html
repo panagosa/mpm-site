@@ -98,6 +98,46 @@
 
   <!-- Scripts -->
   <script src="script.js"></script>
+  <script type="module">
+    import { animate, stagger, inView } from "https://cdn.jsdelivr.net/npm/motion@12.23.24/+esm"
+
+    // Set initial state for nav links
+    document.querySelectorAll(".nav-link").forEach(link => {
+      link.style.opacity = "0";
+      link.style.transform = "translateY(20px)";
+    });
+    animate(".nav-link", { opacity: 1, y: [20, 0] }, { delay: stagger(0.13) })
+
+    // About text reveal
+    const aboutText = document.querySelector(".about-text");
+    if (aboutText) {
+      aboutText.style.opacity = "0";
+      aboutText.style.transform = "translateX(-30px)";
+      inView(aboutText, () => {
+        animate(aboutText,
+          { opacity: 1, x: [-30, 0] },
+          { duration: 0.7, easing: [0.25, 0.46, 0.45, 0.94] }
+        );
+      }, { margin: "-50px" });
+    }
+
+    // Team members staggered reveal
+    const teamMembers = document.querySelectorAll(".team-member");
+    teamMembers.forEach((member, index) => {
+      member.style.opacity = "0";
+      member.style.transform = "translateY(40px)";
+    });
+
+    const team = document.querySelector(".team");
+    if (team) {
+      inView(team, () => {
+        animate(".team-member",
+          { opacity: 1, y: [40, 0] },
+          { duration: 0.6, easing: [0.25, 0.46, 0.45, 0.94], delay: stagger(0.15) }
+        );
+      }, { margin: "-50px" });
+    }
+  </script>
 </body>
 </html>
 

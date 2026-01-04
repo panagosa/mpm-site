@@ -141,6 +141,48 @@
 
   <!-- Scripts -->
   <script src="script.js"></script>
+  <script type="module">
+    import { animate, stagger, inView } from "https://cdn.jsdelivr.net/npm/motion@12.23.24/+esm"
+
+    // Set initial state for nav links
+    document.querySelectorAll(".nav-link").forEach(link => {
+      link.style.opacity = "0";
+      link.style.transform = "translateY(20px)";
+    });
+    animate(".nav-link", { opacity: 1, y: [20, 0] }, { delay: stagger(0.13) })
+
+    // Top logo reveal
+    const topLogo = document.querySelector(".top-logo");
+    if (topLogo) {
+      topLogo.style.opacity = "0";
+      topLogo.style.transform = "translateY(-20px)";
+      animate(topLogo,
+        { opacity: 1, y: [-20, 0] },
+        { duration: 0.6, easing: [0.25, 0.46, 0.45, 0.94], delay: 0.1 }
+      );
+    }
+
+    // Carousel container reveal
+    const carouselContainer = document.querySelector(".carousel-container");
+    if (carouselContainer) {
+      carouselContainer.style.opacity = "0";
+      carouselContainer.style.transform = "scale(0.95)";
+      animate(carouselContainer,
+        { opacity: 1, scale: [0.95, 1] },
+        { duration: 0.7, easing: [0.25, 0.46, 0.45, 0.94], delay: 0.3 }
+      );
+    }
+
+    // Carousel arrows reveal
+    const arrows = document.querySelectorAll(".carousel-arrow");
+    arrows.forEach(arrow => {
+      arrow.style.opacity = "0";
+    });
+    animate(".carousel-arrow",
+      { opacity: [0, 1] },
+      { duration: 0.5, easing: [0.25, 0.46, 0.45, 0.94], delay: stagger(0.1, { start: 0.5 }) }
+    );
+  </script>
 </body>
 </html>
 
