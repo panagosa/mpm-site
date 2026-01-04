@@ -104,6 +104,47 @@
 
   <!-- Scripts -->
   <script src="script.js"></script>
+  <script type="module">
+    import { animate, stagger, inView } from "https://cdn.jsdelivr.net/npm/motion@12.23.24/+esm"
+
+    // Set initial state for nav links
+    document.querySelectorAll(".nav-link").forEach(link => {
+      link.style.opacity = "0";
+      link.style.transform = "translateY(20px)";
+    });
+    animate(".nav-link", { opacity: 1, y: [20, 0] }, { delay: stagger(0.13) })
+
+    // Form groups staggered reveal
+    const formGroups = document.querySelectorAll(".form-group");
+    formGroups.forEach(group => {
+      group.style.opacity = "0";
+      group.style.transform = "translateY(25px)";
+    });
+
+    const submitBtn = document.querySelector(".contact-form .btn");
+    if (submitBtn) {
+      submitBtn.style.opacity = "0";
+      submitBtn.style.transform = "translateY(20px)";
+    }
+
+    const contactForm = document.querySelector(".contact-form");
+    if (contactForm) {
+      inView(contactForm, () => {
+        // Animate form groups with stagger
+        animate(".form-group",
+          { opacity: 1, y: [25, 0] },
+          { duration: 0.5, easing: [0.25, 0.46, 0.45, 0.94], delay: stagger(0.1) }
+        );
+        // Animate submit button after form groups
+        if (submitBtn) {
+          animate(submitBtn,
+            { opacity: 1, y: [20, 0] },
+            { duration: 0.5, easing: [0.25, 0.46, 0.45, 0.94], delay: 0.5 }
+          );
+        }
+      }, { margin: "-50px" });
+    }
+  </script>
 </body>
 </html>
 
