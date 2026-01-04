@@ -899,6 +899,11 @@ body.wild-mode .navbar {
   box-shadow: none !important;
 }
 
+body.wild-mode .nav-menu {
+  background: transparent !important;
+  border-top: none !important;
+}
+
 body.wild-mode .about {
   border-top: none;
 }
