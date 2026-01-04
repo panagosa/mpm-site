@@ -904,6 +904,14 @@ body.wild-mode .nav-menu {
   border-top: none !important;
 }
 
+/* Mobile wild mode navigation fix */
+@media (max-width: 768px) {
+  body.wild-mode .nav-menu {
+    background: transparent !important;
+    border-top: none !important;
+  }
+}
+
 body.wild-mode .about {
   border-top: none;
 }
