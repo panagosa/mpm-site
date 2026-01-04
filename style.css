@@ -1395,6 +1395,157 @@ body.wild-mode .hero {
   .about-content {
     gap: var(--spacing-md);
   }
+
+  /* Wild mode mobile adjustments */
+  .floating-hire-text span {
+    font-size: 1.2rem !important;
+    letter-spacing: 1px;
+    text-shadow: 0 0 10px currentColor, 0 0 20px currentColor;
+  }
+
+  .floating-hire-text span:nth-child(2) {
+    font-size: 1rem !important;
+  }
+
+  .floating-hire-text span:nth-child(3) {
+    font-size: 1.1rem !important;
+  }
+
+  .floating-hire-text span:nth-child(4) {
+    font-size: 0.9rem !important;
+  }
+
+  .floating-hire-text span:nth-child(5) {
+    font-size: 1rem !important;
+  }
+
+  .floating-hire-text span:nth-child(6) {
+    font-size: 0.85rem !important;
+  }
+
+  .floating-hire-text span:nth-child(7) {
+    font-size: 1.05rem !important;
+  }
+
+  /* Reduce animation translation distances for mobile */
+  @keyframes floatPath1 {
+    0% {
+      transform: translate(0, 0) rotate(0deg);
+      opacity: 0;
+    }
+    15% {
+      opacity: 1;
+    }
+    85% {
+      opacity: 1;
+    }
+    100% {
+      transform: translate(40vw, 15vh) rotate(180deg);
+      opacity: 0;
+    }
+  }
+
+  @keyframes floatPath2 {
+    0% {
+      transform: translate(0, 0) rotate(0deg);
+      opacity: 0;
+    }
+    15% {
+      opacity: 1;
+    }
+    85% {
+      opacity: 1;
+    }
+    100% {
+      transform: translate(-25vw, 25vh) rotate(-90deg);
+      opacity: 0;
+    }
+  }
+
+  @keyframes floatPath3 {
+    0% {
+      transform: translate(0, 0) rotate(0deg);
+      opacity: 0;
+    }
+    15% {
+      opacity: 1;
+    }
+    85% {
+      opacity: 1;
+    }
+    100% {
+      transform: translate(35vw, 35vh) rotate(180deg);
+      opacity: 0;
+    }
+  }
+
+  @keyframes floatPath4 {
+    0% {
+      transform: translate(0, 0) rotate(0deg);
+      opacity: 0;
+    }
+    15% {
+      opacity: 1;
+    }
+    85% {
+      opacity: 1;
+    }
+    100% {
+      transform: translate(-30vw, -30vh) rotate(-120deg);
+      opacity: 0;
+    }
+  }
+
+  @keyframes floatPath5 {
+    0% {
+      transform: translate(0, 0) rotate(0deg);
+      opacity: 0;
+    }
+    15% {
+      opacity: 1;
+    }
+    85% {
+      opacity: 1;
+    }
+    100% {
+      transform: translate(35vw, -20vh) rotate(100deg);
+      opacity: 0;
+    }
+  }
+
+  @keyframes floatPath6 {
+    0% {
+      transform: translate(0, 0) rotate(0deg);
+      opacity: 0;
+    }
+    15% {
+      opacity: 1;
+    }
+    85% {
+      opacity: 1;
+    }
+    100% {
+      transform: translate(-25vw, 25vh) rotate(-120deg);
+      opacity: 0;
+    }
+  }
+
+  @keyframes floatPath7 {
+    0% {
+      transform: translate(0, 0) rotate(0deg);
+      opacity: 0;
+    }
+    15% {
+      opacity: 1;
+    }
+    85% {
+      opacity: 1;
+    }
+    100% {
+      transform: translate(35vw, 35vh) rotate(150deg);
+      opacity: 0;
+    }
+  }
 }
 
 /* ===== Logo Spin Animation ===== */
