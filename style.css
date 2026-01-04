@@ -719,6 +719,7 @@ section {
 /* ===== Neon Wild Mode Effects ===== */
 
 /* Base transition for smooth mode switching */
+html,
 body,
 .hero,
 .work,
@@ -738,6 +739,7 @@ body *:not(.floating-hire-text):not(.floating-hire-text *) {
               border-color 0.6s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
+html.wild-mode,
 body.wild-mode,
 body.wild-mode .hero,
 body.wild-mode .work,
