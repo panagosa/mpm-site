@@ -79,7 +79,7 @@
   <!-- Scripts -->
   <script src="script.js"></script>
   <script type="module">
-    import { animate, stagger, inView } from "https://cdn.jsdelivr.net/npm/motion@12.23.24/+esm"
+    import { animate, stagger } from "https://cdn.jsdelivr.net/npm/motion@12.23.24/+esm"
 
     // Set initial state for nav links (hidden, positioned below)
     document.querySelectorAll(".nav-link").forEach(link => {
@@ -87,30 +87,8 @@
       link.style.transform = "translateY(20px)";
     });
 
-    // Animate navigation links with stagger
+    // Animate navigation links with stagger (30% slower for smoother effect)
     animate(".nav-link", { opacity: 1, y: [20, 0] }, { delay: stagger(0.13) })
-
-    // Hero section entrance animation
-    const heroTitle = document.querySelector(".hero-title");
-    const funButton = document.querySelector(".fun-button");
-
-    if (heroTitle) {
-      heroTitle.style.opacity = "0";
-      heroTitle.style.transform = "translateY(30px)";
-      animate(heroTitle,
-        { opacity: 1, y: [30, 0] },
-        { duration: 0.8, easing: [0.25, 0.46, 0.45, 0.94], delay: 0.2 }
-      );
-    }
-
-    if (funButton) {
-      funButton.style.opacity = "0";
-      funButton.style.transform = "translateY(20px)";
-      animate(funButton,
-        { opacity: 1, y: [20, 0] },
-        { duration: 0.6, easing: [0.25, 0.46, 0.45, 0.94], delay: 0.5 }
-      );
-    }
   </script>
 </body>
 </html>
