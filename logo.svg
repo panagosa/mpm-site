@@ -1,20 +1,37 @@
-<svg width="200" height="200" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
-  <!-- Outermost circle (dark teal) -->
-  <circle cx="100" cy="100" r="95" fill="#0d4e46"/>
-  
-  <!-- Background circle (reddish-orange) -->
-  <circle cx="100" cy="100" r="85" fill="#df2e09"/>
-  
-  <!-- Middle circle (warm medium orange) -->
-  <circle cx="100" cy="100" r="75" fill="#e47413"/>
-  
-  <!-- Inner circle (face - creamy yellow) -->
-  <circle cx="100" cy="100" r="60" fill="#eece91"/>
-  
-  <!-- Eyes -->
-  <circle cx="85" cy="90" r="4" fill="#0d4e46"/>
-  <circle cx="115" cy="90" r="4" fill="#0d4e46"/>
-  
-  <!-- Mouth -->
-  <line x1="90" y1="110" x2="110" y2="110" stroke="#0d4e46" stroke-width="2" stroke-linecap="round"/>
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Layer_1" xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="0 0 200 200">
+  <!-- Generator: Adobe Illustrator 30.1.0, SVG Export Plug-In . SVG Version: 2.1.1 Build 136)  -->
+  <defs>
+    <style>
+      .st0 {
+        fill: #eece91;
+      }
+
+      .st1 {
+        fill: #0d4e46;
+      }
+
+      .st2 {
+        fill: #e47413;
+      }
+
+      .st3 {
+        fill: #df2e09;
+      }
+
+      .st4 {
+        fill: none;
+        stroke: #0d4e46;
+        stroke-linecap: round;
+        stroke-width: 2px;
+      }
+    </style>
+  </defs>
+  <circle class="st1" cx="100" cy="100" r="95"/>
+  <circle class="st3" cx="100" cy="100" r="85"/>
+  <circle class="st2" cx="100" cy="100" r="75"/>
+  <circle class="st0" cx="100" cy="100" r="60"/>
+  <circle class="st1" cx="85" cy="90" r="4"/>
+  <circle class="st1" cx="115" cy="90" r="4"/>
+  <line class="st4" x1="90" y1="110" x2="110" y2="110"/>
 </svg>
