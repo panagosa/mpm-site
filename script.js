@@ -705,6 +705,7 @@ function triggerWildMode() {
 
   if (!isWildMode) {
     // Enter wild mode with smooth transition
+    document.documentElement.classList.add('wild-mode');
     document.body.classList.add('wild-mode');
 
     // Animate button text change
@@ -738,6 +739,7 @@ function triggerWildMode() {
 
     // Remove wild mode class after floating text starts fading
     setTimeout(() => {
+      document.documentElement.classList.remove('wild-mode');
       document.body.classList.remove('wild-mode');
     }, 200);
 
