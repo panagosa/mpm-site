@@ -692,23 +692,61 @@ document.addEventListener('DOMContentLoaded', () => {
 
 // ===== Neon Wild Mode Toggle =====
 let isWildMode = false;
+let wildModeTransitioning = false;
 
 function triggerWildMode() {
+  // Prevent rapid toggling during transition
+  if (wildModeTransitioning) return;
+
   const button = document.querySelector('.fun-button');
   const floatingHire = document.getElementById('floating-hire');
-  
+
+  wildModeTransitioning = true;
+
   if (!isWildMode) {
-    // Enter wild mode
+    // Enter wild mode with smooth transition
     document.body.classList.add('wild-mode');
-    button.textContent = 'PRESS THIS BUTTON';
-    floatingHire.style.display = 'block';
+
+    // Animate button text change
+    button.style.opacity = '0';
+    setTimeout(() => {
+      button.textContent = 'PRESS THIS BUTTON';
+      button.style.opacity = '1';
+    }, 300);
+
+    // Activate floating text (CSS handles the fade-in)
+    floatingHire.classList.add('active');
+
     isWildMode = true;
+
+    // Allow toggling again after transition completes
+    setTimeout(() => {
+      wildModeTransitioning = false;
+    }, 800);
   } else {
-    // Exit wild mode
-    document.body.classList.remove('wild-mode');
-    button.textContent = 'DO NOT PRESS THIS BUTTON';
-    floatingHire.style.display = 'none';
+    // Exit wild mode with smooth transition
+
+    // Fade out floating text first
+    floatingHire.classList.remove('active');
+
+    // Animate button text change
+    button.style.opacity = '0';
+    setTimeout(() => {
+      button.textContent = 'DO NOT PRESS THIS BUTTON';
+      button.style.opacity = '1';
+    }, 300);
+
+    // Remove wild mode class after floating text starts fading
+    setTimeout(() => {
+      document.body.classList.remove('wild-mode');
+    }, 200);
+
     isWildMode = false;
+
+    // Allow toggling again after transition completes
+    setTimeout(() => {
+      wildModeTransitioning = false;
+    }, 800);
   }
 }
 
