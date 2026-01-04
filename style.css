@@ -910,7 +910,9 @@ body.wild-mode .nav-menu {
 @media (max-width: 768px) {
   body.wild-mode .nav-menu {
     background: transparent !important;
+    background-color: transparent !important;
     border-top: none !important;
+    border: none !important;
   }
 }
 

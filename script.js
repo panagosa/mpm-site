@@ -700,6 +700,7 @@ function triggerWildMode() {
 
   const button = document.querySelector('.fun-button');
   const floatingHire = document.getElementById('floating-hire');
+  const themeColorMeta = document.querySelector('meta[name="theme-color"]');
 
   wildModeTransitioning = true;
 
@@ -707,6 +708,11 @@ function triggerWildMode() {
     // Enter wild mode with smooth transition
     document.documentElement.classList.add('wild-mode');
     document.body.classList.add('wild-mode');
+
+    // Update browser theme color for mobile
+    if (themeColorMeta) {
+      themeColorMeta.setAttribute('content', '#1a0033');
+    }
 
     // Animate button text change
     button.style.opacity = '0';
@@ -741,6 +747,11 @@ function triggerWildMode() {
     setTimeout(() => {
       document.documentElement.classList.remove('wild-mode');
       document.body.classList.remove('wild-mode');
+
+      // Restore browser theme color
+      if (themeColorMeta) {
+        themeColorMeta.setAttribute('content', '#eece91');
+      }
     }, 200);
 
     isWildMode = false;
