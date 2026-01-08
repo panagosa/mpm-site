@@ -1,5 +1,31 @@
 /* ===== Portfolio Page Styles ===== */
 
+/* Disable wild mode effects on portfolio page */
+html.portfolio-page.wild-mode,
+body.portfolio-page.wild-mode,
+body.portfolio-page.wild-mode .looping-images-section,
+body.portfolio-page.wild-mode .portfolio-work,
+body.portfolio-page.wild-mode .navbar {
+  background: var(--color-bg) !important;
+  animation: none !important;
+}
+
+body.portfolio-page.wild-mode * {
+  color: var(--color-text) !important;
+  text-shadow: none !important;
+}
+
+body.portfolio-page.wild-mode .top-logo-img,
+body.portfolio-page.wild-mode .logo-img {
+  filter: none !important;
+  box-shadow: none !important;
+}
+
+body.portfolio-page.wild-mode .nav-link {
+  color: var(--color-text) !important;
+  text-shadow: none !important;
+}
+
 /* Disable scrolling on portfolio page */
 body.portfolio-page {
   overflow: hidden;
