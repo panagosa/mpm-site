@@ -78,6 +78,20 @@ window.loadMainVideo = function(videoSrc, poster, title, client, description, ye
 
 // Initialize with first video (no autoplay on initial load)
 document.addEventListener('DOMContentLoaded', () => {
+  // Remove any wild mode elements that shouldn't be on portfolio page
+  const floatingHire = document.getElementById('floating-hire');
+  if (floatingHire) {
+    floatingHire.remove();
+  }
+
+  // Remove any floating-hire-text class elements
+  const floatingTexts = document.querySelectorAll('.floating-hire-text');
+  floatingTexts.forEach(el => el.remove());
+
+  // Ensure wild-mode class is removed from html and body on portfolio page
+  document.documentElement.classList.remove('wild-mode');
+  document.body.classList.remove('wild-mode');
+
   // Initialize elements first
   if (!initPortfolioElements()) {
     console.error('Failed to initialize portfolio elements');

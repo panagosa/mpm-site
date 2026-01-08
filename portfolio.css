@@ -26,6 +26,32 @@ body.portfolio-page.wild-mode .nav-link {
   text-shadow: none !important;
 }
 
+/* Override specific wild mode element styles */
+body.portfolio-page.wild-mode .square,
+body.portfolio-page.wild-mode .square img,
+body.portfolio-page.wild-mode .video-overlay,
+body.portfolio-page.wild-mode .lightbox,
+body.portfolio-page.wild-mode .sidebar-video-item {
+  filter: none !important;
+  box-shadow: none !important;
+  border-color: var(--color-text) !important;
+}
+
+/* Completely hide floating HIRE US text on portfolio page regardless of wild mode */
+.portfolio-page .floating-hire-text,
+body.portfolio-page .floating-hire-text,
+html.portfolio-page .floating-hire-text {
+  display: none !important;
+  opacity: 0 !important;
+  visibility: hidden !important;
+}
+
+/* Ensure no wild mode is triggered on portfolio page load */
+html.portfolio-page,
+body.portfolio-page {
+  background: var(--color-bg) !important;
+}
+
 /* Disable scrolling on portfolio page */
 body.portfolio-page {
   overflow: hidden;
