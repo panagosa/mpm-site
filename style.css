@@ -7,7 +7,6 @@
   --color-border: #0d4e46; /* Dark teal borders */
   --color-accent-rust: #df2e09; /* Reddish-orange (outermost circle) */
   --color-accent-orange: #e47413; /* Medium orange (middle circle) */
-  --color-accent-cream: #eece91; /* Cream/beige (inner circle) */
   --color-accent-mustard: #e47413; /* Medium orange for hover/accent */
   
   /* Typography */
@@ -906,13 +905,7 @@ body.wild-mode .nav-menu {
   border-top: none !important;
 }
 
-/* Mobile wild mode navigation fix */
-@media (max-width: 768px) {
-  body.wild-mode .nav-menu {
-    background: transparent !important;
-    border-top: none !important;
-  }
-}
+/* Mobile wild mode navigation handled in responsive section below */
 
 body.wild-mode .about {
   border-top: none;
@@ -1244,7 +1237,12 @@ body.wild-mode .hero {
     flex-wrap: wrap;
     border-top: 1px solid rgba(13, 78, 70, 0.1);
   }
-  
+
+  body.wild-mode .nav-menu {
+    background: transparent !important;
+    border-top: none !important;
+  }
+
   .nav-link {
     font-size: clamp(0.85rem, 3vw, 1rem);
     color: var(--color-text-light);
@@ -1798,7 +1796,7 @@ textarea:focus {
 }
 
 .press-card:hover .publication-name {
-  color: var(--color-accent-cream);
+  color: var(--color-bg);
 }
 
 .press-arrow {
