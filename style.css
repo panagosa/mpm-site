@@ -1875,27 +1875,7 @@ textarea:focus {
   color: var(--color-bg);
 }
 
-/* Press card staggered animation on load */
-.press-card {
-  animation: pressCardFadeIn 0.6s ease forwards;
-  opacity: 0;
-}
-
-.press-card:nth-child(1) { animation-delay: 0.1s; }
-.press-card:nth-child(2) { animation-delay: 0.2s; }
-.press-card:nth-child(3) { animation-delay: 0.3s; }
-.press-card:nth-child(4) { animation-delay: 0.4s; }
-
-@keyframes pressCardFadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(30px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
+/* Press card staggered animation now handled by framer-effects.js scroll reveal */
 
 /* Wild mode for press section */
 body.wild-mode .press {

@@ -37,8 +37,13 @@
   
   <!-- Styles -->
   <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="framer-effects.css">
 </head>
 <body>
+  <!-- Page Loader -->
+  <div class="page-loader" aria-hidden="true">
+    <div class="page-loader-inner"></div>
+  </div>
   <!-- Skip to main content link for accessibility -->
   <a href="#main-content" class="skip-link">Skip to main content</a>
 
@@ -78,18 +83,8 @@
   </div>
 
   <!-- Scripts -->
+  <script src="framer-effects.js"></script>
   <script src="script.js"></script>
-  <script type="module">
-    import { animate, stagger } from "https://cdn.jsdelivr.net/npm/motion@12.23.26/+esm"
-
-    // Set initial state for nav links (hidden, positioned below)
-    document.querySelectorAll(".nav-link").forEach(link => {
-      link.style.opacity = "0";
-      link.style.transform = "translateY(20px)";
-    });
-
-    // Animate navigation links with stagger (30% slower for smoother effect)
-    animate(".nav-link", { opacity: 1, y: [20, 0] }, { delay: stagger(0.13) })
-  </script>
+  <!-- Nav entrance now handled by framer-effects.js -->
 </body>
 </html>
