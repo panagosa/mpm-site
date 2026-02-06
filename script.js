@@ -347,13 +347,30 @@ function setupLogoHover(logoElement) {
 // Function to apply bounce animation to a logo element (same as hero title letters)
 function setupLogoBounce(logoElement) {
   if (!logoElement) return;
-  
+
   let animationFrameId = null;
   let targetLift = 0;
   let storedLift = 0; // Store lift value during hover
-  
+  let isVisible = true;
+
+  // Pause animation when logo is off-screen
+  const bounceObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      isVisible = entry.isIntersecting;
+      if (isVisible && !animationFrameId) {
+        animationFrameId = requestAnimationFrame(animate);
+      }
+    });
+  }, { threshold: 0.1 });
+  bounceObserver.observe(logoElement);
+
   // Continuous animation loop that respects hover state
   const animate = () => {
+    if (!isVisible) {
+      animationFrameId = null;
+      return;
+    }
+
     // Skip bounce animation if hover animation is active
     if (logoElement.dataset.hoverAnimating === 'true') {
       animationFrameId = requestAnimationFrame(animate);
@@ -647,9 +664,11 @@ if (contactForm) {
         submitBtn.style.backgroundColor = '#28a745';
         contactForm.reset();
       })
-      .catch(() => {
-        submitBtn.textContent = 'Error! Try Again';
+      .catch((error) => {
+        const isNetworkError = error instanceof TypeError;
+        submitBtn.textContent = isNetworkError ? 'Network Error! Check Connection' : 'Error! Try Again';
         submitBtn.style.backgroundColor = '#dc3545';
+        console.error('Form submission failed:', error.message || error);
       })
       .finally(() => {
         setTimeout(() => {
