@@ -1,3 +1,12 @@
+/* ===== Font Face ===== */
+@font-face {
+  font-family: 'Geist Pixel';
+  src: url('GeistPixel-Circle.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
 /* ===== CSS Variables ===== */
 :root {
   /* Colors - Retro Palette */
@@ -8,9 +17,9 @@
   --color-accent-rust: #df2e09; /* Reddish-orange (outermost circle) */
   --color-accent-orange: #e47413; /* Medium orange (middle circle) */
   --color-accent-mustard: #e47413; /* Medium orange for hover/accent */
-  
+
   /* Typography */
-  --font-primary: 'Space Grotesk', sans-serif;
+  --font-primary: 'Geist Pixel', sans-serif;
   
   /* Spacing */
   --spacing-xs: 0.5rem;
