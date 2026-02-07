@@ -111,6 +111,25 @@ body.portfolio-page {
   user-select: none;
 }
 
+.square-play-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity 0.25s ease;
+  pointer-events: none;
+}
+
+.square:hover .square-play-overlay {
+  opacity: 1;
+}
+
 .square-with-offset {
   position: absolute;
   inset: 0;
@@ -425,20 +444,23 @@ html.portfolio-page {
   cursor: pointer;
   padding: 0.75rem;
   border: 1px solid transparent;
-  transition: var(--transition);
-  opacity: 0.7;
+  border-left: 3px solid transparent;
+  transition: opacity 0.3s ease, border-color 0.3s ease, background-color 0.3s ease;
+  opacity: 0.65;
 }
 
 .sidebar-video-item:hover {
   opacity: 1;
-  border-color: var(--color-text);
-  background-color: rgba(63, 95, 90, 0.05);
+  border-color: transparent;
+  border-left-color: var(--color-text);
+  background-color: rgba(63, 95, 90, 0.06);
 }
 
 .sidebar-video-item.active {
   opacity: 1;
-  border-color: var(--color-accent-mustard);
-  background-color: rgba(200, 154, 58, 0.1);
+  border-color: transparent;
+  border-left-color: var(--color-accent-mustard);
+  background-color: rgba(200, 154, 58, 0.15);
 }
 
 .sidebar-thumbnail {
@@ -456,11 +478,15 @@ html.portfolio-page {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  transition: transform 0.3s ease;
+  transition: transform 0.4s ease;
 }
 
 .sidebar-video-item:hover .sidebar-thumbnail img {
-  transform: scale(1.05);
+  transform: scale(1.08);
+}
+
+.sidebar-video-item.active .sidebar-thumbnail {
+  box-shadow: 0 0 0 2px var(--color-accent-mustard);
 }
 
 .sidebar-play-overlay {
@@ -686,6 +712,18 @@ html.portfolio-page {
   .sidebar-video-item {
     min-width: 200px;
     flex-direction: column;
+    border-left: 1px solid transparent;
+    border-bottom: 3px solid transparent;
+  }
+
+  .sidebar-video-item:hover {
+    border-left-color: transparent;
+    border-bottom-color: var(--color-text);
+  }
+
+  .sidebar-video-item.active {
+    border-left-color: transparent;
+    border-bottom-color: var(--color-accent-mustard);
   }
   
   .sidebar-thumbnail {
