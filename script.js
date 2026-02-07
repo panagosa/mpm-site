@@ -874,8 +874,7 @@ function customEase(t) {
 class AnimationController {
   constructor() {
     this.startTime = null;
-    this.duration = 2000; // 2 seconds
-    this.repeatDelay = 500; // 0.5 seconds
+    this.duration = 12000; // 12 seconds for a full slow orbit
     this.isRunning = false;
     this.animationFrameId = null;
   }
@@ -900,26 +899,9 @@ class AnimationController {
 
     const now = performance.now();
     const elapsed = now - this.startTime;
-    const cycleTime = this.duration + this.repeatDelay;
-    
-    // Stop after one complete cycle
-    if (elapsed >= cycleTime) {
-      callback(1); // Ensure we end at progress 1
-      this.stop();
-      return;
-    }
-    
-    const cycleProgress = elapsed / cycleTime;
 
-    let progress;
-    if (cycleProgress < this.duration / cycleTime) {
-      // Animation phase
-      const animProgress = cycleProgress / (this.duration / cycleTime);
-      progress = customEase(animProgress);
-    } else {
-      // Delay phase - hold at 1 (completed animation)
-      progress = 1;
-    }
+    // Continuous looping: progress goes from 0 to 1 and wraps around
+    const progress = (elapsed % this.duration) / this.duration;
 
     callback(progress);
 
@@ -1115,7 +1097,13 @@ class Square {
     imgElement.style.objectFit = 'cover';
     imgElement.draggable = false;
 
+    // Play icon overlay
+    const playOverlay = document.createElement('div');
+    playOverlay.className = 'square-play-overlay';
+    playOverlay.innerHTML = '<svg width="32" height="32" viewBox="0 0 24 24" fill="white"><path d="M8 5v14l11-7z"/></svg>';
+
     this.element.appendChild(imgElement);
+    this.element.appendChild(playOverlay);
 
     // Store reference to children container if needed
     if (this.hasChildren) {
